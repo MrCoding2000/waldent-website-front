@@ -1,5 +1,9 @@
 .footer {
   .content {
     background: #009975;
+    .content-text {
+      font-size: 12px;
+      @apply text-white;
+    }
   }
 }

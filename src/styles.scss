@@ -1,9 +1,14 @@
 @use "tailwindcss";
 
 @font-face {
-  font-family: 'IRANSans';
-  src: url('/assets/fonts/IRANSans.woff2') format('woff2'),
-  url('/assets/fonts/IRANSans.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'IRANYekanFaNumber';
+  src: url('/assets/fonts/IRANYekanXFaNum-Medium.ttf') format('ttf'),
+  url('/assets/fonts/IRANYekanXFaNum-Medium.ttf') format('woff');
+}
+
+* {
+  font-family: 'IRANYekanFaNumber';
+  direction: rtl;
+  margin: 0;
+  padding: 0;
 }
