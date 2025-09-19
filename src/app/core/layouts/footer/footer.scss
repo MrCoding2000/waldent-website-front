@@ -1,0 +1,33 @@
+@import "../../../../assets/styles/mixins";
+.footer {
+  width: 100%;
+  padding: 64px;
+  background: #009975;
+  .content {
+    height: 604px;
+    @apply block lg:flex flex-row justify-center items-center;
+    img {
+      width: 225px;
+      height: 213px;
+      @apply mx-auto;
+    }
+    .content-text-container {
+      margin: 12px;
+      .content-title {
+        font-size: 40px;
+        @apply text-white;
+      }
+      .content-text {
+        font-size: 12px;
+        font-family: IRANYekanXFaNum;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 1px;
+        text-align: justify;
+
+        @apply text-white;
+      }
+    }
+
+  }
+}
