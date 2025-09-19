@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@use "tailwindcss";
+
+@font-face {
+  font-family: 'IRANSans';
+  src: url('/assets/fonts/IRANSans.woff2') format('woff2'),
+  url('/assets/fonts/IRANSans.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
