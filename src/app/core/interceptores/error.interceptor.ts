@@ -7,7 +7,7 @@ import {AuthService} from '../auth/service/auth.service';
 
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   const auth = inject(AuthService);
-  const messageService = inject(MessageService);
+  const messageService: MessageService = inject(MessageService);
   // TODO: Check Later
   return next(req).pipe(
     catchError(err => {
