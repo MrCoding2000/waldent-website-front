@@ -1,6 +1,5 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {SelectItem} from 'primeng/api';
 import {Button} from 'primeng/button';
 import {Checkbox} from 'primeng/checkbox';
 import {NgForOf} from '@angular/common';
@@ -10,6 +9,7 @@ import {InputText} from 'primeng/inputtext';
 import {InputNumber} from 'primeng/inputnumber';
 import {ToggleSwitch} from '../toggle-switch/toggle-switch';
 import {Slider} from 'primeng/slider';
+
 interface FilterData {
   approval: string[];
   price: {
@@ -20,6 +20,7 @@ interface FilterData {
   countries: string[];
   condition: string[];
 }
+
 @Component({
   selector: 'app-product-filter',
   standalone: true,
