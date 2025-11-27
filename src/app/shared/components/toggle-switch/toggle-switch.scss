@@ -1,0 +1,35 @@
+//@font-face {
+//  font-family: "IRANYekanXFaNum";
+//  src: url("../assets/fonts/IRANYekanXFaNum-Regular.woff") format("woff");
+//}
+
+.toggle {
+  direction: ltr !important;
+  width: 44px;
+  border-radius: 20px;
+  background: var(--Color-Schema-Surface-Tertiary, rgba(0, 0, 0, 0.02));
+  box-shadow: 0 1px 1px 0 var(--Opacity-Black-6, rgba(0, 0, 0, 0.06)) inset, 0 0 2px 2px var(--Opacity-Black-8, rgba(0, 0, 0, 0.08)) inset;
+}
+
+.toggle::after {
+  border-radius: 20px;
+  background: var(--Color-Schema-Neutral-Gray, #bdbdbd);
+  box-shadow: 0 1px 2px 0 var(--Opacity-Black-12, rgba(0, 0, 0, 0.12));
+}
+
+.peer:checked + .toggle::after {
+  background: var(--Color-Schema-Main-Colors-Primary, #009975);
+  box-shadow: 0 1px 2px 0 var(--Opacity-Black-12, rgba(0, 0, 0, 0.12));
+}
+
+.title {
+  color: var(--Color-Schema-On-Surface-Secondary, #555);
+  font-family: IRANYekanXFaNum;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

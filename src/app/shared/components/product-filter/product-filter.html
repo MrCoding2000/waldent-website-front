@@ -1,0 +1,96 @@
+<div class="filter-container">
+  <div class="header-row">
+    <span class="title">فیلتر ها</span>
+    <i class="pi pi-sliders-h icon"></i>
+  </div>
+
+
+  <!-- آپشن‌های تایید -->
+  <div class="section">
+    <div class="checkbox-item">
+      <p-checkbox [binary]="true" inputId="parentApproved"></p-checkbox>
+      <label for="parentApproved">مورد تایید والدنت</label>
+    </div>
+
+
+    <div class="checkbox-item">
+      <p-checkbox [binary]="true" inputId="sellerApproved"></p-checkbox>
+      <label for="sellerApproved">فروشنده تایید شده</label>
+    </div>
+
+    <div class="checkbox-item">
+      <app-toggle-switch title="موجود"></app-toggle-switch>
+    </div>
+    <div class="checkbox-item">
+      <app-toggle-switch title="فقط دست اول (آکبند)"></app-toggle-switch>
+    </div>
+    <div class="checkbox-item">
+      <app-toggle-switch title="فقط دست دوم"></app-toggle-switch>
+    </div>
+  </div>
+
+
+  <div class="divider"></div>
+
+
+  <!-- قیمت -->
+  <div class="section">
+    <div class="row-between">
+      <span class="label">قیمت</span>
+      <i class="pi pi-chevron-down"></i>
+    </div>
+    <div style="height: 20px; margin-top: 1em;">
+      <p-slider [(ngModel)]="rangeValues" [range]="true" class="range-slider"></p-slider>
+    </div>
+    <div class="price-values">
+<!--      <span>{{rangeValues[0]}}</span>-->
+<!--      <span>—</span>-->
+<!--      <span>{{rangeValues[1]}}</span>-->
+    </div>
+
+
+    <button class="ok-btn">Ok</button>
+  </div>
+
+
+  <div class="divider"></div>
+
+
+  <!-- برند -->
+  <div class="section">
+    <div class="row-between">
+      <span class="label">برند</span>
+      <i class="pi pi-chevron-down"></i>
+    </div>
+
+    <!-- سرچ -->
+    <div class="search-box">
+      <i class="pi pi-search"></i>
+      <input type="text" placeholder="جستجو برند" />
+    </div>
+
+    <!-- لیست برندها -->
+    <div class="brand-list">
+      <div class="brand-item">
+        <p-checkbox binary="true"></p-checkbox>
+        <label>KaVo</label>
+      </div>
+
+      <div class="brand-item">
+        <p-checkbox binary="true"></p-checkbox>
+        <label>Dentsply Sirona</label>
+      </div>
+
+      <div class="brand-item">
+        <p-checkbox binary="true"></p-checkbox>
+        <label>Vatech</label>
+      </div>
+
+      <div class="brand-item">
+        <p-checkbox binary="true"></p-checkbox>
+        <label>Morita</label>
+      </div>
+    </div>
+  </div>
+
+</div>
