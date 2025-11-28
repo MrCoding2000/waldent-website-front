@@ -1,10 +1,8 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {NgClass} from "@angular/common";
 
 @Component({
   selector: 'app-toggle-switch',
   imports: [
-    NgClass
   ],
   standalone: true,
   templateUrl: './toggle-switch.html',

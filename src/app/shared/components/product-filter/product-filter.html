@@ -1,31 +1,37 @@
 <div class="filter-container">
   <div class="header-row">
-    <span class="title">فیلتر ها</span>
-    <i class="pi pi-sliders-h icon"></i>
+    <img src="assets/images/filter.svg" alt="">
+    <span class="title">فیلترها</span>
   </div>
 
 
   <!-- آپشن‌های تایید -->
   <div class="section">
-    <div class="checkbox-item">
-      <p-checkbox [binary]="true" inputId="parentApproved"></p-checkbox>
-      <label for="parentApproved">مورد تایید والدنت</label>
+    <div class="help-container">
+      <div class="checkbox-item">
+        <p-checkbox [binary]="true" inputId="parentApproved" [(ngModel)]="parentApproved"></p-checkbox>
+        <label for="parentApproved" class="checkbox-label">مورد تایید والدنت</label>
+
+      </div>
+      <img src="assets/images/help.svg" alt="">
+
     </div>
 
 
+
     <div class="checkbox-item">
-      <p-checkbox [binary]="true" inputId="sellerApproved"></p-checkbox>
-      <label for="sellerApproved">فروشنده تایید شده</label>
+      <p-checkbox [binary]="true" inputId="sellerApproved" [(ngModel)]="sellerApproved"></p-checkbox>
+      <label for="sellerApproved" class="checkbox-label">فروشنده تایید شده</label>
     </div>
 
     <div class="checkbox-item">
-      <app-toggle-switch title="موجود"></app-toggle-switch>
+      <app-toggle-switch title="موجود" [(checked)]="filters.available" (checkedChange)="onToggleChange('available', $event)"></app-toggle-switch>
     </div>
     <div class="checkbox-item">
-      <app-toggle-switch title="فقط دست اول (آکبند)"></app-toggle-switch>
+      <app-toggle-switch title="فقط دست اول (آکبند)" [(checked)]="filters.firstHand" (checkedChange)="onToggleChange('firstHand', $event)"></app-toggle-switch>
     </div>
     <div class="checkbox-item">
-      <app-toggle-switch title="فقط دست دوم"></app-toggle-switch>
+      <app-toggle-switch title="فقط دست دوم" [(checked)]="filters.secondHand" (checkedChange)="onToggleChange('secondHand', $event)"></app-toggle-switch>
     </div>
   </div>
 
@@ -35,21 +41,38 @@
 
   <!-- قیمت -->
   <div class="section">
-    <div class="row-between">
+    <div class="row-between" (click)="toggleSection('price')">
       <span class="label">قیمت</span>
-      <i class="pi pi-chevron-down"></i>
+      <i class="pi" [ngClass]="expandedSections.price ? 'pi-chevron-up' : 'pi-chevron-down'"></i>
     </div>
-    <div style="height: 20px; margin-top: 1em;">
-      <p-slider [(ngModel)]="rangeValues" [range]="true" class="range-slider"></p-slider>
-    </div>
-    <div class="price-values">
-<!--      <span>{{rangeValues[0]}}</span>-->
-<!--      <span>—</span>-->
-<!--      <span>{{rangeValues[1]}}</span>-->
-    </div>
+    @if(expandedSections.price) {
+      <div class="price-content">
+        <div class="slider-wrapper">
+          <p-slider [(ngModel)]="rangeValues" [range]="true" [min]="minPrice" [max]="maxPrice" class="range-slider" (onChange)="onPriceRangeChange($event)"></p-slider>
+          <div class="price-values-under-slider">
+            <div class="price-value-left">
+              <span class="price-label">بیشینه:</span>
+              <span class="price-amount">{{ formatPrice(rangeValues[1]) }}
+                <img src="assets/images/toman.svg" alt="">
+              </span>
+            </div>
+            <div class="price-value-right">
+              <span class="price-label">کمینه:</span>
+              <span class="price-amount">{{ formatPrice(rangeValues[0]) }}
+                <img src="assets/images/toman.svg" alt="">
 
-
-    <button class="ok-btn">Ok</button>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="price-actions">
+          <button class="ok-btn" (click)="applyPriceFilter()">Ok</button>
+          <button class="keyboard-btn" (click)="openKeyboardInput()">
+            <img src="assets/images/keyboard.svg" alt="">
+          </button>
+        </div>
+      </div>
+    }
   </div>
 
 
@@ -58,39 +81,64 @@
 
   <!-- برند -->
   <div class="section">
-    <div class="row-between">
+    <div class="row-between" (click)="toggleSection('brand')">
       <span class="label">برند</span>
-      <i class="pi pi-chevron-down"></i>
+      <i class="pi" [ngClass]="expandedSections.brand ? 'pi-chevron-up' : 'pi-chevron-down'"></i>
     </div>
+    @if(expandedSections.brand) {
+      <div class="brand-content">
+        <!-- سرچ -->
+        <div class="search-box">
+          <i class="pi pi-search"></i>
+          <input type="text" placeholder="جستجو برند" [(ngModel)]="brandSearch" />
+        </div>
 
-    <!-- سرچ -->
-    <div class="search-box">
-      <i class="pi pi-search"></i>
-      <input type="text" placeholder="جستجو برند" />
+        <!-- لیست برندها -->
+        <div class="brand-list">
+          @for(brand of filteredBrands; track brand.name) {
+            <div class="brand-item">
+              <div class="brand-logo">
+                @if(brand.logo) {
+                  <img [src]="brand.logo" [alt]="brand.name" />
+                }
+                @if(!brand.logo) {
+                  <div class="brand-logo-placeholder">{{ brand.name.charAt(0) }}</div>
+                }
+              </div>
+              <label>{{ brand.name }}</label>
+              <p-checkbox [binary]="true" [(ngModel)]="brand.selected" (onChange)="onBrandChange(brand.name, $event)"></p-checkbox>
+            </div>
+
+          }
+        </div>
+      </div>
+
+    }
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ساخته شده در -->
+  <div class="section">
+    <div class="row-between" (click)="toggleSection('madeIn')">
+      <span class="label">ساخته شده در</span>
+      <i class="pi" [ngClass]="expandedSections.madeIn ? 'pi-chevron-up' : 'pi-chevron-down'"></i>
     </div>
+    @if(expandedSections.madeIn) {
+      <div class="made-in-content">
+        <div class="country-list">
+          @for (country of countries; track  country.name) {
+            <div class="country-item">
+              <label>{{ country.name }}</label>
+              <p-checkbox [binary]="true" [(ngModel)]="country.selected" (onChange)="onCountryChange(country, $event)"></p-checkbox>
+            </div>
 
-    <!-- لیست برندها -->
-    <div class="brand-list">
-      <div class="brand-item">
-        <p-checkbox binary="true"></p-checkbox>
-        <label>KaVo</label>
+          }
+
+        </div>
       </div>
 
-      <div class="brand-item">
-        <p-checkbox binary="true"></p-checkbox>
-        <label>Dentsply Sirona</label>
-      </div>
-
-      <div class="brand-item">
-        <p-checkbox binary="true"></p-checkbox>
-        <label>Vatech</label>
-      </div>
-
-      <div class="brand-item">
-        <p-checkbox binary="true"></p-checkbox>
-        <label>Morita</label>
-      </div>
-    </div>
+    }
   </div>
 
 </div>

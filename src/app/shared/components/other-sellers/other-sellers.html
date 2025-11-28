@@ -1,0 +1,65 @@
+<section class="other-sellers-container">
+  <h2 class="section-title">سایر فروشندگان این کالا</h2>
+
+  <div class="sellers-list">
+    @for (seller of sellers; track seller.id) {
+      <div class="seller-row">
+        <!-- Button Section -->
+        <div class="button-section">
+          @if (seller.canAddToCart) {
+            <button class="add-to-cart-btn" (click)="addToCart(seller.id)">
+              افزودن به سبد خرید
+            </button>
+          } @else {
+            <button class="contact-seller-btn" (click)="contactSeller(seller.id)">
+              تماس با فروشنده برای خرید
+            </button>
+          }
+        </div>
+
+        <!-- Price and Discount Section -->
+        <div class="price-section">
+          @if (seller.canAddToCart && seller.price > 0) {
+            <div class="price-info">
+              <span class="price">
+                {{ formatPrice(seller.price) }}
+                <img src="assets/images/toman.svg" alt="">
+              </span>
+              @if (seller.originalPrice) {
+                <span class="original-price">{{ formatPrice(seller.originalPrice) }}</span>
+              }
+              @if (seller.discount) {
+                <span class="discount-badge">{{ seller.discount }}٪</span>
+              }
+            </div>
+          }
+        </div>
+
+        <!-- Warranty Section -->
+        <div class="warranty-section">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.16671 18.75L5.58337 16.0833L2.58337 15.4167L2.87504 12.3333L0.833374 10L2.87504 7.66667L2.58337 4.58333L5.58337 3.91667L7.16671 1.25L10 2.45833L12.8334 1.25L14.4167 3.91667L17.4167 4.58333L17.125 7.66667L19.1667 10L17.125 12.3333L17.4167 15.4167L14.4167 16.0833L12.8334 18.75L10 17.5417L7.16671 18.75ZM9.12504 12.9583L13.8334 8.25L12.6667 7.04167L9.12504 10.5833L7.33337 8.83333L6.16671 10L9.12504 12.9583Z" fill="#009975"/>
+          </svg>
+          <span class="warranty-text">{{ seller.warranty }}</span>
+        </div>
+
+        <!-- Seller Info Section -->
+        <div class="seller-info-section">
+          <img [src]="seller.logo" [alt]="seller.name" class="seller-logo" />
+          <span class="seller-name">{{ seller.name }}</span>
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- View More Link -->
+  <div class="view-more-section">
+    <button class="view-more-btn" (click)="viewMore()">
+      <span>مشاهده بیشتر</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 12L3 7L4.41 5.59L8 9.17L11.59 5.59L13 7L8 12Z" fill="#0058CC"/>
+      </svg>
+    </button>
+  </div>
+</section>
+

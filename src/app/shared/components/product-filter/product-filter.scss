@@ -1,51 +1,189 @@
 .filter-container {
-  width: 280px;
-  height: 824px;
-  background: #fff;
-  border-radius: 14px;
-  padding: 10px 0;
-  border: 1px solid #e5e5e5;
-  font-family: sans-serif;
+  width: 100%;
+  min-width: 240px;
+  max-width: 320px;
+  background-color: #F7F9FB;
+  border-radius: 28px;
+  padding: 16px 0;
+  //border: 1px solid #e5e5e5;
+  font-family: IRANYekanFaNumber, sans-serif;
   direction: rtl;
+  overflow-y: auto;
+}
+
+.filter-container * {
+  font-family: IRANYekanFaNumber, sans-serif;
 }
 
 
 .header-row {
   display: flex;
-  justify-content: space-between;
-  padding: 0 20px 10px 20px;
+  gap: 15px;
   align-items: center;
+  padding: 0 20px 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 8px;
 }
-
 
 .title {
-  font-weight: 600;
-  font-size: 15px;
+  font-weight: 700;
+  font-size: 16px;
+  color: #000;
 }
 
+.icon {
+  font-size: 18px;
+  color: #666;
+}
 
 .section {
-  padding: 10px 20px;
+  padding: 12px 20px;
+  .help-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    cursor: pointer;
+  }
 }
 
 
 .checkbox-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 0;
+  gap: 12px;
+  padding: 10px 0;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.checkbox-item > .checkbox-label {
+  flex: 1;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
+  margin: 0;
+  user-select: none;
+  text-align: right;
+  order: 2;
+  font-family: IRANYekanFaNumber, sans-serif;
+}
+
+.checkbox-item > p-checkbox {
+  flex-shrink: 0;
+  order: 1;
+}
+
+.checkbox-item > .question-icon {
+  margin-left: 6px;
+  flex-shrink: 0;
+  order: 3;
+}
+
+/* اطمینان از اینکه label به input متصل است */
+:host ::ng-deep .checkbox-item p-checkbox .p-checkbox input {
+  cursor: pointer;
+}
+
+:host ::ng-deep .checkbox-item .checkbox-label {
+  cursor: pointer;
+}
+
+/* استایل چک‌باکس PrimeNG */
+:host ::ng-deep .checkbox-item p-checkbox .p-checkbox {
+  width: 20px;
+  height: 20px;
+}
+
+:host ::ng-deep .checkbox-item p-checkbox .p-checkbox-box {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d0d0d0;
+  border-radius: 4px;
+  background: #fff;
+  transition: all 0.2s;
+}
+
+:host ::ng-deep .checkbox-item p-checkbox .p-checkbox-box:hover {
+  border-color: #00c7b1;
+}
+
+:host ::ng-deep .checkbox-item p-checkbox .p-checkbox-box.p-highlight {
+  background: #00c7b1 !important;
+  border-color: #00c7b1 !important;
+}
+
+:host ::ng-deep .checkbox-item p-checkbox .p-checkbox-icon {
+  font-size: 12px;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-item app-toggle-switch {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkbox-item app-toggle-switch ::ng-deep label {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row-reverse;
+  margin: 0;
+  gap: 12px;
+}
+
+.checkbox-item app-toggle-switch ::ng-deep .title {
+  order: 1;
+  margin: 0;
+  flex: 1;
+  text-align: right;
+  font-family: IRANYekanFaNumber, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.checkbox-item app-toggle-switch ::ng-deep .toggle {
+  order: 2;
+  flex-shrink: 0;
+}
+
+.question-icon {
+  color: #999;
+  font-size: 18px;
+  margin-left: 6px;
+  cursor: help;
+  flex-shrink: 0;
 }
 
 
 .label {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
-  color: #333;
+  color: #000;
+  font-family: IRANYekanFaNumber, sans-serif;
 }
-
 
 .row-between {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  padding: 8px 0;
+}
+
+.row-between i {
+  font-size: 14px;
+  color: #666;
+  transition: transform 0.2s;
 }
 
 /* اسلایدر شبیه تصویر */
@@ -54,8 +192,7 @@
   height: 6px !important;
   background: #e5e5e5 !important;
   border-radius: 4px !important;
-  margin-top: 16px;
-  margin-bottom: 12px;
+  margin: 0 !important;
 }
 
 :host ::ng-deep .range-slider .p-slider-range {
@@ -84,19 +221,118 @@
   box-shadow: 0 0 0 3px rgba(0,199,177,0.3) !important;
 }
 
-
-/* عنوان بخش */
-.label {
-  font-size: 14px;
-  font-weight: 600;
-  color: #333;
+/* قیمت */
+.price-content {
+  margin-top: 12px;
 }
 
-/* ردیف عنوان و آیکون */
-.row-between {
+.slider-wrapper {
+  position: relative;
+  margin: 16px 0;
+  max-width: 175px;
+}
+
+.price-values-under-slider {
+  padding: 20px 0;
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-between;
+  min-width: 195px;
+
+
+}
+
+.price-value-left,
+.price-value-right {
+  display: flex;
+  img {
+    width: 16px;
+  }
+
+  //min-width: 100px;
+}
+
+.price-value-left {
+
+}
+
+.price-value-right {
+
+}
+
+.price-label {
+  font-size: 10px;
+  font-weight: 400;
+  font-family: IRANYekanFaNumber, sans-serif;
+  color: #666;
+  line-height: 1.2;
+}
+
+.price-amount {
+  display: flex;
+  font-size: 10px;
+  font-weight: 600;
+  font-family: IRANYekanFaNumber, sans-serif;
+  color: #333;
+  line-height: 1.2;
+}
+
+.price-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.ok-btn {
+  flex: 1;
+  padding: 12px 24px;
+  border: 2px solid #00c7b1;
+  background: white;
+  color: #00c7b1;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: IRANYekanFaNumber, sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+  height: 48px;
+}
+
+.ok-btn:hover {
+  background: #00c7b1;
+  color: white;
+}
+
+.ok-btn:active {
+  transform: scale(0.98);
+}
+
+.keyboard-btn {
+  width: 48px;
+  height: 48px;
+  border: 1px solid #333;
+  background: white;
+  border-radius: 20px;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.keyboard-btn:hover {
+  background: #f5f5f5;
+  border-color: #000;
+}
+
+.keyboard-btn:active {
+  transform: scale(0.95);
+}
+
+.keyboard-btn i {
+  font-size: 20px;
+  color: #333;
 }
 
 /* باکس سرچ */
@@ -107,18 +343,27 @@
 
 .search-box input {
   width: 100%;
-  padding: 8px 32px 8px 10px;
+  padding: 10px 40px 10px 12px;
   border: 1px solid #d0d0d0;
-  border-radius: 8px;
-  font-size: 13px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: IRANYekanFaNumber, sans-serif;
+  background: #00000005;
+  direction: rtl;
+}
+
+.search-box input::placeholder {
+  color: #999;
 }
 
 .search-box i {
   position: absolute;
-  left: 10px;
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
   color: #888;
+  font-size: 16px;
 }
 
 /* لیست برندها */
@@ -132,13 +377,71 @@
 /* آیتم برند (مطابق کارت‌های تصویر) */
 .brand-item {
   display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   background: #fafafa;
   border: 1px solid #e3e3e3;
   border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
+  transition: all 0.2s;
+}
+
+.brand-item:hover {
+  background: #f5f5f5;
+}
+
+.brand-item > label {
+  flex: 1;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: IRANYekanFaNumber, sans-serif;
+  color: #333;
+  margin: 0;
+  order: 1;
+}
+
+.brand-item > p-checkbox {
+  flex-shrink: 0;
+  order: 2;
+}
+
+.brand-item > .brand-logo {
+  order: 0;
+}
+
+.brand-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid #ddd;
+}
+
+.brand-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.brand-logo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  background: #e5e5e5;
 }
 
 /* اسکرول ظریف */
@@ -151,41 +454,46 @@
   border-radius: 3px;
 }
 
-
-/* اسلایدر شبیه تصویر */
-
-:host ::ng-deep .range-slider .p-slider {
-  height: 6px !important;
-  background: #e5e5e5 !important;
-  border-radius: 4px !important;
-  margin-top: 16px;
-  margin-bottom: 12px;
+.brand-content {
+  margin-top: 12px;
 }
 
-:host ::ng-deep .range-slider .p-slider-range {
-  background: #00c7b1 !important;
-  height: 6px !important;
+.made-in-content {
+  margin-top: 12px;
 }
 
-:host ::ng-deep .range-slider .p-slider-handle {
-  width: 22px !important;
-  height: 22px !important;
-  background: #00c7b1 !important;
-  border: 3px solid #ffffff !important;
-  border-radius: 50% !important;
-  top: -8px !important;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2) !important;
-  transition: 0.2s ease;
+.country-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-:host ::ng-deep .range-slider .p-slider-handle:hover {
-  transform: scale(1.15) !important;
-  background: #00a995 !important;
+.country-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  cursor: pointer;
 }
 
-:host ::ng-deep .range-slider .p-slider-handle:focus {
-  outline: none !important;
-  box-shadow: 0 0 0 3px rgba(0,199,177,0.3) !important;
+.country-item label {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: IRANYekanFaNumber, sans-serif;
+  color: #333;
+  cursor: pointer;
+  margin: 0;
 }
 
+.country-item p-checkbox {
+  flex-shrink: 0;
+}
+
+.divider {
+  height: 1px;
+  background: #e5e5e5;
+  margin: 4px 0;
+  border: none;
+}
 

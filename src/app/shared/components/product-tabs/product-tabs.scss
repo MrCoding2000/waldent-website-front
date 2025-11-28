@@ -1,0 +1,1055 @@
+.product-tabs-container {
+  width: 100%;
+  margin-top: 2rem;
+
+  .tabs-menu {
+    display: flex;
+    gap: 0;
+    padding: 8px;
+    margin-bottom: 2rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    border-radius: 28px;
+    background-color: #F7F9FB;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-button {
+      background: none;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0;
+      color: #666666;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      position: relative;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+
+      &:hover {
+        color: #222222;
+      }
+
+      &.active {
+        background-color: #fff;
+        border-radius: 20px;
+        color: #009975;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .tabs-content {
+    .tab-section {
+      margin-bottom: 3rem;
+      padding-top: 2rem;
+      scroll-margin-top: 150px;
+
+      .section-title {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 28px;
+        letter-spacing: 0;
+        color: #222222;
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+
+  // Specifications Section
+  .specifications-wrapper {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+
+    .specifications-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .seller-card-wrapper {
+      flex-shrink: 0;
+      width: 300px;
+      margin-top: 2rem;
+    }
+  }
+
+  .specifications-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .info-card {
+    display: flex;
+    background: #F7F9FB;
+    border-radius: 28px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    gap: 100px;
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+
+      .card-title {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 24px;
+        letter-spacing: 0;
+        color: #222222;
+        margin: 0;
+      }
+
+      svg {
+        flex-shrink: 0;
+      }
+    }
+
+    .info-card-title {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 170px;
+      width: 25%;
+    }
+
+    .card-content {
+      width: 75%;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 1rem;
+
+      .info-row {
+        display: flex;
+        align-items: center;
+        padding: 0.875rem 0;
+        border-bottom: 1px solid #E5E5E5;
+        gap: 0.25rem;
+
+        &:first-of-type {
+          padding-top: 0;
+        }
+
+        &:last-of-type {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
+
+        .info-label {
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 20px;
+          letter-spacing: 0;
+          color: #222222;
+          white-space: nowrap;
+        }
+
+        .info-value {
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 20px;
+          letter-spacing: 0;
+          color: #666666;
+          text-align: left;
+        }
+      }
+    }
+
+    .view-more-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: none;
+      border: none;
+      color: #0058CC;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+      margin-top: 0.5rem;
+      margin-right: 15px;
+
+      &:hover {
+        color: #004499;
+      }
+
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .view-more-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    color: #0058CC;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: #004499;
+    }
+
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+
+
+  // Reviews Section
+  .reviews-header-wrapper {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    align-items: flex-start;
+
+    .reviews-header-right {
+      flex: 1;
+
+      .section-title {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 28px;
+        letter-spacing: 0;
+        color: #222222;
+        margin-bottom: 1rem;
+      }
+
+      .reviews-count {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0;
+        color: #666666;
+        margin-bottom: 1.5rem;
+      }
+
+      .rating-summary {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+
+        .rating-display {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .rating-value {
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 40px;
+            letter-spacing: 0;
+            color: #222222;
+          }
+
+          .rating-out-of {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            letter-spacing: 0;
+            color: #666666;
+          }
+        }
+
+        .stars-display {
+          display: flex;
+          gap: 0.25rem;
+        }
+
+        .votes-count {
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 20px;
+          letter-spacing: 0;
+          color: #666666;
+        }
+      }
+
+      .register-prompt {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0;
+        color: #666666;
+        margin-bottom: 1rem;
+      }
+
+      .register-review-btn {
+        background: #009975;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 8px;
+        padding: 0.75rem 1.5rem;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: #007A5E;
+        }
+      }
+    }
+  }
+
+  .reviews-summary-box {
+    background: #F7F9FB;
+    padding: 1.5rem;
+    border-radius: 12px;
+    flex: 1;
+    max-width: 400px;
+
+    .summary-title {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0;
+      color: #222222;
+      margin-bottom: 1rem;
+    }
+
+    .summary-text {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0;
+      color: #666666;
+      margin-bottom: 1.5rem;
+      text-align: justify;
+    }
+
+    .summary-sections {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .summary-section {
+      h5 {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0;
+        color: #222222;
+        margin-bottom: 0.75rem;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        li {
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 20px;
+          letter-spacing: 0;
+          color: #666666;
+          position: relative;
+          padding-right: 1rem;
+
+          &::before {
+            content: '•';
+            position: absolute;
+            right: 0;
+            color: #009975;
+          }
+        }
+      }
+    }
+  }
+
+  .sort-options {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #E5E5E5;
+
+    .sort-buttons {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+
+      .sort-label {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0;
+        color: #222222;
+      }
+
+      .sort-btn {
+        background: none;
+        border: 1px solid #E5E5E5;
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0;
+        color: #666666;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          border-color: #009975;
+          color: #009975;
+        }
+
+        &.active {
+          background: #009975;
+          color: #FFFFFF;
+          border-color: #009975;
+        }
+      }
+    }
+  }
+
+  .reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .review-item {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 12px;
+      padding: 1.5rem;
+
+      .review-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+
+        .reviewer-info {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          flex-wrap: wrap;
+
+          .reviewer-name {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 20px;
+            letter-spacing: 0;
+            color: #222222;
+          }
+
+          .buyer-badge {
+            background: #009975;
+            color: #FFFFFF;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 16px;
+            letter-spacing: 0;
+          }
+
+          .review-date {
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 16px;
+            letter-spacing: 0;
+            color: #999999;
+          }
+        }
+
+        .review-rating {
+          display: flex;
+          gap: 0.25rem;
+        }
+      }
+
+      .review-text {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0;
+        color: #222222;
+        margin-bottom: 1rem;
+      }
+
+      .review-details {
+        margin-bottom: 1rem;
+
+        .review-points {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+          margin-bottom: 0.75rem;
+
+          .points-section {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+
+            strong {
+              font-weight: 600;
+              font-size: 14px;
+              line-height: 20px;
+              letter-spacing: 0;
+              color: #222222;
+            }
+
+            span {
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 20px;
+              letter-spacing: 0;
+              color: #666666;
+            }
+          }
+        }
+
+        .review-seller {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-weight: 300;
+          font-size: 12px;
+          line-height: 20px;
+          letter-spacing: 0;
+          color: #666666;
+          font-family: Poppins;
+        }
+      }
+
+      .review-actions {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+
+        .helpful-btn,
+        .not-helpful-btn {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          background: none;
+          border: none;
+          padding: 0.5rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          span {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            letter-spacing: 0;
+            color: #666666;
+          }
+        }
+
+        .report-review-btn {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          background: none;
+          border: none;
+          padding: 0.5rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          margin-right: auto;
+
+          span {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            letter-spacing: 0;
+            color: #666666;
+          }
+
+          &:hover {
+            span {
+              color: #222222;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Questions Section
+  .questions-header-wrapper {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    align-items: flex-start;
+
+    .questions-header-right {
+      flex: 1;
+
+      .section-title-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+
+        .section-title {
+          font-weight: 600;
+          font-size: 18px;
+          line-height: 28px;
+          letter-spacing: 0;
+          color: #222222;
+          margin: 0;
+        }
+      }
+
+      .questions-prompt {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0;
+        color: #666666;
+        margin-bottom: 1rem;
+      }
+
+      .register-question-btn {
+        background: #009975;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 8px;
+        padding: 0.75rem 1.5rem;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: #007A5E;
+        }
+      }
+    }
+
+    .questions-sort {
+      .sort-buttons {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+
+        .sort-label {
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 20px;
+          letter-spacing: 0;
+          color: #222222;
+        }
+
+        .sort-btn {
+          background: none;
+          border: 1px solid #E5E5E5;
+          border-radius: 8px;
+          padding: 0.5rem 1rem;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 20px;
+          letter-spacing: 0;
+          color: #666666;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            border-color: #009975;
+            color: #009975;
+          }
+
+          &.active {
+            background: #009975;
+            color: #FFFFFF;
+            border-color: #009975;
+          }
+        }
+      }
+    }
+  }
+
+  .questions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+
+    .question-item {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
+      border-radius: 12px;
+      padding: 1.5rem;
+
+      .question-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+
+        .questioner-info {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+
+          .user-avatar {
+            flex-shrink: 0;
+          }
+
+          .questioner-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+
+            .questioner-name {
+              font-weight: 600;
+              font-size: 14px;
+              line-height: 20px;
+              letter-spacing: 0;
+              color: #222222;
+            }
+
+            .question-date {
+              font-weight: 400;
+              font-size: 12px;
+              line-height: 16px;
+              letter-spacing: 0;
+              color: #999999;
+            }
+          }
+        }
+
+        .report-question-btn {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          background: none;
+          border: none;
+          padding: 0.5rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          span {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            letter-spacing: 0;
+            color: #666666;
+          }
+
+          &:hover {
+            span {
+              color: #222222;
+            }
+          }
+        }
+      }
+
+      .question-text {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0;
+        color: #222222;
+        margin-bottom: 1.5rem;
+      }
+
+      .answers-section {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+        padding-right: 2rem;
+        border-right: 2px solid #009975;
+
+        .answer-item {
+          .answer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+
+            .answerer-info {
+              display: flex;
+              align-items: center;
+              gap: 0.75rem;
+
+              .user-avatar {
+                flex-shrink: 0;
+
+                .official-badge {
+                  position: relative;
+
+                  &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -2px;
+                    right: -2px;
+                    width: 12px;
+                    height: 12px;
+                    background: #009975;
+                    border-radius: 50%;
+                    border: 2px solid #FFFFFF;
+                  }
+                }
+              }
+
+              .answerer-details {
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+
+                .answerer-name {
+                  font-weight: 600;
+                  font-size: 14px;
+                  line-height: 20px;
+                  letter-spacing: 0;
+                  color: #222222;
+                }
+
+                .answer-date {
+                  font-weight: 400;
+                  font-size: 12px;
+                  line-height: 16px;
+                  letter-spacing: 0;
+                  color: #999999;
+                }
+              }
+            }
+
+            .report-answer-btn {
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+              background: none;
+              border: none;
+              padding: 0.5rem;
+              cursor: pointer;
+              transition: all 0.3s ease;
+
+              span {
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 20px;
+                letter-spacing: 0;
+                color: #666666;
+              }
+
+              &:hover {
+                span {
+                  color: #222222;
+                }
+              }
+            }
+          }
+
+          .answer-text {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            letter-spacing: 0;
+            color: #222222;
+            margin-bottom: 1rem;
+          }
+
+          .answer-helpful {
+            .helpful-question {
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 20px;
+              letter-spacing: 0;
+              color: #666666;
+              margin-bottom: 0.5rem;
+            }
+
+            .answer-actions {
+              display: flex;
+              gap: 1rem;
+
+              .helpful-btn,
+              .not-helpful-btn {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                background: none;
+                border: none;
+                padding: 0.5rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+
+                span {
+                  font-weight: 400;
+                  font-size: 14px;
+                  line-height: 20px;
+                  letter-spacing: 0;
+                  color: #666666;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .answer-prompt {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid #E5E5E5;
+
+        span {
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 20px;
+          letter-spacing: 0;
+          color: #666666;
+        }
+
+        .submit-answer-link {
+          display: flex;
+          align-items: center;
+          gap: 0.25rem;
+          background: none;
+          border: none;
+          color: #0058CC;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 20px;
+          letter-spacing: 0;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          padding: 0;
+
+          &:hover {
+            color: #004499;
+          }
+        }
+      }
+    }
+  }
+
+  .view-more-questions {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+
+    .view-more-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: none;
+      border: none;
+      color: #0058CC;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+
+      &:hover {
+        color: #004499;
+      }
+
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+  // Responsive adjustments
+  @media (max-width: 1024px) {
+    .specifications-wrapper {
+      flex-direction: column;
+
+      .seller-card-wrapper {
+        width: 100%;
+      }
+    }
+
+    .reviews-header-wrapper {
+      flex-direction: column;
+
+      .reviews-summary-box {
+        max-width: 100%;
+      }
+    }
+
+    .questions-header-wrapper {
+      flex-direction: column;
+
+      .questions-sort {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .product-tabs-container {
+      .tabs-menu {
+        gap: 0.5rem;
+
+        .tab-button {
+          padding: 0.5rem 1rem;
+          font-size: 12px;
+        }
+      }
+
+      .specifications-wrapper {
+        .specifications-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+
+    .reviews-header-wrapper {
+      .rating-summary {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+    }
+
+    .sort-options {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+
+      .sort-buttons {
+        flex-wrap: wrap;
+      }
+    }
+  }
+

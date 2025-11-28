@@ -18,21 +18,25 @@
       <section class="image-container my-3">
         <div class="w-full max-w-lg mx-auto select-none">
           <!-- Main Image Wrapper -->
-          <div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-white shadow">
+          <div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-white shadow cursor-pointer" (click)="openGalleryModal()">
             <img [src]="images[active]" class="w-full h-full object-contain"/>
             <!-- Top-left Zoom Icon -->
-            <button class="absolute top-3 left-3 bg-white rounded-lg shadow p-2 text-gray-700">
-              <i class="lucide lucide-expand"></i>
+            <button class="absolute top-3 left-3 bg-white rounded-lg shadow p-2 text-gray-700 hover:bg-gray-100 transition-colors" (click)="openGalleryModal(); $event.stopPropagation()">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 3H5C3.89543 3 3 3.89543 3 5V8M21 8V5C21 3.89543 20.1046 3 19 3H16M16 21H19C20.1046 21 21 20.1046 21 19V16M3 16V19C3 20.1046 3.89543 21 5 21H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </button>
           </div>
           <!-- Thumbnails Row -->
           <div class="flex items-center gap-3 mt-4">
-            <div *ngFor="let img of images; let i = index"
+            @for (img of images; track $index; let i = $index) {
+              <div 
                  (click)="active = i"
                  class="w-20 h-20 rounded-xl border bg-white shadow flex items-center justify-center cursor-pointer transition-all hover:opacity-80"
                  [class.border-green-600]="active === i">
-              <img [src]="img" class="w-full h-full object-contain p-1 rounded-lg"/>
-            </div>
+                <img [src]="img" class="w-full h-full object-contain p-1 rounded-lg" (click)="openGalleryModal(i); $event.stopPropagation()"/>
+              </div>
+            }
           </div>
         </div>
       </section>
@@ -162,4 +166,18 @@
       </div>
     </section>
   </section>
+  
+  <!-- Other Sellers Section -->
+  <app-other-sellers></app-other-sellers>
+  
+  <!-- Product Tabs Section -->
+  <app-product-tabs></app-product-tabs>
+
+  <!-- Image Gallery Modal -->
+  <app-image-gallery-modal
+    [images]="images"
+    [initialIndex]="active"
+    [isOpen]="isGalleryModalOpen"
+    (closeModal)="closeGalleryModal()">
+  </app-image-gallery-modal>
 </section>

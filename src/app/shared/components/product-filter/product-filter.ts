@@ -1,12 +1,8 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {Button} from 'primeng/button';
 import {Checkbox} from 'primeng/checkbox';
-import {NgForOf} from '@angular/common';
-import {InputGroupAddon} from 'primeng/inputgroupaddon';
-import {Divider} from 'primeng/divider';
-import {InputText} from 'primeng/inputtext';
-import {InputNumber} from 'primeng/inputnumber';
+import {NgClass} from '@angular/common';
+
 import {ToggleSwitch} from '../toggle-switch/toggle-switch';
 import {Slider} from 'primeng/slider';
 
@@ -25,14 +21,9 @@ interface FilterData {
   selector: 'app-product-filter',
   standalone: true,
   imports: [
-    Button,
     Checkbox,
-    NgForOf,
+    NgClass,
     ReactiveFormsModule,
-    InputGroupAddon,
-    Divider,
-    InputText,
-    InputNumber,
     FormsModule,
     ToggleSwitch,
     Slider
@@ -46,26 +37,48 @@ export class ProductFilter {
   filterForm!: FormGroup;
   brandSearch: string = '';
   countrySearch: string = '';
+      parentApproved = true;
+    sellerApproved = false;
 
   // داده‌های نمونه
-  brands = ['KаVo', 'Dentsply Sirona', 'Vatech'];
-  countries = ['آلمان', 'آمریکا', 'کره جنوبی', 'ژاپن'];
+  brands: Array<{ name: string; logo: string; selected?: boolean }> = [
+    { name: 'KaVo', logo: 'assets/images/KaVo.png', selected: false },
+    { name: 'Dentsply Sirona', logo: 'assets/images/Dentsply.png', selected: false },
+    { name: 'Vatech', logo: 'assets/images/Vatech.png', selected: false }
+  ];
+  countries: Array<{ name: string; selected?: boolean }> = [
+    { name: 'آلمان', selected: false },
+    { name: 'آمریکا', selected: false },
+    { name: 'کره جنوبی', selected: false },
+    { name: 'ژاپن', selected: false }
+  ];
 
   // رنج‌ها
   priceRange: number[] = [1.0, 2.5];
   historyRange: number[] = [500, 600];
+  minPrice: number = 100;
+  maxPrice: number = 500000000;
+  rangeValues: number[] = [this.minPrice, this.maxPrice];
 
-  // وضعیت تاگل‌ها
-  toggleStates = {
-    verifiedSeller: false,
-    inStock: false,
-    newCondition: false,
-    usedCondition: false
+  // وضعیت expand/collapse بخش‌ها
+  expandedSections = {
+    price: true,
+    brand: true,
+    madeIn: true
   };
-  rangeValues: any;
+
+  // وضعیت فیلترها
+  filters = {
+    parentApproved: false,
+    sellerApproved: false,
+    available: false,
+    firstHand: false,
+    secondHand: false
+  };
 
   constructor(private fb: FormBuilder) {
     this.initializeForm();
+    this.rangeValues = [this.minPrice, this.maxPrice];
   }
 
   initializeForm(): void {
@@ -83,16 +96,20 @@ export class ProductFilter {
     this.filterForm.valueChanges.subscribe(value => {
       this.filterChange.emit({
         ...value,
-        ...this.toggleStates,
-        priceRange: this.priceRange,
+        ...this.filters,
+        priceRange: this.rangeValues,
         historyRange: this.historyRange
       });
     });
   }
 
   onPriceRangeChange(event: any): void {
-    this.priceRange = event.values;
-    this.emitFilterChanges();
+    if (event.values) {
+      this.rangeValues = event.values;
+    } else {
+      this.rangeValues = event;
+    }
+    this.priceRange = this.rangeValues;
   }
 
   onHistoryRangeChange(event: any): void {
@@ -100,9 +117,31 @@ export class ProductFilter {
     this.emitFilterChanges();
   }
 
-  onToggleChange(field: string, event: any): void {
-    this.toggleStates[field as keyof typeof this.toggleStates] = event.checked;
+  onToggleChange(field: string, value: boolean): void {
+    (this.filters as any)[field] = value;
     this.emitFilterChanges();
+  }
+
+  toggleCheckbox(field: 'parentApproved' | 'sellerApproved'): void {
+    (this.filters as any)[field] = !(this.filters as any)[field];
+    this.emitFilterChanges();
+  }
+
+  toggleSection(section: 'price' | 'brand' | 'madeIn'): void {
+    this.expandedSections[section] = !this.expandedSections[section];
+  }
+
+  formatPrice(price: number): string {
+    return new Intl.NumberFormat('fa-IR').format(price);
+  }
+
+  applyPriceFilter(): void {
+    this.emitFilterChanges();
+  }
+
+  openKeyboardInput(): void {
+    // TODO: Implement keyboard input modal
+    console.log('Open keyboard input');
   }
 
   onBrandChange(brand: string, event: any): void {
@@ -116,12 +155,12 @@ export class ProductFilter {
     this.emitFilterChanges();
   }
 
-  onCountryChange(country: string, event: any): void {
+  onCountryChange(country: any, event: any): void {
     const countriesArray = this.filterForm.get('selectedCountries') as FormArray;
     if (event.checked) {
-      countriesArray.push(this.fb.control(country));
+      countriesArray.push(this.fb.control(country.name));
     } else {
-      const index = countriesArray.controls.findIndex(x => x.value === country);
+      const index = countriesArray.controls.findIndex(x => x.value === country.name);
       countriesArray.removeAt(index);
     }
     this.emitFilterChanges();
@@ -130,37 +169,48 @@ export class ProductFilter {
   emitFilterChanges(): void {
     this.filterChange.emit({
       ...this.filterForm.value,
-      ...this.toggleStates,
-      priceRange: this.priceRange,
+      ...this.filters,
+      priceRange: this.rangeValues,
       historyRange: this.historyRange
     });
   }
 
   resetFilters(): void {
     this.filterForm.reset();
-    this.priceRange = [1.0, 2.5];
+    this.rangeValues = [this.minPrice, this.maxPrice];
+    this.priceRange = [this.minPrice, this.maxPrice];
     this.historyRange = [500, 600];
 
-    // بازنشانی تاگل‌ها
-    Object.keys(this.toggleStates).forEach(key => {
-      this.toggleStates[key as keyof typeof this.toggleStates] = false;
-    });
+    // بازنشانی فیلترها
+    this.filters = {
+      parentApproved: false,
+      sellerApproved: false,
+      available: false,
+      firstHand: false,
+      secondHand: false
+    };
 
     this.brandSearch = '';
     this.countrySearch = '';
+
+    // Reset brand selections
+    this.brands.forEach(brand => brand.selected = false);
+
+    // Reset country selections
+    this.countries.forEach(country => country.selected = false);
   }
 
-  get filteredBrands(): string[] {
+  get filteredBrands(): any[] {
     if (!this.brandSearch) return this.brands;
     return this.brands.filter(brand =>
-      brand.toLowerCase().includes(this.brandSearch.toLowerCase())
+      brand.name.toLowerCase().includes(this.brandSearch.toLowerCase())
     );
   }
 
-  get filteredCountries(): string[] {
+  get filteredCountries(): any[] {
     if (!this.countrySearch) return this.countries;
     return this.countries.filter(country =>
-      country.toLowerCase().includes(this.countrySearch.toLowerCase())
+      country.name.toLowerCase().includes(this.countrySearch.toLowerCase())
     );
   }
 

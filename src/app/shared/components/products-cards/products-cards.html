@@ -1,6 +1,6 @@
-<section class="products-container w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-2 justify-items-center">
+<section class="products-container w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-2 justify-items-center cursor-pointer">
   @for (productItem of productsDataList; track productItem) {
-    <div class="product-container w-full max-w-xs bg-white rounded-2xl flex flex-col my-3">
+    <div class="product-container w-full max-w-xs bg-white rounded-2xl flex flex-col my-3" routerLink="/product/details">
       <div class="relative w-full aspect-[4/3] overflow-hidden rounded-xl">
         <img src="assets/images/product-image.png" alt="Product" class="rounded-xl w-full h-full object-cover"/>
         <div class="star-container absolute top-0 left-0 bg-white/80 backdrop-blur px-2 py-1 rounded-full text-xs">۵/۵ ⭐</div>

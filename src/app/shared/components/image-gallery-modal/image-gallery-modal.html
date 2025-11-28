@@ -1,0 +1,62 @@
+@if (isOpen) {
+  <div
+    class="modal-backdrop"
+    (click)="onBackdropClick($event)"
+    (touchstart)="onTouchStart($event)"
+    (touchend)="onTouchEnd($event)"
+    tabindex="0">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <!-- Close Button -->
+      <button class="close-btn" (click)="close()" aria-label="بستن">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <!-- Navigation Buttons -->
+      @if (images.length > 1) {
+        <button class="nav-btn next-btn" (click)="nextImage()"  aria-label="تصویر قبلی">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="nav-btn prev-btn" (click)="prevImage()"  aria-label="تصویر بعدی">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      }
+
+      <!-- Main Image Slider -->
+      <div class="main-image-container" (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)">
+        <div class="image-slider" [style.transform]="'translateX(+' + (currentIndex * 100) + '%)'">
+          @for (img of images; track $index) {
+            <div class="slide-item">
+              <img [src]="img" [alt]="'تصویر محصول ' + ($index + 1)" class="main-image"/>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Image Counter -->
+      <div class="image-counter">
+        <span>{{ currentIndex + 1 }} / {{ images.length }}</span>
+      </div>
+
+      <!-- Thumbnails -->
+      @if (images.length > 1) {
+        <div class="thumbnails-container">
+          @for (img of images; track $index) {
+            <div
+              class="thumbnail"
+              [class.active]="currentIndex === $index"
+              (click)="selectImage($index)">
+              <img [src]="img" [alt]="'تصویر کوچک ' + ($index + 1)"/>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+}
+
