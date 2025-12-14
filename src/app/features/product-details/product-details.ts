@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { OtherSellers } from '../../shared/components/other-sellers/other-sellers';
 import { ProductTabs } from '../../shared/components/product-tabs/product-tabs';
 import { ImageGalleryModal } from '../../shared/components/image-gallery-modal/image-gallery-modal';
+import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-product-details',
@@ -9,7 +10,8 @@ import { ImageGalleryModal } from '../../shared/components/image-gallery-modal/i
   imports: [
     OtherSellers,
     ProductTabs,
-    ImageGalleryModal
+    ImageGalleryModal,
+    NgClass
   ],
   templateUrl: './product-details.html',
   styleUrl: './product-details.scss'
@@ -19,6 +21,7 @@ export class ProductDetails {
     'assets/images/product1.png',
     'assets/images/product2.png',
     'assets/images/product3.png',
+    'assets/images/product4.png',
     'assets/images/product4.png',
   ];
   active = 0;

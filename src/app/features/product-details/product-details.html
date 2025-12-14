@@ -16,38 +16,40 @@
     <section>
       <!--Image Container-->
       <section class="image-container my-3">
-        <div class="w-full max-w-lg mx-auto select-none">
-          <!-- Main Image Wrapper -->
-          <div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-white shadow cursor-pointer" (click)="openGalleryModal()">
-            <img [src]="images[active]" class="w-full h-full object-contain"/>
-            <!-- Top-left Zoom Icon -->
-            <button class="absolute top-3 left-3 bg-white rounded-lg shadow p-2 text-gray-700 hover:bg-gray-100 transition-colors" (click)="openGalleryModal(); $event.stopPropagation()">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 3H5C3.89543 3 3 3.89543 3 5V8M21 8V5C21 3.89543 20.1046 3 19 3H16M16 21H19C20.1046 21 21 20.1046 21 19V16M3 16V19C3 20.1046 3.89543 21 5 21H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
+        <div class="flex justify-between" style="width: 449px">
+          <!-- Right Side Icons -->
+          <div class="flex flex-col gap-3 text-gray-700">
+            <button class="p-2 rounded-lg"><i class="pi pi-heart"></i></button>
+            <button class="p-2 rounded-lg"><i class="pi pi-clone"></i></button>
+            <button class="p-2 rounded-lg"><i class="pi pi-align-left"></i></button>
+            <button class="p-2 rounded-lg"><i class="pi pi-refresh"></i></button>
+            <button class="p-2 rounded-lg"><i class="pi pi-share-alt"></i></button>
           </div>
-          <!-- Thumbnails Row -->
-          <div class="flex items-center gap-3 mt-4">
-            @for (img of images; track $index; let i = $index) {
-              <div 
-                 (click)="active = i"
-                 class="w-20 h-20 rounded-xl border bg-white shadow flex items-center justify-center cursor-pointer transition-all hover:opacity-80"
-                 [class.border-green-600]="active === i">
-                <img [src]="img" class="w-full h-full object-contain p-1 rounded-lg" (click)="openGalleryModal(i); $event.stopPropagation()"/>
-              </div>
-            }
+          <!-- Main Image Wrapper -->
+          <div style="width: 337px">
+            <div class="active-image-container w-full">
+              <img [src]="images[active]" class="w-full h-full object-contain" (click)="openGalleryModal()"/>
+              <!-- Top-left Zoom Icon -->
+              <button class="absolute top-3 left-3 bg-white rounded-lg p-2 text-gray-700 hover:bg-gray-100 transition-colors" (click)="openGalleryModal(); $event.stopPropagation()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 3H5C3.89543 3 3 3.89543 3 5V8M21 8V5C21 3.89543 20.1046 3 19 3H16M16 21H19C20.1046 21 21 20.1046 21 19V16M3 16V19C3 20.1046 3.89543 21 5 21H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <!-- Thumbnails Row -->
+            <div class="small-images-container flex items-center gap-3 mt-4">
+              @for (img of images; track $index; let i = $index) {
+                <div
+                  (click)="active = i"
+                  [ngClass]="active === i ? 'active':''"
+                  class="small-image-item flex items-center justify-center cursor-pointer">
+                  <img [src]="img" class="w-full h-full object-contain p-1 rounded-lg"/>
+                </div>
+              }
+            </div>
           </div>
         </div>
       </section>
-      <!-- Right Side Icons -->
-      <div class="absolute top-1/2 -translate-y-1/2 right-3 flex flex-col gap-3 text-gray-700">
-        <button class="bg-white p-2 rounded-lg shadow"><i class="pi pi-heart"></i></button>
-        <button class="bg-white p-2 rounded-lg shadow"><i class="pi pi-clone"></i></button>
-        <button class="bg-white p-2 rounded-lg shadow"><i class="pi pi-align-left"></i></button>
-        <button class="bg-white p-2 rounded-lg shadow"><i class="pi pi-refresh"></i></button>
-        <button class="bg-white p-2 rounded-lg shadow"><i class="pi pi-share-alt"></i></button>
-      </div>
     </section>
     <!--Second Column-->
     <section class="product-details ">
@@ -166,10 +168,10 @@
       </div>
     </section>
   </section>
-  
+
   <!-- Other Sellers Section -->
   <app-other-sellers></app-other-sellers>
-  
+
   <!-- Product Tabs Section -->
   <app-product-tabs></app-product-tabs>
 

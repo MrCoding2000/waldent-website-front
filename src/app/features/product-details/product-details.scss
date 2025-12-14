@@ -17,7 +17,23 @@
   }
   .image-container {
     max-width: 449px;
-    .images-list {
+    .active-image-container {
+      width: 377px;
+      height: 377px;
+      border-radius: 8px;
+    }
+    .small-images-container {
+      width: 377px;
+      height: 69px;
+      .small-image-item {
+        width: 65px;
+        height: 66px;
+        border-radius: 10px;
+        border: 2px solid var(--Color-Schema-Surface-Secondary, #F7F9FB);
+        &.active {
+          border-color: var(--Color-Schema-Main-Colors-Mint, #B8EDDC);
+        }
+      }
     }
   }
   .product-details {
