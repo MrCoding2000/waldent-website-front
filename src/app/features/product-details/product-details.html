@@ -27,12 +27,16 @@
           </div>
           <!-- Main Image Wrapper -->
           <div style="width: 337px">
-            <div class="active-image-container w-full">
+            <div class="active-image-container relative w-full">
               <img [src]="images[active]" class="w-full h-full object-contain" (click)="openGalleryModal()"/>
               <!-- Top-left Zoom Icon -->
-              <button class="absolute top-3 left-3 bg-white rounded-lg p-2 text-gray-700 hover:bg-gray-100 transition-colors" (click)="openGalleryModal(); $event.stopPropagation()">
+              <button
+                class="absolute top-3 left-3 bg-white rounded-lg p-2 text-gray-700 hover:bg-gray-100 transition-colors"
+                (click)="openGalleryModal(); $event.stopPropagation()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8 3H5C3.89543 3 3 3.89543 3 5V8M21 8V5C21 3.89543 20.1046 3 19 3H16M16 21H19C20.1046 21 21 20.1046 21 19V16M3 16V19C3 20.1046 3.89543 21 5 21H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path
+                    d="M8 3H5C3.89543 3 3 3.89543 3 5V8M21 8V5C21 3.89543 20.1046 3 19 3H16M16 21H19C20.1046 21 21 20.1046 21 19V16M3 16V19C3 20.1046 3.89543 21 5 21H8"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </button>
             </div>
@@ -55,47 +59,95 @@
     <section class="product-details ">
       <div class="w-full max-w-3xl mx-auto p-4">
         <!-- Title -->
-        <h2 class="text-xl font-bold text-gray-800">کیت ابزار بهداشت دهان و دندان ابزارهای دندانپزشکی</h2>
-        <p class="text-sm text-gray-500 mt-1">Dental Hygiene Tool Kit Dental Instruments</p>
+        <h2 class="product-title">کیت ابزار بهداشت دهان و دندان ابزارهای دندانپزشکی</h2>
+        <p class="english-product-title text-sm text-gray-500 mt-1">Dental Hygiene Tool Kit Dental Instruments</p>
         <!-- Rating & Sold -->
         <div class="flex items-center gap-4 mt-3 text-gray-600 text-sm">
           <span>۵/۵ ⭐ (۴۲ رأی)</span>
-          <span>2 دیدگاه</span>
-          <span>60 پرسش</span>
+          <span class="comments flex items-center justify-between">
+            2 دیدگاه
+            <svg width="5" height="8" viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M1.15383 3.55974L3.86933 6.27507C3.96156 6.3674 4.00878 6.48346 4.011 6.62324C4.01311 6.7629 3.96589 6.88107 3.86933 6.97774C3.77267 7.07429 3.65556 7.12257 3.518 7.12257C3.38044 7.12257 3.26333 7.07429 3.16667 6.97774L0.1705 3.98157C0.108166 3.91912 0.0641666 3.85329 0.0385 3.78407C0.0128333 3.71485 0 3.64007 0 3.55974C0 3.4794 0.0128333 3.40462 0.0385 3.3354C0.0641666 3.26618 0.108166 3.20035 0.1705 3.1379L3.16667 0.141734C3.259 0.0495122 3.37506 0.00228998 3.51483 6.77553e-05C3.6545 -0.00204336 3.77267 0.0451789 3.86933 0.141734C3.96589 0.238401 4.01417 0.355513 4.01417 0.493068C4.01417 0.630624 3.96589 0.747735 3.86933 0.844402L1.15383 3.55974Z"
+                fill="#222222"/>
+            </svg>
+          </span>
+          <span class="questions flex items-center justify-between">
+            60 پرسش
+            <svg width="5" height="8" viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M1.15383 3.55974L3.86933 6.27507C3.96156 6.3674 4.00878 6.48346 4.011 6.62324C4.01311 6.7629 3.96589 6.88107 3.86933 6.97774C3.77267 7.07429 3.65556 7.12257 3.518 7.12257C3.38044 7.12257 3.26333 7.07429 3.16667 6.97774L0.1705 3.98157C0.108166 3.91912 0.0641666 3.85329 0.0385 3.78407C0.0128333 3.71485 0 3.64007 0 3.55974C0 3.4794 0.0128333 3.40462 0.0385 3.3354C0.0641666 3.26618 0.108166 3.20035 0.1705 3.1379L3.16667 0.141734C3.259 0.0495122 3.37506 0.00228998 3.51483 6.77553e-05C3.6545 -0.00204336 3.77267 0.0451789 3.86933 0.141734C3.96589 0.238401 4.01417 0.355513 4.01417 0.493068C4.01417 0.630624 3.96589 0.747735 3.86933 0.844402L1.15383 3.55974Z"
+                fill="#222222"/>
+            </svg>
+          </span>
         </div>
         <!-- Color Selector -->
-        <div class="mt-5">
-          <p class="font-semibold text-gray-800 mb-2">رنگ‌بندی:</p>
+        <div class="color-section mt-5">
+          <p class="title mb-2">رنگ‌بندی:</p>
           <div class="flex items-center gap-4">
             <div class="w-6 h-6 rounded-full bg-blue-600 cursor-pointer"></div>
             <div class="w-6 h-6 rounded-full bg-black cursor-pointer"></div>
             <div class="w-6 h-6 rounded-full bg-gray-300 cursor-pointer"></div>
-            <div class="w-6 h-6 rounded-full border-2 border-red-500 bg-white cursor-pointer"></div>
+            <div class="w-6 h-6 rounded-full border-2 bg-white cursor-pointer"></div>
           </div>
         </div>
         <!-- Specification Section -->
-        <div class="mt-6">
-          <h3 class="font-semibold text-gray-800 mb-3">ویژگی های اصلی کالا</h3>
+        <div class="specification-section mt-6">
+          <h3 class="title mb-3">ویژگی های اصلی کالا</h3>
           <div class="grid grid-cols-3 gap-3">
-            <div class="bg-gray-100 p-3 rounded-xl text-sm">جنس : استیل ضدزنگ، فولاد</div>
-            <div class="bg-gray-100 p-3 rounded-xl text-sm">استاندارد ها: CE</div>
-            <div class="bg-gray-100 p-3 rounded-xl text-sm">گارانتی: شش ماه</div>
-            <div class="bg-gray-100 p-3 rounded-xl text-sm">برند: Zullu Industries</div>
-            <div class="bg-gray-100 p-3 rounded-xl text-sm">جنس : استیل ضدزنگ، فولاد</div>
-            <div class="bg-gray-100 p-3 rounded-xl text-sm">مشاهده همه ویژگی ها</div>
+            <section class="specification-section-detail-container">
+              <div class="title">جنس : </div>
+              <div class="detail">استیل ضدزنگ، فولاد</div>
+            </section>
+            <section class="specification-section-detail-container">
+              <div class="title">استاندارد ها:</div>
+              <div class="detail">CE</div>
+            </section>
+            <section class="specification-section-detail-container">
+              <div class="title">گارانتی:</div>
+              <div class="detail">شش ماه</div>
+            </section>
+            <section class="specification-section-detail-container">
+              <div class="title">برند:</div>
+              <div class="detail">Zullu Industries</div>
+            </section>
+            <section class="specification-section-detail-container">
+              <div class="title">جنس :</div>
+              <div class="detail">استیل ضدزنگ، فولاد</div>
+            </section>
+            <section class="specification-section-see-more-container flex items-center justify-center">
+              مشاهده همه ویژگی ها
+            </section>
           </div>
+          <hr class="mt-2">
         </div>
         <!-- Seller Information -->
-        <div>
+        <div class="seller-information">
           <div class="flex justify-between items-center my-5">
-            <h3 class="font-semibold text-gray-800 m-0">اطلاعات تماس فروشنده</h3>
+            <h3 class="title">اطلاعات تماس فروشنده</h3>
             <!-- Store Link -->
-            <div class="text-blue-600 cursor-pointer">پروفایل فروشگاه</div>
+            <div class="store-profile">پروفایل فروشگاه</div>
           </div>
-          <div class="bg-gray-100 p-4 rounded-xl text-sm flex flex-col gap-2">
-            <p>🌐 سایت فروشنده: <span class="text-blue-600">zullu.com</span></p>
-            <p>📞 شماره تماس: ۰۲۱-۴۵۶۷۸۹۴۵</p>
-            <p>📍 آدرس: ایران، استان تهران، تهران، منطقه ...</p>
+          <div class="store-contact-us-container flex items-center">
+            <div class="image-container flex justify-center items-center">
+              <img src="assets/images/brand.png">
+            </div>
+            <div class="address-container w-full">
+              <div class="flex justify-between">
+                <div class="website w-6/12">
+                  <span class="title">وبسایت:</span>
+                  <span class="value">zullu.com</span>
+                </div>
+                <div class="number w-6/12">
+                  <span class="title">وبسایت:</span>
+                  <span class="value">zullu.com</span>
+                </div>
+              </div>
+              <address>
+                <span class="title">آدرس:</span>
+                <span class="value">استان تهران، تهران، شهرک غرب</span>
+              </address>
+            </div>
           </div>
         </div>
       </div>
@@ -152,7 +204,9 @@
       <div>
         <span class="flex items-center">
           <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5.79167 11.2917L10.5 6.58333L9.3125 5.39583L5.79167 8.91667L4.04167 7.16667L2.85417 8.35417L5.79167 11.2917ZM6.66667 16.6667C4.73611 16.1806 3.14236 15.0729 1.88542 13.3438C0.628472 11.6146 0 9.69445 0 7.58333V2.5L6.66667 0L13.3333 2.5V7.58333C13.3333 9.69445 12.7049 11.6146 11.4479 13.3438C10.191 15.0729 8.59722 16.1806 6.66667 16.6667Z" fill="#222222"/>
+            <path
+              d="M5.79167 11.2917L10.5 6.58333L9.3125 5.39583L5.79167 8.91667L4.04167 7.16667L2.85417 8.35417L5.79167 11.2917ZM6.66667 16.6667C4.73611 16.1806 3.14236 15.0729 1.88542 13.3438C0.628472 11.6146 0 9.69445 0 7.58333V2.5L6.66667 0L13.3333 2.5V7.58333C13.3333 9.69445 12.7049 11.6146 11.4479 13.3438C10.191 15.0729 8.59722 16.1806 6.66667 16.6667Z"
+              fill="#222222"/>
           </svg>
 
           <span style="font-family: IRANYekanXFaNum;
