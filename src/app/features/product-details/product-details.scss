@@ -241,10 +241,8 @@
   }
 
   .store-container {
-    width: 240px;
-
     .seller-title {
-      font-family: IRANYekanXFaNum;
+      font-family: IRANYekanXDemiBoldFaNumber;
       font-weight: 600;
       font-size: 13px;
       line-height: 24px;
@@ -278,8 +276,18 @@
       color: #222222;
     }
 
+    .rate-container {
+      .value {
+        font-family: IRANYekanXLightFaNumber;
+        font-weight: 300;
+        font-size: 11px;
+        line-height: 20px;
+        letter-spacing: 0;
+      }
+    }
+
     .duration {
-      font-family: IRANYekanXFaNum;
+      font-family: IRANYekanXDemiBoldFaNumber;
       font-weight: 600;
       font-size: 10px;
       line-height: 20px;
@@ -288,12 +296,32 @@
     }
 
     .duration-value {
-      font-family: IRANYekanXFaNum;
+      font-family: IRANYekanXLightFaNumber;
       font-weight: 300;
       font-size: 11px;
       line-height: 20px;
       letter-spacing: 0;
 
+    }
+
+    .success-buy-number {
+      font-family: IRANYekanMediumFaNumber;
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 20px;
+      letter-spacing: 0;
+      margin-right: 1em;
+      color: var(--Color-Schema-On-Surface-Secondary, #555555);
+    }
+
+    .warranty-info {
+      font-family: IRANYekanMediumFaNumber;
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 20px;
+      letter-spacing: 0;
+      margin-right: 0.5em;
+      color: var(--Color-Schema-On-Surface-Primary, #222222);
     }
   }
 }
