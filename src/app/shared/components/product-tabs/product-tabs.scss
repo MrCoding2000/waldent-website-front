@@ -1,12 +1,11 @@
 .product-tabs-container {
   width: 100%;
-  margin-top: 2rem;
+  margin-top: 3rem;
 
   .tabs-menu {
     display: flex;
     gap: 0;
     padding: 8px;
-    margin-bottom: 2rem;
     overflow-x: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -51,7 +50,7 @@
   .tabs-content {
     .tab-section {
       margin-bottom: 3rem;
-      padding-top: 2rem;
+      padding-top: 1rem;
       scroll-margin-top: 150px;
 
       .section-title {
@@ -94,13 +93,11 @@
 
   .info-card {
     display: flex;
-    background: #F7F9FB;
+    background: var(--Color-Schema-Surface-Secondary, #F7F9FB);
     border-radius: 28px;
-    padding: 1.5rem;
+    padding: 16px;
     margin-bottom: 1rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    gap: 100px;
-
+    gap: 12px;
     .card-header {
       display: flex;
       align-items: center;
@@ -108,12 +105,11 @@
       margin-bottom: 1.5rem;
 
       .card-title {
-        font-weight: 600;
+        font-weight: 500;
         font-size: 14px;
         line-height: 24px;
         letter-spacing: 0;
-        color: #222222;
-        margin: 0;
+        color: var(--Color-Schema-On-Surface-Primary, #222222);
       }
 
       svg {
@@ -153,21 +149,20 @@
         }
 
         .info-label {
+          font-family: IRANYekanXRegularFaNumber;
           font-weight: 400;
-          font-size: 14px;
+          font-size: 12px;
           line-height: 20px;
           letter-spacing: 0;
-          color: #222222;
-          white-space: nowrap;
+          color: var(--Color-Schema-On-Surface-Secondary, #555555);
         }
 
         .info-value {
-          font-weight: 400;
-          font-size: 14px;
+          font-weight: 500;
+          font-size: 12px;
           line-height: 20px;
           letter-spacing: 0;
-          color: #666666;
-          text-align: left;
+          color: var(--Color-Schema-On-Surface-Primary, #222222);
         }
       }
     }
