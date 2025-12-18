@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'IRANYekanMediumFaNumber';
+  src: url('/assets/fonts/IRANYekanXFaNum-Medium.woff') format('woff'),
+  url('/assets/fonts/IRANYekanXFaNum-Medium.woff') format('woff');
+}
+
 .other-sellers-container {
   width: 100%;
   margin-top: 2rem;
@@ -6,17 +12,18 @@
   direction: rtl;
 
   .section-title {
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 28px;
+    //font-family: IRANYekanXDemiBoldFaNumber;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
     letter-spacing: 0;
-    color: #222222;
-    margin-bottom: 1.5rem;
-    text-align: right;
+    color: var(--Color-Schema-On-Surface-Primary, #222222);
+    margin-bottom: 2em;
   }
 
   .sellers-list {
-    padding: 16px;
+    position: relative;
+    padding: 16px 16px 24px 16px;
     background: #F7F9FB;
     border-radius: 28px;
     display: flex;
@@ -31,10 +38,10 @@
     align-items: center;
     justify-content: space-between;
     padding: 8px 12px;
-    border-bottom: 1px solid #E5E5E5;
     gap: 1.5rem;
     flex-wrap: wrap;
     background: #fff;
+    height: 64px;
 
     &:last-of-type {
       border-bottom: none;
@@ -45,6 +52,7 @@
     flex-shrink: 0;
 
     .add-to-cart-btn {
+      font-family: IRANYekanMediumFaNumber;
       background: #009975;
       color: #FFFFFF;
       border: none;
@@ -113,7 +121,7 @@
       font-size: 18px;
       line-height: 24px;
       letter-spacing: 0.5px;
-      color: #0058CC;
+      color: var(--Color-Schema-On-Surface-Primary, #222222);
     }
 
     .original-price {
@@ -126,10 +134,12 @@
     }
 
     .discount-badge {
-      background: #FF0000;
+      width: 34px;
+      height: 24px;
+      background: #C20A0D;
       color: #FFFFFF;
-      border-radius: 4px;
-      padding: 0.25rem 0.5rem;
+      border-radius: 8px;
+      padding: 2px 8px;
       font-weight: 600;
       font-size: 12px;
       line-height: 16px;
@@ -179,34 +189,30 @@
     }
   }
 
-  .view-more-section {
-    display: flex;
-    justify-content: center;
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid #E5E5E5;
+  .view-more-btn {
+    position: absolute;
+    bottom: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 143px;
+    height: 40px;
+    gap: 10px;
+    angle: 0 deg;
+    opacity: 1;
+    border-radius: 16px;
+    background: var(--Color-Schema-Surface-Secondary, #F7F9FB);
+    font-family: IRANYekanXFaNum;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: var(--Color-Schema-Main-Colors-Secondary, #0058CC);
 
-    .view-more-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: none;
-      border: none;
-      color: #0058CC;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 20px;
-      letter-spacing: 0;
-      cursor: pointer;
-      transition: all 0.3s ease;
-
-      &:hover {
-        color: #004499;
-      }
-
-      svg {
-        transform: rotate(180deg);
-      }
+    &:hover {
+      color: #004499;
+    }
+    svg {
+      transform: rotate(180deg);
     }
   }
 }

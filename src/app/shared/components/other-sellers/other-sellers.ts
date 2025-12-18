@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {DecimalPipe} from '@angular/common';
 
 interface Seller {
   id: number;
@@ -14,7 +15,9 @@ interface Seller {
 @Component({
   selector: 'app-other-sellers',
   standalone: true,
-  imports: [],
+  imports: [
+    DecimalPipe
+  ],
   templateUrl: './other-sellers.html',
   styleUrl: './other-sellers.scss'
 })
