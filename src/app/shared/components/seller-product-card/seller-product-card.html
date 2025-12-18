@@ -1,14 +1,6 @@
 <div class="seller-product-card">
   <!-- Header Section -->
-  <div class="card-header">
-    <div class="seller-info">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M5.73317 15L4.4665 12.8667L2.0665 12.3333L2.29984 9.86667L0.666504 8L2.29984 6.13333L2.0665 3.66667L4.4665 3.13333L5.73317 1L7.99984 1.96667L10.2665 1L11.5332 3.13333L13.9332 3.66667L13.6998 6.13333L15.3332 8L13.6998 9.86667L13.9332 12.3333L11.5332 12.8667L10.2665 15L7.99984 14.0333L5.73317 15ZM7.29984 10.3667L11.0665 6.6L10.1332 5.63333L7.29984 8.46667L5.8665 7.06667L4.93317 8L7.29984 10.3667Z"
-          fill="#FFAD16"/>
-      </svg>
-      <span class="seller-name">{{ sellerName }}</span>
-    </div>
+  <div class="card-header flex items-center justify-between">
     <div class="rating-info">
       <span class="rating-value">{{ rating }}/۵</span>
       <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,14 +9,26 @@
           fill="#222222"/>
       </svg>
     </div>
+    <div class="seller-info flex items-center">
+      <span class="seller-name">{{ sellerName }}</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M5.73317 15L4.4665 12.8667L2.0665 12.3333L2.29984 9.86667L0.666504 8L2.29984 6.13333L2.0665 3.66667L4.4665 3.13333L5.73317 1L7.99984 1.96667L10.2665 1L11.5332 3.13333L13.9332 3.66667L13.6998 6.13333L15.3332 8L13.6998 9.86667L13.9332 12.3333L11.5332 12.8667L10.2665 15L7.99984 14.0333L5.73317 15ZM7.29984 10.3667L11.0665 6.6L10.1332 5.63333L7.29984 8.46667L5.8665 7.06667L4.93317 8L7.29984 10.3667Z"
+          fill="#FFAD16"/>
+      </svg>
+    </div>
   </div>
-
+  <svg width="252" height="1" viewBox="0 0 252 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="252" height="1" rx="0.5" fill="#E6E6E6"/>
+  </svg>
   <!-- Price Section -->
-  <div class="price-section">
+  <div class="price-section flex justify-between">
     <span class="price-label">قیمت:</span>
     <div class="price-value">
-      <span class="price-amount">{{ formatPrice(price) }}</span>
-      <span class="price-unit">تومان</span>
+      <span class="price-amount">{{ price | number }}</span>
+      <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16.1667 9.08333V10.4167C16.1667 11.5212 15.2712 12.4167 14.1667 12.4167H11.1667C10.2462 12.4167 9.5 11.6705 9.5 10.75C9.5 9.82953 10.2462 9.08333 11.1667 9.08333C12.0871 9.08333 12.8333 9.82953 12.8333 10.75V13.3333C12.8333 14.4379 11.9379 15.3333 10.8333 15.3333H0.75M4.08333 12.4167H5.75C6.67047 12.4167 7.41667 11.6705 7.41667 10.75C7.41667 9.82953 6.67047 9.08333 5.75 9.08333C4.82953 9.08333 4.08333 9.82952 4.08333 10.75V12.4167ZM4.08333 12.4167H2.75C1.64543 12.4167 0.75 11.5212 0.75 10.4167V0.75M4.08333 0.75V4.79167C4.08333 5.89624 4.97876 6.79167 6.08333 6.79167H10C11.1046 6.79167 12 5.89624 12 4.79167V0.75M16.1667 6.58333H14.0833M8.04167 2V2.41667" stroke="#0058CC" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
     </div>
   </div>
 

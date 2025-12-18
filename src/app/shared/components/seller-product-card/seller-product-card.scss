@@ -1,20 +1,18 @@
 .seller-product-card {
   background: #FFFFFF;
   border-radius: 20px;
-  padding: 1.5rem;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-
+  width: 284px;
   .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+    height: 36px;
+    border-radius: 10px;
+    padding: 8px;
+    background: var(--Color-Schema-Surface-Secondary, #F7F9FB);
     .seller-info {
-      display: flex;
-      align-items: center;
       gap: 0.5rem;
 
       .seller-name {
@@ -43,17 +41,13 @@
   }
 
   .price-section {
-    display: flex;
-    //flex-direction: column;
-    gap: 0.5rem;
-    align-items: center;
-
     .price-label {
+      font-family: IRANYekanXDemiBoldFaNumber;
       font-weight: 600;
-      font-size: 14px;
+      font-size: 13px;
       line-height: 24px;
       letter-spacing: 0;
-      color: #000000;
+
     }
 
     .price-value {
@@ -63,10 +57,10 @@
 
       .price-amount {
         font-weight: 700;
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 20px;
+        line-height: 24px;
         letter-spacing: 0.5px;
-        color: #222222;
+        color: var(--Color-Schema-Main-Colors-Secondary, #0058CC);
       }
 
       .price-unit {
@@ -89,7 +83,7 @@
       font-size: 10px;
       line-height: 20px;
       letter-spacing: 0;
-      color: #222222;
+      color: var(--Color-Schema-On-Surface-Secondary, #555555);
     }
   }
 
@@ -103,13 +97,13 @@
       font-size: 10px;
       line-height: 20px;
       letter-spacing: 0;
-      color: #222222;
+      color: var(--Color-Schema-On-Surface-Primary, #222222);
     }
   }
 
   .add-to-cart-btn {
     width: 100%;
-    height: 40px;
+    height: 48px;
     background: #009975;
     color: #FFFFFF;
     border: none;
