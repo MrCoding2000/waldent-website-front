@@ -25,7 +25,7 @@
     <!-- Tab Content -->
     <div class="tabs-content">
       <!-- Specifications Tab -->
-      <section id="specifications" class="tab-section">
+      <section id="specifications" class="tab-section !bg-transparent !px-0">
         <div class="specifications-wrapper">
           <div class="specifications-content">
             <!-- Product Specifications Card -->
@@ -97,47 +97,72 @@
       </section>
 
       <!-- Reviews Tab -->
-      <section id="reviews" class="tab-section">
+      <section id="reviews" class="tab-section flex">
         <div class="reviews-header-wrapper">
           <!-- Right Side: Rating and Button -->
           <div class="reviews-header-right">
-            <h3 class="section-title">امتیاز و دیدگاه کاربران</h3>
+            <div class="flex items-center">
+              <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.5 9.82125L7.7155 10.9038C7.55133 11.0076 7.38717 11.0018 7.223 10.8865C7.059 10.7712 6.99875 10.6148 7.04225 10.4173L7.5135 8.3865L5.92875 7.01725C5.77492 6.88008 5.72817 6.71858 5.7885 6.53275C5.84867 6.34675 5.98267 6.24542 6.1905 6.22875L8.27125 6.05375L9.0885 4.1385C9.16533 3.95767 9.3025 3.86725 9.5 3.86725C9.6975 3.86725 9.83467 3.95767 9.9115 4.1385L10.7287 6.05375L12.8095 6.22875C13.0173 6.24542 13.1513 6.34675 13.2115 6.53275C13.2718 6.71858 13.2251 6.88008 13.0712 7.01725L11.4865 8.3865L11.9577 10.4173C12.0012 10.6148 11.941 10.7712 11.777 10.8865C11.6128 11.0018 11.4487 11.0076 11.2845 10.9038L9.5 9.82125ZM15.4615 15L17.4635 17.0018C17.748 17.2864 18.0752 17.3509 18.4452 17.1952C18.8151 17.0394 19 16.7589 19 16.3538V1.80775C19 1.30258 18.825 0.875 18.475 0.525C18.125 0.175 17.6974 0 17.1923 0H1.80775C1.30258 0 0.875 0.175 0.525 0.525C0.174999 0.875 0 1.30258 0 1.80775V13.1923C0 13.6974 0.174999 14.125 0.525 14.475C0.875 14.825 1.30258 15 1.80775 15H15.4615ZM16.1 13.5H1.80775C1.73075 13.5 1.66025 13.4679 1.59625 13.4038C1.53208 13.3398 1.5 13.2692 1.5 13.1923V1.80775C1.5 1.73075 1.53208 1.66025 1.59625 1.59625C1.66025 1.53208 1.73075 1.5 1.80775 1.5H17.1923C17.2693 1.5 17.3397 1.53208 17.4037 1.59625C17.4679 1.66025 17.5 1.73075 17.5 1.80775V14.8848L16.1 13.5Z" fill="#222222"/>
+              </svg>
+              <h3 class="section-title">امتیاز و دیدگاه کاربران</h3>
+            </div>
             <p class="reviews-count">{{ reviewSummary.totalReviews }} دیدگاه برای این محصول ثبت شده است.</p>
             <div class="rating-summary">
-              <div class="rating-display">
+              <div class="rating-display flex">
                 <span class="rating-value">{{ reviewSummary.averageRating }}</span>
                 <span class="rating-out-of">از ۵</span>
               </div>
               <div class="stars-display">
-                @for (star of getStars(getRoundedRating(reviewSummary.averageRating)); track $index) {
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 15L4.5 18L5.5 11.5L1 7L7.5 6.5L10 0L12.5 6.5L19 7L14.5 11.5L15.5 18L10 15Z"
-                          [attr.fill]="star === 1 ? '#FFAD16' : '#E5E5E5'"/>
-                  </svg>
-                }
+                <div class="flex gap-1">
+                  @for (star of getStars(getRoundedRating(reviewSummary.averageRating)); track $index) {
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M10 15L4.5 18L5.5 11.5L1 7L7.5 6.5L10 0L12.5 6.5L19 7L14.5 11.5L15.5 18L10 15Z"
+                            [attr.fill]="star === 1 ? '#FFAD16' : '#E5E5E5'"/>
+                    </svg>
+                  }
+                </div>
+                <p class="votes-count">از مجموع {{ reviewSummary.totalVotes }} رای</p>
               </div>
-              <p class="votes-count">از مجموع {{ reviewSummary.totalVotes }} رای</p>
             </div>
             <p class="register-prompt">شما هم درباره این کالا دیدگاهتان را ثبت کنید</p>
             <button class="register-review-btn">ثبت دیدگاه</button>
           </div>
-
-          <!-- Left Side: Summary Box -->
+        </div>
+        <!-- Left Side -->
+        <div>
+          <!--Summary Box-->
           <div class="reviews-summary-box">
-            <h4 class="summary-title">خلاصه دیدگاه ها</h4>
-            <p class="summary-text">{{ reviewSummary.summaryText }}</p>
-            <div class="summary-sections">
+            <div>
+              <img src="assets/images/icon.png" alt="">
+              <h4 class="summary-title">خلاصه دیدگاه ها</h4>
+            </div>
+            <p class="summary-text mt-2 mb-1">{{ reviewSummary.summaryText }}</p>
+            <svg width="618" height="1" viewBox="0 0 618 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="618" height="1" rx="0.5" fill="#99C5FF"/>
+            </svg>
+            <div class="summary-sections flex justify-between mt-2">
               <div class="summary-section">
-                <h5>نقاط قوت</h5>
-                <ul>
+                <div class="flex items-center">
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.38717 7.76417L3.8385 6.21533C3.74617 6.12311 3.63011 6.07589 3.49033 6.07367C3.35067 6.07156 3.2325 6.11878 3.13583 6.21533C3.03928 6.312 2.991 6.42911 2.991 6.56667C2.991 6.70422 3.03928 6.82133 3.13583 6.918L4.96533 8.7475C5.08589 8.86794 5.2265 8.92817 5.38717 8.92817C5.54783 8.92817 5.68844 8.86794 5.809 8.7475L9.518 5.0385C9.61022 4.94617 9.65745 4.83011 9.65967 4.69033C9.66178 4.55067 9.61456 4.4325 9.518 4.33583C9.42133 4.23928 9.30422 4.191 9.16667 4.191C9.02911 4.191 8.912 4.23928 8.81533 4.33583L5.38717 7.76417ZM6.3345 12.6667C5.4585 12.6667 4.63511 12.5004 3.86433 12.168C3.09356 11.8356 2.42311 11.3844 1.853 10.8145C1.28289 10.2446 0.8315 9.57444 0.498833 8.804C0.166278 8.03356 0 7.21039 0 6.3345C0 5.4585 0.166222 4.63511 0.498667 3.86433C0.831111 3.09356 1.28228 2.42311 1.85217 1.853C2.42206 1.28289 3.09222 0.8315 3.86267 0.498833C4.63311 0.166278 5.45628 0 6.33217 0C7.20817 0 8.03156 0.166222 8.80233 0.498666C9.57311 0.831111 10.2436 1.28228 10.8137 1.85217C11.3838 2.42206 11.8352 3.09222 12.1678 3.86267C12.5004 4.63311 12.6667 5.45628 12.6667 6.33217C12.6667 7.20817 12.5004 8.03156 12.168 8.80233C11.8356 9.57311 11.3844 10.2436 10.8145 10.8137C10.2446 11.3838 9.57444 11.8352 8.804 12.1678C8.03356 12.5004 7.21039 12.6667 6.3345 12.6667Z" fill="#009975"/>
+                  </svg>
+                  <h5 class="mr-1">نقاط قوت</h5>
+                </div>
+                <ul class="flex">
                   @for (strength of reviewSummary.strengths; track strength) {
                     <li>{{ strength }}</li>
                   }
                 </ul>
               </div>
               <div class="summary-section">
-                <h5>نقاط ضعف</h5>
-                <ul>
+                <div class="flex items-center">
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.33333 7.03583L8.382 9.08467C8.47433 9.17689 8.59039 9.22411 8.73017 9.22633C8.86983 9.22844 8.988 9.18122 9.08467 9.08467C9.18122 8.988 9.2295 8.87089 9.2295 8.73333C9.2295 8.59578 9.18122 8.47867 9.08467 8.382L7.03583 6.33333L9.08467 4.28467C9.17689 4.19233 9.22411 4.07628 9.22633 3.9365C9.22845 3.79683 9.18122 3.67867 9.08467 3.582C8.988 3.48544 8.87089 3.43717 8.73333 3.43717C8.59578 3.43717 8.47867 3.48544 8.382 3.582L6.33333 5.63083L4.28467 3.582C4.19233 3.48978 4.07628 3.44256 3.9365 3.44033C3.79683 3.43822 3.67867 3.48544 3.582 3.582C3.48544 3.67867 3.43717 3.79578 3.43717 3.93333C3.43717 4.07089 3.48544 4.188 3.582 4.28467L5.63083 6.33333L3.582 8.382C3.48978 8.47433 3.44256 8.59039 3.44033 8.73017C3.43822 8.86983 3.48544 8.988 3.582 9.08467C3.67867 9.18122 3.79578 9.2295 3.93333 9.2295C4.07089 9.2295 4.188 9.18122 4.28467 9.08467L6.33333 7.03583ZM6.3345 12.6667C5.4585 12.6667 4.63511 12.5004 3.86433 12.168C3.09356 11.8356 2.42311 11.3844 1.853 10.8145C1.28289 10.2446 0.8315 9.57444 0.498833 8.804C0.166278 8.03356 0 7.21039 0 6.3345C0 5.4585 0.166222 4.63511 0.498667 3.86433C0.831111 3.09356 1.28228 2.42311 1.85217 1.853C2.42206 1.28289 3.09222 0.8315 3.86267 0.498833C4.63311 0.166278 5.45628 0 6.33217 0C7.20817 0 8.03156 0.166222 8.80233 0.498666C9.57311 0.831111 10.2436 1.28228 10.8137 1.85217C11.3838 2.42206 11.8352 3.09222 12.1678 3.86267C12.5004 4.63311 12.6667 5.45628 12.6667 6.33217C12.6667 7.20817 12.5004 8.03156 12.168 8.80233C11.8356 9.57311 11.3844 10.2436 10.8145 10.8137C10.2446 11.3838 9.57444 11.8352 8.804 12.1678C8.03356 12.5004 7.21039 12.6667 6.3345 12.6667Z" fill="#C20A0D"/>
+                  </svg>
+                  <h5 class="mr-1">نقاط ضعف</h5>
+                </div>
+                <ul class="flex">
                   @for (weakness of reviewSummary.weaknesses; track weakness) {
                     <li>{{ weakness }}</li>
                   }
@@ -145,96 +170,95 @@
               </div>
             </div>
           </div>
-        </div>
-
-        <!-- Sort Options -->
-        <div class="sort-options">
-          <div class="sort-buttons">
-            <span class="sort-label">ترتیب نمایش:</span>
-            @for (option of reviewSortOptions; track option.id) {
-              <button
-                class="sort-btn"
-                [class.active]="selectedSortOption === option.id"
-                (click)="selectedSortOption = option.id">
-                {{ option.label }}
-              </button>
-            }
+          <!-- Sort Options -->
+          <div class="sort-options">
+            <div class="sort-buttons">
+              <span class="sort-label">ترتیب نمایش:</span>
+              @for (option of reviewSortOptions; track option.id) {
+                <button
+                  class="sort-btn"
+                  [class.active]="selectedSortOption === option.id"
+                  (click)="selectedSortOption = option.id">
+                  {{ option.label }}
+                </button>
+              }
+            </div>
           </div>
-        </div>
-
-        <div class="reviews-list">
-          @for (review of reviews; track review.id) {
-            <div class="review-item">
-              <div class="review-header">
-                <div class="reviewer-info">
-                  <span class="reviewer-name">{{ review.userName }}</span>
-                  @if (review.isBuyer) {
-                    <span class="buyer-badge">خریدار</span>
-                  }
-                  <span class="review-date">{{ review.date }}</span>
+          <!--Review List-->
+          <div class="reviews-list">
+            @for (review of reviews; track review.id) {
+              <div class="review-item">
+                <div class="review-header">
+                  <div class="reviewer-info">
+                    <span class="reviewer-name">{{ review.userName }}</span>
+                    @if (review.isBuyer) {
+                      <span class="buyer-badge">خریدار</span>
+                    }
+                    <span class="review-date">{{ review.date }}</span>
+                  </div>
+                  <div class="review-rating">
+                    @for (star of getStars(review.rating); track $index) {
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 0L10.5 5.5L16 6L12 9.5L13 16L8 12.5L3 16L4 9.5L0 6L5.5 5.5L8 0Z"
+                              [attr.fill]="star === 1 ? '#FFAD16' : '#E5E5E5'"/>
+                      </svg>
+                    }
+                  </div>
                 </div>
-                <div class="review-rating">
-                  @for (star of getStars(review.rating); track $index) {
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M8 0L10.5 5.5L16 6L12 9.5L13 16L8 12.5L3 16L4 9.5L0 6L5.5 5.5L8 0Z"
-                            [attr.fill]="star === 1 ? '#FFAD16' : '#E5E5E5'"/>
-                    </svg>
-                  }
-                </div>
-              </div>
-              <p class="review-text">{{ review.text }}</p>
-              <div class="review-details">
-                <div class="review-points">
-                  <div class="points-section">
-                    <strong>نقاط قوت:</strong>
-                    <span>
+                <p class="review-text">{{ review.text }}</p>
+                <div class="review-details">
+                  <div class="review-points">
+                    <div class="points-section">
+                      <strong>نقاط قوت:</strong>
+                      <span>
                     @for (strength of review.strengths; track strength; let last = $last) {
                       {{ strength }}@if (!last) {، }
                     }
                   </span>
-                  </div>
-                  @if (review.weaknesses && review.weaknesses.length > 0) {
-                    <div class="points-section">
-                      <strong>نقاط ضعف:</strong>
-                      <span>
+                    </div>
+                    @if (review.weaknesses && review.weaknesses.length > 0) {
+                      <div class="points-section">
+                        <strong>نقاط ضعف:</strong>
+                        <span>
                         @for (weakness of review.weaknesses; track weakness; let last = $last) {
                           {{ weakness }}@if (!last) {، }
                         }
                       </span>
-                    </div>
-                  }
+                      </div>
+                    }
+                  </div>
+                  <div class="review-seller">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M2 16V6L8 2L14 6V16H2Z" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M6 16V10H10V16" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M2 6H14" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>{{ review.sellerName }}</span>
+                  </div>
                 </div>
-                <div class="review-seller">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M2 16V6L8 2L14 6V16H2Z" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M6 16V10H10V16" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M2 6H14" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                  <span>{{ review.sellerName }}</span>
+                <div class="review-actions">
+                  <button class="helpful-btn">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8 0L10.5 5.5L16 6L12 9.5L13 16L8 12.5L3 16L4 9.5L0 6L5.5 5.5L8 0Z" fill="#009975"/>
+                    </svg>
+                    <span>{{ review.helpfulCount }}</span>
+                  </button>
+                  <button class="not-helpful-btn">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8 16L5.5 10.5L0 10L4 6.5L3 0L8 3.5L13 0L12 6.5L16 10L10.5 10.5L8 16Z" fill="#999999"/>
+                    </svg>
+                    <span>{{ review.notHelpfulCount }}</span>
+                  </button>
+                  <button class="report-review-btn">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8 0L10.5 5.5L16 6L12 9.5L13 16L8 12.5L3 16L4 9.5L0 6L5.5 5.5L8 0Z" fill="#999999"/>
+                    </svg>
+                    <span>گزارش دیدگاه</span>
+                  </button>
                 </div>
               </div>
-              <div class="review-actions">
-                <button class="helpful-btn">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 0L10.5 5.5L16 6L12 9.5L13 16L8 12.5L3 16L4 9.5L0 6L5.5 5.5L8 0Z" fill="#009975"/>
-                  </svg>
-                  <span>{{ review.helpfulCount }}</span>
-                </button>
-                <button class="not-helpful-btn">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 16L5.5 10.5L0 10L4 6.5L3 0L8 3.5L13 0L12 6.5L16 10L10.5 10.5L8 16Z" fill="#999999"/>
-                  </svg>
-                  <span>{{ review.notHelpfulCount }}</span>
-                </button>
-                <button class="report-review-btn">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 0L10.5 5.5L16 6L12 9.5L13 16L8 12.5L3 16L4 9.5L0 6L5.5 5.5L8 0Z" fill="#999999"/>
-                  </svg>
-                  <span>گزارش دیدگاه</span>
-                </button>
-              </div>
-            </div>
-          }
+            }
+          </div>
         </div>
       </section>
 
