@@ -15,8 +15,8 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(withEventReplay()),
     provideHttpClient(withInterceptors([jwtInterceptor, errorInterceptor])),
     provideTranslateService({
-      lang: 'en',
-      fallbackLang: 'en',
+      lang: 'fa',
+      fallbackLang: 'fa',
       loader: provideTranslateHttpLoader({ prefix: '/assets/i18n/', suffix: '.json' })
     }),
     provideHttpClient(withFetch()),
