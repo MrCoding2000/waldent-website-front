@@ -1,7 +1,30 @@
 @font-face {
-  font-family: 'IRANYekanFaNumber';
+  font-family: 'IRANYekanMediumFaNumber';
   src: url('/assets/fonts/IRANYekanXFaNum-Medium.woff') format('woff'),
   url('/assets/fonts/IRANYekanXFaNum-Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'IRANYekanXFaNumber';
+  src: url('./assets/fonts/IRANYekanXFaNum-Bold.woff') format('woff'),
+  url('./assets/fonts/IRANYekanXFaNum-Bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'IRANYekanXDemiBoldFaNumber';
+  src: url('./assets/fonts/IRANYekanXFaNum-DemiBold.woff') format('woff'),
+  url('./assets/fonts/IRANYekanXFaNum-DemiBold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'IRANYekanXRegularFaNumber';
+  src: url('/assets/fonts/IRANYekanXFaNum-Regular.woff') format('woff'),
+  url('/assets/fonts/IRANYekanXFaNum-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'IRANYekanXLightFaNumber';
+  src: url('/assets/fonts/IRANYekanXFaNum-Light.ttf') format('woff'),
+  url('/assets/fonts/IRANYekanXFaNum-Light.ttf') format('woff');
 }
 
 @tailwind base;
@@ -9,7 +32,7 @@
 @tailwind utilities;
 
 * {
-  font-family: IRANYekanFaNumber;
+  font-family: IRANYekanMediumFaNumber;
   direction: rtl;
   margin: 0;
   padding: 0;
