@@ -25,14 +25,17 @@
 
     }
     .description-text {
+      font-family: IRANYekanXDemiBoldFaNumber;
       font-weight: 600;
       font-size: 12px;
       line-height: 20px;
       letter-spacing: 0;
       text-align: justify;
+      color: var(--Color-Schema-On-Surface-Primary, #222222);
     }
     .cost-container {
       .cost-title {
+        font-family: IRANYekanXDemiBoldFaNumber;
         font-weight: 600;
         font-size: 14px;
         line-height: 24px;
@@ -40,11 +43,12 @@
         color: #000000;
       }
       .cost-value {
+        font-family: IRANYekanXDemiBoldFaNumber;
         font-weight: 700;
         font-size: 18px;
         line-height: 24px;
         letter-spacing: 0.5px;
-        color: #0058CC;
+        color: var(--Color-Schema-Main-Colors-Secondary, #0058CC);
       }
     }
     .store-details-container {

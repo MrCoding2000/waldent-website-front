@@ -183,7 +183,7 @@
               </div>
             </div>
           </div>
-          <!-- Sort Options -->
+          <!-- Sort Options TODO: COMPONENTS-->
           <div class="sort-options">
             <div class="sort-buttons">
               <span class="sort-label ml-2">ترتیب نمایش:</span>
@@ -342,16 +342,18 @@
             <button class="register-question-btn">ثبت پرسش</button>
           </div>
           <div class="questions-sort">
-            <div class="sort-buttons">
-              <span class="sort-label">ترتیب نمایش:</span>
-              @for (option of questionSortOptions; track option.id) {
-                <button
-                  class="sort-btn"
-                  [class.active]="selectedQuestionSort === option.id"
-                  (click)="selectedQuestionSort = option.id">
-                  {{ option.label }}
-                </button>
-              }
+            <div class="sort-options">
+              <div class="sort-buttons">
+                <span class="sort-label ml-2">ترتیب نمایش:</span>
+                @for (option of reviewSortOptions; track option.id) {
+                  <button
+                    class="sort-btn"
+                    [class.active]="selectedSortOption === option.id"
+                    (click)="selectedSortOption = option.id">
+                    {{ option.label }}
+                  </button>
+                }
+              </div>
             </div>
           </div>
         </div>
