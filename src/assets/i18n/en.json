@@ -1,0 +1,60 @@
+{
+  "footer": {
+    "waldent": "Waldent",
+    "content-text": "Waldent is a comprehensive web platform designed to simplify buying, selling, and servicing medical equipment. It provides a secure and transparent online marketplace where sellers can list products, certified technicians can offer repair and evaluation services, and users can easily interact with service providers. With a focus on product quality and streamlined expert assessments, Waldent creates a trusted environment for all parties involved. Key features include secure payments for verified items, a simple interface for managing listings and interactions, and full administrative control for system monitoring.",
+    "copyright": "© {{year}} Waldent. All rights reserved.",
+    "links": {
+      "products": "Products",
+      "sellers": "Sellers",
+      "about_us": "About us",
+      "contact_us": "Contact us",
+      "news_articles": "News & articles",
+      "support": "Support",
+      "order_security": "Order protection",
+      "shipping_returns": "Shipping & returns",
+      "service_request_guide": "Service request guide",
+      "faq": "FAQ",
+      "buyer_membership": "Buyer membership",
+      "seller_membership": "Seller membership",
+      "technician_membership": "Technician membership",
+      "categories": "Categories",
+      "my_account": "My account",
+      "terms": "Terms of use",
+      "privacy": "Privacy policy",
+      "sellers_guide": "Sellers guide",
+      "cookies": "Cookies",
+      "report_problem": "Report a problem"
+    }
+  },
+  "header": {
+    "brand": "Waldent",
+    "auth": {
+      "login_register": "Login / Register"
+    },
+    "menu": {
+      "title": "Menu",
+      "dark_mode": "Switch to dark mode",
+      "cart": "Cart",
+      "empty": "Empty",
+      "language": "Language",
+      "items": {
+        "products": "Products",
+        "sellers": "Sellers",
+        "technicians": "Technicians",
+        "order_security": "Order security",
+        "support": "Support",
+        "about_us": "About us"
+      }
+    },
+    "lang": {
+      "short": {
+        "fa": "FA",
+        "en": "EN"
+      },
+      "full": {
+        "fa": "Persian",
+        "en": "English"
+      }
+    }
+  }
+}
