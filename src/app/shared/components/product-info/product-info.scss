@@ -70,6 +70,20 @@
       letter-spacing: 0;
       color: var(--Color-Schema-On-Surface-Tertiary, #999999);
     }
+    .rating-container {
+      border-bottom: 1px solid #E6E6E6;
+      padding-bottom: 0.5em;
+      .vote {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 20px;
+        letter-spacing: 0;
+        color: var(--Color-Schema-On-Surface-Primary, #222222);
+        .number {
+          color: #555555;
+        }
+      }
+    }
 
     .comments, .questions {
       font-weight: 500;
@@ -146,10 +160,13 @@
         letter-spacing: 0;
         color: var(--Color-Schema-On-Surface-Primary, #222222);
       }
+      .all-list {
+        font-size: 12px;
+      }
     }
 
     .seller-information {
-      .title {
+      .title span {
         font-family: IRANYekanXDemiBoldFaNumber;
         font-weight: 600;
         font-size: 13px;
@@ -165,6 +182,14 @@
         color: var(--Color-Schema-Main-Colors-Secondary, #0058CC);
       }
 
+      .duration-container {
+        background: #F7F9FB;
+        height: 72px;
+        opacity: 1;
+        border-radius: 12px;
+        padding: 12px;
+      }
+
       .store-contact-us-container {
         .image-container {
           width: 64px;
@@ -174,7 +199,6 @@
           border-radius: 12px;
           padding: 4px;
           background: var(--Color-Schema-Surface-Secondary, #F7F9FB);
-
           img {
             max-width: none;
           }
@@ -248,41 +272,6 @@
   }
 
   .store-container {
-    .seller-title {
-      font-family: IRANYekanXDemiBoldFaNumber;
-      font-weight: 600;
-      font-size: 13px;
-      line-height: 24px;
-      letter-spacing: 0;
-
-    }
-
-    .store-button {
-      width: 106px;
-      height: 28px;
-      opacity: 1;
-      border-radius: 20px;
-      padding-right: 8px;
-      padding-left: 8px;
-      gap: 8px;
-      background: #00000005;
-      backdrop-filter: blur(8px);
-      font-family: IRANYekanXFaNum;
-      font-weight: 500;
-      font-size: 10px;
-      line-height: 20px;
-      letter-spacing: 0;
-    }
-
-    .seller-name {
-      font-family: Poppins;
-      font-weight: 300;
-      font-size: 12px;
-      line-height: 20px;
-      letter-spacing: 0;
-      color: #222222;
-    }
-
     .rate-container {
       .value {
         font-family: IRANYekanXLightFaNumber;
@@ -292,35 +281,6 @@
         letter-spacing: 0;
       }
     }
-
-    .duration {
-      font-family: IRANYekanXDemiBoldFaNumber;
-      font-weight: 600;
-      font-size: 10px;
-      line-height: 20px;
-      letter-spacing: 0;
-
-    }
-
-    .duration-value {
-      font-family: IRANYekanXLightFaNumber;
-      font-weight: 300;
-      font-size: 11px;
-      line-height: 20px;
-      letter-spacing: 0;
-
-    }
-
-    .success-buy-number {
-      font-family: IRANYekanMediumFaNumber;
-      font-weight: 500;
-      font-size: 10px;
-      line-height: 20px;
-      letter-spacing: 0;
-      margin-right: 1em;
-      color: var(--Color-Schema-On-Surface-Secondary, #555555);
-    }
-
     .warranty-info {
       font-family: IRANYekanMediumFaNumber;
       font-weight: 500;
@@ -330,5 +290,62 @@
       margin-right: 0.5em;
       color: var(--Color-Schema-On-Surface-Primary, #222222);
     }
+  }
+  .success-buy-number {
+    font-family: IRANYekanMediumFaNumber;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 20px;
+    letter-spacing: 0;
+    margin-right: 1em;
+    color: var(--Color-Schema-On-Surface-Secondary, #555555);
+  }
+  .store-button {
+    width: 106px;
+    height: 28px;
+    opacity: 1;
+    border-radius: 20px;
+    padding-right: 8px;
+    padding-left: 8px;
+    gap: 8px;
+    background: #00000005;
+    backdrop-filter: blur(8px);
+    font-family: IRANYekanXFaNum;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 20px;
+    letter-spacing: 0;
+  }
+  .seller-title {
+    font-family: IRANYekanXDemiBoldFaNumber;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 24px;
+    letter-spacing: 0;
+
+  }
+  .seller-name {
+    font-family: Poppins;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: #222222;
+  }
+  .duration {
+    font-family: IRANYekanXDemiBoldFaNumber;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 20px;
+    letter-spacing: 0;
+
+  }
+  .duration-value {
+    font-family: IRANYekanXLightFaNumber;
+    font-weight: 300;
+    font-size: 11px;
+    line-height: 20px;
+    letter-spacing: 0;
+
   }
 }
