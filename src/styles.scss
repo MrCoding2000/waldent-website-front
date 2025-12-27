@@ -43,8 +43,9 @@
 }
 
 html {
-  --app-font: 'IRANYekanXFaNum', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --app-font: 'IRANYekanMediumFaNumber', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   font-family: var(--app-font);
+  direction: rtl;
 }
 
 html[lang="en"] {
@@ -57,7 +58,6 @@ body {
 }
 
 * {
-  font-family: IRANYekanMediumFaNumber;
   margin: 0;
   padding: 0;
 }
