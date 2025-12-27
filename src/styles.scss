@@ -26,6 +26,11 @@
   src: url('/assets/fonts/IRANYekanXFaNum-Light.ttf') format('woff'),
   url('/assets/fonts/IRANYekanXFaNum-Light.ttf') format('woff');
 }
+@font-face {
+  font-family: 'IRANYekanXBoldFaNumber';
+  src: url('/assets/fonts/IRANYekanXFaNum-Bold.woff') format('woff'),
+  url('/assets/fonts/IRANYekanXFaNum-Bold.woff') format('woff');
+}
 
 @tailwind base;
 @tailwind components;

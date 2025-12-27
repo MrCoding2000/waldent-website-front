@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {NgClass} from '@angular/common';
+import {DecimalPipe, NgClass} from '@angular/common';
 import {ImageGalleryModal} from '../image-gallery-modal/image-gallery-modal';
 
 @Component({
@@ -7,7 +7,8 @@ import {ImageGalleryModal} from '../image-gallery-modal/image-gallery-modal';
   standalone: true,
   imports: [
     NgClass,
-    ImageGalleryModal
+    ImageGalleryModal,
+    DecimalPipe
   ],
   templateUrl: './product-info.html',
   styleUrl: './product-info.scss'
