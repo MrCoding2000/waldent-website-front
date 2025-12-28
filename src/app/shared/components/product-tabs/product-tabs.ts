@@ -1,45 +1,46 @@
-import { Component, OnInit, OnDestroy, HostListener, ChangeDetectorRef } from '@angular/core';
-import { CommonModule, NgClass } from '@angular/common';
-import { SellerProductCard } from '../seller-product-card/seller-product-card';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {CommonModule, NgClass} from '@angular/common';
+import {SellerProductCard} from '../seller-product-card/seller-product-card';
+import {TabNavigationMenu} from '../tab-navigation-menu/tab-navigation-menu';
 
 @Component({
   selector: 'app-product-tabs',
   standalone: true,
-  imports: [CommonModule, NgClass, SellerProductCard],
+  imports: [CommonModule, NgClass, SellerProductCard, TabNavigationMenu],
   templateUrl: './product-tabs.html',
   styleUrl: './product-tabs.scss'
 })
 export class ProductTabs implements OnInit, OnDestroy {
   activeTab: string = 'specifications';
-  private isScrolling: boolean = false;
-  
-  constructor(private cdr: ChangeDetectorRef) {}
-  
-  tabs = [
-    { id: 'specifications', label: 'مشخصات کالا' },
-    { id: 'packaging', label: 'بسته‌بندی و ارسال' },
-    { id: 'services', label: 'خدمات تأمین کننده / فروشنده' },
-    { id: 'reviews', label: 'دیدگاه‌ها' },
-    { id: 'questions', label: 'پرسش‌ها' }
+
+  constructor() {
+  }
+
+  tabs: { id: string, label: string }[] = [
+    {id: 'specifications', label: 'مشخصات کالا'},
+    {id: 'packaging', label: 'بسته‌بندی و ارسال'},
+    {id: 'services', label: 'خدمات تأمین کننده / فروشنده'},
+    {id: 'reviews', label: 'دیدگاه‌ها'},
+    {id: 'questions', label: 'پرسش‌ها'}
   ];
 
   // Sample data
   specifications = [
-    { label: 'جنس', value: 'استیل ضد زنگ، فولاد' },
-    { label: 'برند', value: 'Zullu Industries' },
-    { label: 'استاندارد ها', value: 'CE' },
-    { label: 'گارانتی', value: 'شش ماه' }
+    {label: 'جنس', value: 'استیل ضد زنگ، فولاد'},
+    {label: 'برند', value: 'Zullu Industries'},
+    {label: 'استاندارد ها', value: 'CE'},
+    {label: 'گارانتی', value: 'شش ماه'}
   ];
 
   packagingInfo = [
-    { label: 'بسته‌بندی', value: 'مقوای چند لایه' },
-    { label: 'ارسال با پست', value: 'دارد' },
-    { label: 'ارسال با تیپاکس', value: 'دارد' }
+    {label: 'بسته‌بندی', value: 'مقوای چند لایه'},
+    {label: 'ارسال با پست', value: 'دارد'},
+    {label: 'ارسال با تیپاکس', value: 'دارد'}
   ];
 
   servicesInfo = [
-    { label: 'خدمات پس از فروش', value: 'پشتیبانی فنی آنلاین' },
-    { label: 'گارانتی', value: '۱ سال (دنتال ایران)' }
+    {label: 'خدمات پس از فروش', value: 'پشتیبانی فنی آنلاین'},
+    {label: 'گارانتی', value: '۱ سال (دنتال ایران)'}
   ];
 
   reviews = [
@@ -108,10 +109,10 @@ export class ProductTabs implements OnInit, OnDestroy {
   ];
 
   questionSortOptions = [
-    { id: 'newest', label: 'جدیدترین' },
-    { id: 'mostAnswered', label: 'بیشترین پاسخ' }
+    {id: 'newest', label: 'جدیدترین'},
+    {id: 'mostAnswered', label: 'بیشترین پاسخ'}
   ];
-  
+
   selectedQuestionSort: string = 'newest';
 
   reviewSummary = {
@@ -124,12 +125,12 @@ export class ProductTabs implements OnInit, OnDestroy {
   };
 
   reviewSortOptions = [
-    { id: 'mostHelpful', label: 'مفیدترین' },
-    { id: 'newest', label: 'جدیدترین' },
-    { id: 'highestRating', label: 'بیشترین امتیاز' },
-    { id: 'lowestRating', label: 'کمترین امتیاز' }
+    {id: 'mostHelpful', label: 'مفیدترین'},
+    {id: 'newest', label: 'جدیدترین'},
+    {id: 'highestRating', label: 'بیشترین امتیاز'},
+    {id: 'lowestRating', label: 'کمترین امتیاز'}
   ];
-  
+
   selectedSortOption: string = 'mostHelpful';
 
   ngOnInit() {
@@ -144,60 +145,8 @@ export class ProductTabs implements OnInit, OnDestroy {
     // This will be handled by scroll event
   }
 
-  @HostListener('window:scroll', ['$event'])
-  onScroll() {
-    if (!this.isScrolling) {
-      this.updateActiveTabOnScroll();
-    }
-  }
-
-  updateActiveTabOnScroll() {
-    const sections = this.tabs.map(tab => {
-      const element = document.getElementById(tab.id);
-      return element ? { id: tab.id, element, top: element.offsetTop, bottom: element.offsetTop + element.offsetHeight } : null;
-    }).filter(section => section !== null);
-
-    const scrollPosition = window.scrollY + 300; // Offset for better UX
-
-    for (let i = sections.length - 1; i >= 0; i--) {
-      const section = sections[i];
-      if (section && scrollPosition >= section.top && scrollPosition < section.bottom) {
-        if (this.activeTab !== section.id) {
-          this.activeTab = section.id;
-        }
-        break;
-      }
-    }
-  }
-
-  setActiveTab(tabId: string) {
-    if (this.activeTab === tabId) {
-      return; // Already active
-    }
-    
-    this.isScrolling = true;
-    this.activeTab = tabId;
-    this.cdr.detectChanges(); // Force change detection
-    
-    const element = document.getElementById(tabId);
-    if (element) {
-      const offsetTop = element.offsetTop - 150; // Account for header/sticky menu
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
-      
-      // Re-enable scroll detection after scroll animation completes
-      setTimeout(() => {
-        this.isScrolling = false;
-      }, 1000);
-    } else {
-      this.isScrolling = false;
-    }
-  }
-
   getStars(rating: number): number[] {
-    return Array.from({ length: 5 }, (_, i) => i < rating ? 1 : 0);
+    return Array.from({length: 5}, (_, i) => i < rating ? 1 : 0);
   }
 
   getRoundedRating(rating: number): number {
