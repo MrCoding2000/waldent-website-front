@@ -51,9 +51,9 @@
 
         <!-- Right: Avatar card + side actions -->
         <aside class="flex flex-row-reverse items-start gap-4 justify-self-end w-full max-w-[260px]">
-          <div class="w-[176px] h-[176px] bg-gray-150 rounded-[10px] flex items-center justify-center relative overflow-hidden">
-            <img [src]="vm.technician.avatarUrl" alt="" class="w-full h-full object-contain opacity-90" />
-            <button type="button" class="absolute top-3 left-3 w-9 h-9 bg-white rounded-[10px] shadow-sm flex items-center justify-center" (click)="onFullscreenClick(vm.technician.avatarUrl)">
+          <div class="w-[200px] h-[200px] bg-gray-150 rounded-[8px] flex items-center justify-center relative overflow-hidden">
+            <img [src]="vm.technician.avatarUrl" alt="" class="max-w-[95px] object-contain opacity-90 rounded-[8px]" />
+            <button type="button" class="absolute top-2 left-2 w-12 h-12 bg-white rounded-[8px] shadow-sm flex items-center justify-center" (click)="onFullscreenClick(vm.technician.avatarUrl)">
               <img src="assets/images/square.svg" alt="">
 
             </button>
@@ -139,22 +139,22 @@
         </main>
 
         <!-- Left: Contact -->
-        <aside class="pt-2 justify-self-start w-full max-w-[360px]">
+        <aside class="pt-[96px] justify-self-start w-full max-w-[360px]">
           <div class="flex flex-col items-start">
+            <div class="mb-4 w-full flex gap-2 text-[10px] leading-5 text-gray-850">
+              <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-gray-150">
+                <img src="assets/images/verified.svg" alt="" class="w-4 h-4" />
+              </span>
+              <span>{{ vm.technician.verifiedText }}</span>
+            </div>
             <button
               type="button"
-              class="w-full h-14 rounded-[28px] bg-brand text-white font-medium text-[16px] leading-6"
+              class="w-full h-12 rounded-[20px] bg-brand text-white font-medium text-sm leading-6"
               (click)="onContactClick()"
             >
               مشاهده اطلاعات تماس
             </button>
 
-            <div class="mt-3 w-full flex items-center justify-center gap-2 text-[12px] leading-5 text-gray-850">
-              <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-gray-150">
-                <img src="assets/images/verified_user.svg" alt="" class="w-4 h-4" />
-              </span>
-              <span>{{ vm.technician.verifiedText }}</span>
-            </div>
           </div>
         </aside>
 
@@ -172,7 +172,7 @@
 
       <!-- Avatar -->
       <div class="mt-3 bg-gray-150 rounded-[10px] h-[260px] w-full flex items-center justify-center relative overflow-hidden">
-        <img [src]="vm.technician.avatarUrl" alt="" class="w-full h-full object-contain" />
+        <img [src]="vm.technician.avatarUrl" alt="" class="w-full h-full object-contain rounded-[10px]" />
         <button type="button" class="absolute top-3 left-3 w-10 h-10 bg-white rounded-[12px] shadow-sm flex items-center justify-center" (click)="onFullscreenClick(vm.technician.avatarUrl)">
           <img src="assets/images/square.svg" alt="">
 
