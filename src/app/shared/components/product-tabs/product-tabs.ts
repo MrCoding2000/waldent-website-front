@@ -4,11 +4,12 @@ import {SellerProductCard} from '../seller-product-card/seller-product-card';
 import {TabNavigationMenu} from '../tab-navigation-menu/tab-navigation-menu';
 import {PropertyBox} from '../property-box/property-box';
 import {SmallCommentsPointsBox} from '../small-comments-points-box/small-comments-points-box';
+import {Comments} from '../comments/comments';
 
 @Component({
   selector: 'app-product-tabs',
   standalone: true,
-  imports: [CommonModule, NgClass, SellerProductCard, TabNavigationMenu, PropertyBox, SmallCommentsPointsBox],
+  imports: [CommonModule, NgClass, SellerProductCard, TabNavigationMenu, PropertyBox, SmallCommentsPointsBox, Comments],
   templateUrl: './product-tabs.html',
   styleUrl: './product-tabs.scss'
 })
@@ -154,8 +155,6 @@ export class ProductTabs implements OnInit, OnDestroy {
     {id: 'lowestRating', label: 'کمترین امتیاز'}
   ];
 
-  selectedSortOption: string = 'mostHelpful';
-
   ngOnInit() {
     this.setupScrollListener();
   }
@@ -166,10 +165,6 @@ export class ProductTabs implements OnInit, OnDestroy {
 
   setupScrollListener() {
     // This will be handled by scroll event
-  }
-
-  getStars(rating: number): number[] {
-    return Array.from({length: 5}, (_, i) => i < rating ? 1 : 0);
   }
 }
 
