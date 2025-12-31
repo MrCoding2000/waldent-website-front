@@ -1,0 +1,13 @@
+<div class="sort-options">
+  <div class="sort-buttons">
+    <span class="sort-label ml-2">ترتیب نمایش:</span>
+    @for (option of sortOptions; track option.id) {
+      <button
+        class="sort-btn"
+        [class.active]="selectedSortOption === option.id"
+        (click)="selectedSortOption = option.id">
+        {{ option.label }}
+      </button>
+    }
+  </div>
+</div>

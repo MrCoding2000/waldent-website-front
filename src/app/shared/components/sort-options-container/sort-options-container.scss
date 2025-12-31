@@ -1,0 +1,45 @@
+.sort-options {
+  margin-top: 1rem;
+  border-top: 1px solid #E6E6E6;
+
+  .sort-buttons {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 64px;
+    opacity: 1;
+    border-radius: 28px;
+    margin-top: 1em;
+    padding: 8px 20px;
+    margin-bottom: 1em;
+    background: var(--Color-Schema-Surface-Primary, #FFFFFF);
+
+    .sort-label {
+      font-family: IRANYekanXDemiBoldFaNumber;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 20px;
+      letter-spacing: 0;
+      color: var(--Color-Schema-On-Surface-Primary, #222222);
+    }
+
+    .sort-btn {
+      height: 48px;
+      gap: 8px;
+      opacity: 1;
+      border-radius: 20px;
+      padding: 8px 16px;
+      background: var(--Color-Schema-Surface-Primary, #FFFFFF);
+      color: #222222;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+      letter-spacing: 0;
+
+      &.active {
+        background: var(--Color-Schema-Surface-Secondary, #F7F9FB);
+        color: var(--Color-Schema-Main-Colors-Primary, #009975);
+      }
+    }
+  }
+}

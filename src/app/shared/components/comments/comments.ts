@@ -1,13 +1,15 @@
 import {Component, Input} from '@angular/core';
 import {SmallCommentsPointsBox} from '../small-comments-points-box/small-comments-points-box';
 import {ReviewsSummaryBox} from '../reviews-summary-box/reviews-summary-box';
+import {SortOptionsContainer} from '../sort-options-container/sort-options-container';
 
 @Component({
   selector: 'app-comments',
   standalone: true,
   imports: [
     SmallCommentsPointsBox,
-    ReviewsSummaryBox
+    ReviewsSummaryBox,
+    SortOptionsContainer
   ],
   templateUrl: './comments.html',
   styleUrl: './comments.scss'

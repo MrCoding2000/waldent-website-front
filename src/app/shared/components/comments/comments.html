@@ -7,19 +7,7 @@
   <div>
     <app-reviews-summary-box [reviewSummary]="reviewSummary"></app-reviews-summary-box>
     <!-- Sort Options TODO: COMPONENTS-->
-    <div class="sort-options">
-      <div class="sort-buttons">
-        <span class="sort-label ml-2">ترتیب نمایش:</span>
-        @for (option of reviewSortOptions; track option.id) {
-          <button
-            class="sort-btn"
-            [class.active]="selectedSortOption === option.id"
-            (click)="selectedSortOption = option.id">
-            {{ option.label }}
-          </button>
-        }
-      </div>
-    </div>
+    <app-sort-options-container [sortOptions]="reviewSortOptions" [selectedSortOption]="selectedSortOption"></app-sort-options-container>
     <!--Review List-->
     <div class="reviews-list">
       @for (review of reviews; track review.id) {
