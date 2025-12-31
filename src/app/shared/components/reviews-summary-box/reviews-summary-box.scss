@@ -1,0 +1,61 @@
+.reviews-summary-box {
+  //todo
+  //max-width: 642px;
+  max-height: 193px;
+  gap: 8px;
+  opacity: 1;
+  border-radius: 20px;
+  padding: 12px;
+  background: var(--Opacity-Secondary-10, #0058CC1A);
+
+  .summary-title {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: var(--Color-Schema-On-Surface-Primary, #222222);
+  }
+
+  .summary-text {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0;
+    text-align: justify;
+    color: var(--Color-Schema-On-Surface-Primary, #222222);
+  }
+  .summary-sections {
+    border-top: 1px solid #99c5ff;
+    padding-top: 1em;
+    .summary-section {
+      width: 49%;
+      height: 64px;
+      gap: 8px;
+      opacity: 1;
+      border-radius: 8px;
+      padding: 8px;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 20px;
+      letter-spacing: 0;
+      color: var(--Color-Schema-On-Surface-Primary, #222222);
+      background: var(--Opacity-Surface-Primery-40, #FFFFFF66);
+
+      h5 {
+        font-family: IRANYekanXRegularFaNumber;
+        font-weight: 400;
+        font-size: 11px;
+        line-height: 20px;
+        letter-spacing: 0;
+        color: var(--Color-Schema-On-Surface-Secondary, #555555);
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        gap: 0.5rem;
+      }
+    }
+  }
+}
