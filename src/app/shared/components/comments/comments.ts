@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {SmallCommentsPointsBox} from '../small-comments-points-box/small-comments-points-box';
 import {ReviewsSummaryBox} from '../reviews-summary-box/reviews-summary-box';
 import {SortOptionsContainer} from '../sort-options-container/sort-options-container';
+import {CommentsList} from '../comments-list/comments-list';
 
 @Component({
   selector: 'app-comments',
@@ -9,7 +10,8 @@ import {SortOptionsContainer} from '../sort-options-container/sort-options-conta
   imports: [
     SmallCommentsPointsBox,
     ReviewsSummaryBox,
-    SortOptionsContainer
+    SortOptionsContainer,
+    CommentsList
   ],
   templateUrl: './comments.html',
   styleUrl: './comments.scss'
@@ -39,8 +41,4 @@ export class Comments {
     helpfulCount: number,
     notHelpfulCount: number
   }[]
-
-  getStars(rating: number): number[] {
-    return Array.from({length: 5}, (_, i) => i < rating ? 1 : 0);
-  }
 }
