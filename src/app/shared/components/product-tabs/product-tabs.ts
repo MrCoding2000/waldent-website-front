@@ -3,11 +3,12 @@ import {CommonModule, NgClass} from '@angular/common';
 import {SellerProductCard} from '../seller-product-card/seller-product-card';
 import {TabNavigationMenu} from '../tab-navigation-menu/tab-navigation-menu';
 import {PropertyBox} from '../property-box/property-box';
+import {SmallCommentsPointsBox} from '../small-comments-points-box/small-comments-points-box';
 
 @Component({
   selector: 'app-product-tabs',
   standalone: true,
-  imports: [CommonModule, NgClass, SellerProductCard, TabNavigationMenu, PropertyBox],
+  imports: [CommonModule, NgClass, SellerProductCard, TabNavigationMenu, PropertyBox, SmallCommentsPointsBox],
   templateUrl: './product-tabs.html',
   styleUrl: './product-tabs.scss'
 })
@@ -169,10 +170,6 @@ export class ProductTabs implements OnInit, OnDestroy {
 
   getStars(rating: number): number[] {
     return Array.from({length: 5}, (_, i) => i < rating ? 1 : 0);
-  }
-
-  getRoundedRating(rating: number): number {
-    return Math.round(rating);
   }
 }
 
