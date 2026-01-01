@@ -174,74 +174,76 @@
 
   <!-- Mobile layout -->
   <section class="lg:hidden">
-    <div class="px-4 pt-3 pb-6">
-      <!-- Breadcrumbs (mobile) -->
-      <div class="flex items-center justify-between text-gray-850">
-        <div class="text-[10px] leading-4 text-gray-850/70">{{ vm.breadcrumb.right }}</div>
+    <div class="pt-3 pb-6">
+      <div class="px-4">
+        <!-- Breadcrumbs (mobile) -->
+        <div class="flex items-center justify-between text-gray-850">
+          <div class="text-[10px] leading-4 text-gray-850/70">{{ vm.breadcrumb.right }}</div>
+        </div>
       </div>
 
-      <!-- Avatar -->
-      <div class="mt-3 bg-gray-150 rounded-[10px] h-[260px] w-full flex items-center justify-center relative overflow-hidden">
-        <img [src]="vm.technician.avatarUrl" alt="" class="w-full h-full object-contain rounded-[10px]" />
-        <button type="button" class="absolute top-3 left-3 w-10 h-10 bg-white rounded-[12px] shadow-sm flex items-center justify-center" (click)="onFullscreenClick(vm.technician.avatarUrl)">
-          <img src="assets/images/square.svg" alt="">
-
-        </button>
-        <div class="absolute top-3 right-3 flex flex-col gap-3">
-          <button type="button" class="w-10 h-10 bg-white rounded-[12px] shadow-sm flex items-center justify-center" (click)="onFavoriteClick()">
-            <img src="assets/images/heart.svg" alt="">
-
+      <!-- Avatar (full width) -->
+      <div class="mt-3 w-full bg-gray-150 overflow-hidden">
+        <div class="h-[260px] w-full flex items-center justify-center">
+          <img [src]="vm.technician.avatarUrl" alt="" class="w-full h-full object-contain" />
+        </div>
+        <div class="px-9 pb-4 pt-9 flex items-center justify-between bg-white">
+          <button type="button" class="bg-transparent border-0 p-0 cursor-pointer" (click)="onFavoriteClick()" aria-label="favorite">
+            <img src="assets/images/heart.svg" alt="" class="w-6 h-6">
           </button>
-          <button type="button" class="w-10 h-10 bg-white rounded-[12px] shadow-sm flex items-center justify-center" (click)="onShareClick()">
-            <img src="assets/images/back.svg" alt="">
-
+          <button type="button" class="bg-transparent border-0 p-0 cursor-pointer" (click)="onShareClick()" aria-label="share">
+            <img src="assets/images/back.svg" alt="" class="w-6 h-6">
           </button>
         </div>
       </div>
 
-      <!-- Name -->
-      <div class="mt-4 text-center">
-        <h1 class="text-gray-850 font-semibold text-[18px] leading-7">{{ vm.technician.nameFa }}</h1>
-        <div class="text-gray-850/60 text-[11px] leading-4 mt-1">{{ vm.technician.nameEn }}</div>
-      </div>
+      <div class="px-6">
+        <!-- Name -->
+        <div class="">
+          <h1 class="text-gray-850 font-semibold text-[18px] leading-7">{{ vm.technician.nameFa }}</h1>
+          <div class="text-gray-850/60 text-[11px] leading-4 mt-1">{{ vm.technician.nameEn }}</div>
+        </div>
 
       <!-- Stats pills row -->
-      <div class="mt-3 flex items-center justify-center gap-4 text-[12px] leading-5 text-gray-850">
-        <button type="button" class="inline-flex items-center gap-2 bg-gray-150 rounded-[12px] px-3 py-1.5 border-0 text-gray-850 text-[12px] leading-5 cursor-pointer">
+      <div class="mt-3 flex flex-nowrap items-center gap-2 overflow-x-auto whitespace-nowrap text-[12px] leading-5 text-gray-850 [-webkit-overflow-scrolling:touch]">
+        <div class="inline-flex items-center gap-1 shrink-0">
+          <span class="text-[#F5A300]">★</span>
+          <span>{{ vm.stats.rating }}/5</span>
+          <span class="text-gray-850/70">({{ vm.stats.votes }} رأی)</span>
+        </div>
+        <button type="button" class="inline-flex items-center gap-2 shrink-0 bg-gray-150 rounded-[12px] px-3 py-1.5 border-0 text-gray-850 text-[12px] leading-5 cursor-pointer">
           <span>{{ vm.stats.projects }} پروژه موفق</span>
           <svg aria-hidden="true" class="w-4 h-4 text-gray-850/70" viewBox="0 0 24 24" fill="none">
             <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
-        <button type="button" class="inline-flex items-center gap-2 bg-gray-150 rounded-[12px] px-3 py-1.5 border-0 text-gray-850 text-[12px] leading-5 cursor-pointer">
+
+        <button type="button" class="inline-flex items-center gap-2 shrink-0 bg-gray-150 rounded-[12px] px-3 py-1.5 border-0 text-gray-850 text-[12px] leading-5 cursor-pointer">
           <span>{{ vm.stats.reviews }} دیدگاه</span>
           <svg aria-hidden="true" class="w-4 h-4 text-gray-850/70" viewBox="0 0 24 24" fill="none">
             <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
-        <button type="button" class="inline-flex items-center gap-2 bg-gray-150 rounded-[12px] px-3 py-1.5 border-0 text-gray-850 text-[12px] leading-5 cursor-pointer">
+
+        <button type="button" class="inline-flex items-center gap-2 shrink-0 bg-gray-150 rounded-[12px] px-3 py-1.5 border-0 text-gray-850 text-[12px] leading-5 cursor-pointer">
           <span>{{ vm.stats.questions }} پرسش</span>
           <svg aria-hidden="true" class="w-4 h-4 text-gray-850/70" viewBox="0 0 24 24" fill="none">
             <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
-        <div class="inline-flex items-center gap-1">
-          <span class="text-[#F5A300]">★</span>
-          <span>{{ vm.stats.rating }}</span>
-          <span class="text-gray-850/70">({{ vm.stats.votes }} رأی)</span>
-        </div>
+
       </div>
 
       <!-- Verified row -->
-      <div class="mt-3 flex items-center justify-center gap-2 text-[12px] leading-5 text-gray-850">
-        <img src="assets/images/verified_user.svg" alt="" class="w-4 h-4" />
+      <div class="mt-3 flex items-center gap-2 text-[12px] leading-5 text-gray-850 border-b border-gray-300 pb-4">
+        <img src="assets/images/verified.svg" alt="" class="w-4 h-4" />
         <span>{{ vm.technician.verifiedText }}</span>
       </div>
 
       <!-- Primary specialty -->
-      <div class="mt-5">
-        <h2 class="text-gray-850 font-semibold text-[13px] leading-6 text-center">{{ vm.primarySpecialty.title }}</h2>
-        <div class="mt-2 bg-gray-150 rounded-[12px] px-4 py-4 text-center">
+      <div class="mt-5 border-b border-gray-300 pb-4">
+        <h2 class="text-gray-850 font-semibold text-[13px] leading-6">{{ vm.primarySpecialty.title }}</h2>
+        <div class="mt-2 bg-gray-150 rounded-[12px] px-4 py-4 ">
           <div class="text-gray-850 font-medium text-[12px] leading-6">{{ vm.primarySpecialty.name }}</div>
           <div class="mt-2 text-gray-850/70 text-[12px] leading-6">{{ vm.primarySpecialty.desc }}</div>
         </div>
@@ -335,6 +337,7 @@
             </div>
           }
         </div>
+      </div>
       </div>
     </div>
   </section>
