@@ -73,37 +73,46 @@
 
         <!-- Middle: Title + stats + specialties + brands -->
         <main class="min-w-0">
-          <div class="text-center">
+          <div class="border-b border-gray-300 pb-4">
             <h1 class="text-gray-850 font-semibold text-[20px] leading-[28px]">{{ vm.technician.nameFa }}</h1>
             <p class="mt-1 text-gray-850/60 text-[12px] leading-[18px]">{{ vm.technician.nameEn }}</p>
           </div>
 
           <!-- Stats row -->
-          <div class="mt-5 flex items-center justify-center gap-6 text-gray-850">
-            <div class="inline-flex items-center gap-2">
-              <span class="text-[12px] leading-5">{{ vm.stats.questions }} پرسش</span>
-              <span class="text-gray-200">|</span>
-            </div>
-            <div class="inline-flex items-center gap-2">
-              <span class="text-[12px] leading-5">{{ vm.stats.reviews }} دیدگاه</span>
-              <span class="text-gray-200">|</span>
-            </div>
-            <div class="inline-flex items-center gap-2">
-              <span class="text-[12px] leading-5">{{ vm.stats.projects }} پروژه موفق</span>
-              <span class="text-gray-200">|</span>
-            </div>
-            <div class="inline-flex items-center gap-2">
-              <span class="text-[12px] leading-5">{{ vm.stats.rating }}</span>
-              <span class="text-[12px] leading-5 text-gray-850/70">({{ vm.stats.votes }} رأی)</span>
+          <div class="mt-5 flex items-center gap-3 text-gray-850">
+            <div class="inline-flex items-center gap-1">
               <span class="text-[#F5A300] text-[14px] leading-4">★</span>
+              <span class="text-[12px] leading-5">{{ vm.stats.rating }}/5</span>
+              <span class="text-[12px] leading-5 text-gray-850/70">({{ vm.stats.votes }} رای)</span>
             </div>
+            <div class="flex items-center gap-2">
+              <button type="button" class="inline-flex items-center gap-2 bg-gray-150 rounded-[12px] px-3 py-1.5 border-0 text-gray-850 text-[12px] leading-5 cursor-pointer">
+                <span>{{ vm.stats.projects }} پروژه موفق</span>
+                <svg aria-hidden="true" class="w-4 h-4 text-gray-850/70" viewBox="0 0 24 24" fill="none">
+                  <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <button type="button" class="inline-flex items-center gap-2 bg-gray-150 rounded-[12px] px-3 py-1.5 border-0 text-gray-850 text-[12px] leading-5 cursor-pointer">
+                <span>{{ vm.stats.reviews }} دیدگاه</span>
+                <svg aria-hidden="true" class="w-4 h-4 text-gray-850/70" viewBox="0 0 24 24" fill="none">
+                  <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <button type="button" class="inline-flex items-center gap-2 bg-gray-150 rounded-[12px] px-3 py-1.5 border-0 text-gray-850 text-[12px] leading-5 cursor-pointer">
+                <span>{{ vm.stats.questions }} پرسش</span>
+                <svg aria-hidden="true" class="w-4 h-4 text-gray-850/70" viewBox="0 0 24 24" fill="none">
+                  <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+
           </div>
 
           <!-- Primary specialty -->
-          <div class="mt-8">
-            <h2 class="text-gray-850 font-semibold text-[14px] leading-6 text-center">{{ vm.primarySpecialty.title }}</h2>
-            <div class="mt-3 bg-gray-150 rounded-[12px] px-6 py-4">
-              <div class="text-center">
+          <div class="mt-8 border-b border-gray-300 pb-4">
+            <h2 class="text-gray-850 font-semibold text-[14px] leading-6 ">{{ vm.primarySpecialty.title }}</h2>
+            <div class="mt-3 bg-gray-150 rounded-[12px] p-2">
+              <div class="">
                 <div class="text-gray-850 font-medium text-[13px] leading-6">{{ vm.primarySpecialty.name }}</div>
                 <div class="mt-2 text-gray-850/70 text-[12px] leading-6">{{ vm.primarySpecialty.desc }}</div>
               </div>
@@ -111,27 +120,28 @@
           </div>
 
           <!-- Other specialties -->
-          <div class="mt-7">
-            <h3 class="text-gray-850 font-semibold text-[14px] leading-6 text-center">{{ vm.otherSpecialtiesTitle }}</h3>
+          <div class="mt-4 border-b border-gray-300 pb-4">
+            <h3 class="text-gray-850 font-semibold text-[14px] leading-6">{{ vm.otherSpecialtiesTitle }}</h3>
             <div class="mt-3 grid grid-cols-3 gap-4">
               @for (s of vm.otherSpecialties; track s) {
-                <div class="bg-gray-150 rounded-[12px] px-4 py-3 text-center text-gray-850 text-[12px] leading-5">
+                <div class="bg-gray-150 rounded-[12px] p-2 text-gray-850 text-[12px] leading-5">
                   {{ s }}
                 </div>
               }
-              <button type="button" class="border border-dashed border-gray-200 rounded-[12px] px-4 py-3 text-center text-gray-850 text-[12px] leading-5">
+              <button type="button" class="border border-dashed border-gray-200 rounded-[12px] p-2 text-gray-850 text-[12px] leading-5">
                 مشاهده همه تخصص ها
               </button>
             </div>
           </div>
 
           <!-- Brands -->
-          <div class="mt-10">
-            <h3 class="text-gray-850 font-semibold text-[14px] leading-6 text-center">{{ vm.brandsTitle }}</h3>
+          <div class="mt-4">
+            <h3 class="text-gray-850 font-semibold text-[14px] leading-6">{{ vm.brandsTitle }}</h3>
             <div class="mt-5 flex items-center justify-center gap-10">
               @for (b of vm.brands; track b.logoUrl + b.name) {
                 <div class="inline-flex items-center gap-2">
                   <img [src]="b.logoUrl" [alt]="b.name" class="h-6 w-auto object-contain" />
+                  <span class="text-gray-850 text-[12px] leading-5 whitespace-nowrap">{{ b.name }}</span>
                 </div>
               }
             </div>
@@ -139,7 +149,7 @@
         </main>
 
         <!-- Left: Contact -->
-        <aside class="pt-[96px] justify-self-start w-full max-w-[360px]">
+        <aside class="pt-24 justify-self-start w-full max-w-[360px]">
           <div class="flex flex-col items-start">
             <div class="mb-4 w-full flex gap-2 text-[10px] leading-5 text-gray-850">
               <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-gray-150">
@@ -197,18 +207,24 @@
 
       <!-- Stats pills row -->
       <div class="mt-3 flex items-center justify-center gap-4 text-[12px] leading-5 text-gray-850">
-        <div class="inline-flex items-center gap-1">
-          <span>{{ vm.stats.projects }}</span><span>پروژه موفق</span>
-        </div>
-        <span class="text-gray-200">|</span>
-        <div class="inline-flex items-center gap-1">
-          <span>{{ vm.stats.reviews }}</span><span>دیدگاه</span>
-        </div>
-        <span class="text-gray-200">|</span>
-        <div class="inline-flex items-center gap-1">
-          <span>{{ vm.stats.questions }}</span><span>پرسش</span>
-        </div>
-        <span class="text-gray-200">|</span>
+        <button type="button" class="inline-flex items-center gap-2 bg-gray-150 rounded-[12px] px-3 py-1.5 border-0 text-gray-850 text-[12px] leading-5 cursor-pointer">
+          <span>{{ vm.stats.projects }} پروژه موفق</span>
+          <svg aria-hidden="true" class="w-4 h-4 text-gray-850/70" viewBox="0 0 24 24" fill="none">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button type="button" class="inline-flex items-center gap-2 bg-gray-150 rounded-[12px] px-3 py-1.5 border-0 text-gray-850 text-[12px] leading-5 cursor-pointer">
+          <span>{{ vm.stats.reviews }} دیدگاه</span>
+          <svg aria-hidden="true" class="w-4 h-4 text-gray-850/70" viewBox="0 0 24 24" fill="none">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button type="button" class="inline-flex items-center gap-2 bg-gray-150 rounded-[12px] px-3 py-1.5 border-0 text-gray-850 text-[12px] leading-5 cursor-pointer">
+          <span>{{ vm.stats.questions }} پرسش</span>
+          <svg aria-hidden="true" class="w-4 h-4 text-gray-850/70" viewBox="0 0 24 24" fill="none">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
         <div class="inline-flex items-center gap-1">
           <span class="text-[#F5A300]">★</span>
           <span>{{ vm.stats.rating }}</span>
@@ -263,7 +279,10 @@
         <h3 class="text-gray-850 font-semibold text-[13px] leading-6 text-center">{{ vm.brandsTitle }}</h3>
         <div class="mt-4 flex items-center justify-center gap-6 flex-wrap">
           @for (b of vm.brands; track b.logoUrl + b.name) {
-            <img [src]="b.logoUrl" [alt]="b.name" class="h-6 w-auto object-contain" />
+            <div class="inline-flex items-center gap-2">
+              <img [src]="b.logoUrl" [alt]="b.name" class="h-6 w-auto object-contain" />
+              <span class="text-gray-850 text-[12px] leading-5 whitespace-nowrap">{{ b.name }}</span>
+            </div>
           }
         </div>
       </div>
