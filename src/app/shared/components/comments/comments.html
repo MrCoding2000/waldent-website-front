@@ -4,10 +4,12 @@
     <app-small-comments-points-box [reviewSummary]="reviewSummary"></app-small-comments-points-box>
   </div>
   <!-- Left Side -->
-  <div class="left-side-container">
+  <div class="left-side-container mt-4 lg:mt-0">
     <app-reviews-summary-box [reviewSummary]="reviewSummary"></app-reviews-summary-box>
-    <!-- Sort Options TODO: COMPONENTS-->
-    <app-sort-options-container [sortOptions]="reviewSortOptions" [selectedSortOption]="selectedSortOption"></app-sort-options-container>
+    <!-- Sort Options -->
+    <div class="w-full hidden lg:block">
+      <app-sort-options-container [sortOptions]="reviewSortOptions" [selectedSortOption]="selectedSortOption"></app-sort-options-container>
+    </div>
     <!--Review List-->
     <app-comments-list [commentsList]="reviews"></app-comments-list>
   </div>

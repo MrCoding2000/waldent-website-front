@@ -1,7 +1,6 @@
 .reviews-summary-box {
-  //todo
   //max-width: 642px;
-  max-height: 193px;
+  min-height: 193px;
   gap: 8px;
   opacity: 1;
   border-radius: 20px;
@@ -24,9 +23,11 @@
     text-align: justify;
     color: var(--Color-Schema-On-Surface-Primary, #222222);
   }
+
   .summary-sections {
     border-top: 1px solid #99c5ff;
     padding-top: 1em;
+
     .summary-section {
       width: 49%;
       height: 64px;
@@ -57,5 +58,11 @@
         gap: 0.5rem;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  .summary-section {
+    width: 100% !important;
   }
 }
