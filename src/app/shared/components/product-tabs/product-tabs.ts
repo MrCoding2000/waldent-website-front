@@ -5,11 +5,12 @@ import {TabNavigationMenu} from '../tab-navigation-menu/tab-navigation-menu';
 import {PropertyBox} from '../property-box/property-box';
 import {SmallCommentsPointsBox} from '../small-comments-points-box/small-comments-points-box';
 import {Comments} from '../comments/comments';
+import {QuestionsList} from '../questions-list/questions-list';
 
 @Component({
   selector: 'app-product-tabs',
   standalone: true,
-  imports: [CommonModule, NgClass, SellerProductCard, TabNavigationMenu, PropertyBox, SmallCommentsPointsBox, Comments],
+  imports: [CommonModule, NgClass, SellerProductCard, TabNavigationMenu, PropertyBox, SmallCommentsPointsBox, Comments, QuestionsList],
   templateUrl: './product-tabs.html',
   styleUrl: './product-tabs.scss'
 })
@@ -131,13 +132,6 @@ export class ProductTabs implements OnInit, OnDestroy {
       answers: []
     }
   ];
-
-  questionSortOptions = [
-    {id: 'newest', label: 'جدیدترین'},
-    {id: 'mostAnswered', label: 'بیشترین پاسخ'}
-  ];
-
-  selectedQuestionSort: string = 'newest';
 
   reviewSummary = {
     totalReviews: 2,
