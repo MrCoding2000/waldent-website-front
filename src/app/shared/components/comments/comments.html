@@ -1,16 +1,30 @@
 <section id="reviews" class="tab-section flex flex-col lg:flex-row justify-around">
   <div class="reviews-header-wrapper">
     <!-- Right Side: Rating and Button -->
-    <app-small-comments-points-box [reviewSummary]="reviewSummary"></app-small-comments-points-box>
+    <app-small-comments-points-box [reviewSummary]="reviewSummary" (setComment)="onSetComment()"></app-small-comments-points-box>
   </div>
   <!-- Left Side -->
   <div class="left-side-container mt-4 lg:mt-0">
     <app-reviews-summary-box [reviewSummary]="reviewSummary"></app-reviews-summary-box>
     <!-- Sort Options -->
     <div class="w-full hidden lg:block">
-      <app-sort-options-container [sortOptions]="reviewSortOptions" [selectedSortOption]="selectedSortOption"></app-sort-options-container>
+      <app-sort-options-container [sortOptions]="reviewSortOptions"
+                                  [selectedSortOption]="selectedSortOption"></app-sort-options-container>
     </div>
     <!--Review List-->
     <app-comments-list [commentsList]="reviews"></app-comments-list>
+    <section class="lg:hidden">
+      <p class="register-prompt">شما هم درباره این کالا دیدگاهتان را ثبت کنید</p>
+      <button class="register-review-btn" (click)="onSetComment()">ثبت دیدگاه</button>
+    </section>
   </div>
+  <!--TODO-->
+  <!--  <swiper-container-->
+  <!--    class="question-answer-cards-container"-->
+  <!--    slides-per-view="1"-->
+  <!--    space-between="16"-->
+  <!--    breakpoints='{"440": {"slidesPerView": 1}, "768": { "slidesPerView": 2 }, "1440": { "slidesPerView": 3 }}'>-->
+  <!--    <swiper-slide>-->
+  <!--    </swiper-slide>-->
+  <!--  </swiper-container>-->
 </section>

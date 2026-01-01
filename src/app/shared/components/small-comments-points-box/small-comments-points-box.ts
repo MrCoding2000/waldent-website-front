@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-small-comments-points-box',
@@ -16,6 +16,7 @@ export class SmallCommentsPointsBox {
     weaknesses: string[],
     summaryText: string
   };
+  @Output() setComment: EventEmitter<void> = new EventEmitter();
 
   getStars(rating: number): number[] {
     return Array.from({length: 5}, (_, i) => i < rating ? 1 : 0);

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, CUSTOM_ELEMENTS_SCHEMA, Input} from '@angular/core';
 import {SmallCommentsPointsBox} from '../small-comments-points-box/small-comments-points-box';
 import {ReviewsSummaryBox} from '../reviews-summary-box/reviews-summary-box';
 import {SortOptionsContainer} from '../sort-options-container/sort-options-container';
@@ -14,7 +14,8 @@ import {CommentsList} from '../comments-list/comments-list';
     CommentsList
   ],
   templateUrl: './comments.html',
-  styleUrl: './comments.scss'
+  styleUrl: './comments.scss',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class Comments {
   @Input() reviewSummary!: {
@@ -41,4 +42,11 @@ export class Comments {
     helpfulCount: number,
     notHelpfulCount: number
   }[]
+
+  /**
+   * Set Comment
+   */
+  onSetComment() {
+
+  }
 }
