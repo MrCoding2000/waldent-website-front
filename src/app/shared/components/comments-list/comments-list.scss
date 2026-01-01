@@ -12,7 +12,7 @@
 }
 
 .review-card {
-  border-radius: 12px;
+  border-radius: 20px;
   padding: 16px;
 }
 
@@ -105,7 +105,6 @@
 
 /* Points */
 .review-points-wrapper {
-  display: flex;
   gap: 12px;
   margin: 12px 0;
 }
@@ -114,7 +113,7 @@
   flex: 1;
   gap: 8px;
   opacity: 1;
-  border-radius: 20px;
+  border-radius: 8px;
   padding: 12px;
   background: var(--Color-Schema-Surface-Primary, #FFFFFF);
 
@@ -186,4 +185,10 @@
 
 .review-actions button:hover {
   color: #000;
+}
+
+@media only screen and (max-width: 768px) {
+  .points-box {
+    background: #F7F9FB;
+  }
 }
