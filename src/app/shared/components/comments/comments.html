@@ -1,10 +1,10 @@
-<section id="reviews" class="tab-section flex">
+<section id="reviews" class="tab-section flex flex-col lg:flex-row justify-around">
   <div class="reviews-header-wrapper">
     <!-- Right Side: Rating and Button -->
     <app-small-comments-points-box [reviewSummary]="reviewSummary"></app-small-comments-points-box>
   </div>
   <!-- Left Side -->
-  <div>
+  <div class="left-side-container">
     <app-reviews-summary-box [reviewSummary]="reviewSummary"></app-reviews-summary-box>
     <!-- Sort Options TODO: COMPONENTS-->
     <app-sort-options-container [sortOptions]="reviewSortOptions" [selectedSortOption]="selectedSortOption"></app-sort-options-container>

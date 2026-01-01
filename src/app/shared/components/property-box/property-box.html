@@ -1,19 +1,10 @@
-@for (section of propertyList; track section.title) {
-  <section id="{{section.id}}" class="tab-section !bg-transparent !px-0">
-    <div class="tab-section-wrapper">
-      <section class="tab-section-content">
-        <!-- Header -->
-        <header class="header lg:hidden mb-2 mx-2 col-span-2 py-4">
-          <div class="flex items-center gap-2">
-            <span [innerHTML]="sanitizer.bypassSecurityTrustHtml(section.icon)"></span>
-            <h3 class="title">
-              {{ section.title }}
-            </h3>
-          </div>
-        </header>
-        <section class="tab-section-body grid grid-cols-8 mb-4 bg-gray-50 px-4 py-5 sm:px-6 lg:px-8">
+<section class="mx-4 lg:mx-0">
+  @for (section of propertyList; track section.title) {
+    <section id="{{section.id}}" class="tab-section !bg-transparent !px-0">
+      <div class="tab-section-wrapper">
+        <section class="tab-section-content">
           <!-- Header -->
-          <header class="header hidden lg:block mb-2 col-span-2 py-4">
+          <header class="header lg:hidden mb-2 mx-2 col-span-2 py-4">
             <div class="flex items-center gap-2">
               <span [innerHTML]="sanitizer.bypassSecurityTrustHtml(section.icon)"></span>
               <h3 class="title">
@@ -21,41 +12,52 @@
               </h3>
             </div>
           </header>
-          <!-- Rows -->
-          <div class="col-span-full lg:col-span-6 divide-y divide-gray-200">
-            @for (property of section.items; track property.label) {
-              <div
-                class="flex items-center gap-2 py-4">
+          <section class="tab-section-body grid grid-cols-8 mb-4 bg-gray-50 px-4 py-5 sm:px-6 lg:px-8">
+            <!-- Header -->
+            <header class="header hidden lg:block mb-2 col-span-2 py-4">
+              <div class="flex items-center gap-2">
+                <span [innerHTML]="sanitizer.bypassSecurityTrustHtml(section.icon)"></span>
+                <h3 class="title">
+                  {{ section.title }}
+                </h3>
+              </div>
+            </header>
+            <!-- Rows -->
+            <div class="col-span-full lg:col-span-6 divide-y divide-gray-200">
+              @for (property of section.items; track property.label) {
+                <div
+                  class="flex items-center gap-2 py-4">
                 <span class="label">
                   {{ property.label }} :
                 </span>
 
-                <span class="value">
+                  <span class="value">
                   {{ property.value }}
                 </span>
-              </div>
-            }
-          </div>
+                </div>
+              }
+            </div>
+          </section>
+          <!-- View More (optional) -->
+          <!--        <div class="mt-3 flex justify-end">-->
+          <!--          <button class="flex items-center gap-1 text-sm font-medium text-blue-600 transition hover:text-blue-700">-->
+          <!--            مشاهده بیشتر-->
+          <!--            <svg-->
+          <!--              class="h-4 w-4"-->
+          <!--              fill="none"-->
+          <!--              viewBox="0 0 24 24"-->
+          <!--              stroke="currentColor">-->
+          <!--              <path-->
+          <!--                stroke-linecap="round"-->
+          <!--                stroke-linejoin="round"-->
+          <!--                stroke-width="2"-->
+          <!--                d="M19 9l-7 7-7-7"-->
+          <!--              />-->
+          <!--            </svg>-->
+          <!--          </button>-->
+          <!--        </div>-->
         </section>
-        <!-- View More (optional) -->
-        <!--        <div class="mt-3 flex justify-end">-->
-        <!--          <button class="flex items-center gap-1 text-sm font-medium text-blue-600 transition hover:text-blue-700">-->
-        <!--            مشاهده بیشتر-->
-        <!--            <svg-->
-        <!--              class="h-4 w-4"-->
-        <!--              fill="none"-->
-        <!--              viewBox="0 0 24 24"-->
-        <!--              stroke="currentColor">-->
-        <!--              <path-->
-        <!--                stroke-linecap="round"-->
-        <!--                stroke-linejoin="round"-->
-        <!--                stroke-width="2"-->
-        <!--                d="M19 9l-7 7-7-7"-->
-        <!--              />-->
-        <!--            </svg>-->
-        <!--          </button>-->
-        <!--        </div>-->
-      </section>
-    </div>
-  </section>
-}
+      </div>
+    </section>
+  }
+</section>

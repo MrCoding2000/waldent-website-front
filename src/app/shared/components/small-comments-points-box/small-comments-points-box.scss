@@ -1,6 +1,6 @@
 .reviews-header-right {
   flex: 1;
-  max-width: 220px;
+  padding-top: 12px;
 
   .section-title {
     font-weight: 500;
@@ -94,5 +94,11 @@
     &:hover {
       //background: #007A5E;
     }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .reviews-header-right {
+    max-width: 220px;
   }
 }
