@@ -1,0 +1,258 @@
+.filter-container {
+  width: 100%;
+  min-width: 240px;
+  max-width: 320px;
+  background-color: #F7F9FB;
+  border-radius: 28px;
+  padding: 16px 0;
+  font-family: IRANYekanFaNumber, sans-serif;
+  direction: rtl;
+  overflow-y: auto;
+  max-height: calc(100vh - 200px);
+}
+
+.filter-container * {
+  font-family: IRANYekanFaNumber, sans-serif;
+}
+
+.header-row {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding: 0 20px 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  color: #000;
+}
+
+.section {
+  padding: 12px 20px;
+}
+
+.divider {
+  height: 1px;
+  background-color: #f0f0f0;
+  margin: 8px 0;
+}
+
+.active-filters-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 12px;
+}
+
+.active-filters-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.active-filter-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f5f5f5;
+  border: 1px solid #e3e3e3;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 12px;
+  color: #333;
+}
+
+.remove-filter-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  width: 16px;
+  height: 16px;
+}
+
+.remove-filter-btn:hover {
+  color: #000;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.checkbox-item app-toggle-switch {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkbox-item app-toggle-switch ::ng-deep label {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row-reverse;
+  margin: 0;
+  gap: 12px;
+}
+
+.checkbox-item app-toggle-switch ::ng-deep .title {
+  order: 1;
+  margin: 0;
+  flex: 1;
+  text-align: right;
+  font-family: IRANYekanFaNumber, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.checkbox-item app-toggle-switch ::ng-deep .toggle {
+  order: 2;
+  flex-shrink: 0;
+}
+
+.label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #000;
+  font-family: IRANYekanFaNumber, sans-serif;
+}
+
+.row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  padding: 8px 0;
+}
+
+.row-between i {
+  font-size: 14px;
+  color: #666;
+  transition: transform 0.2s;
+}
+
+.search-box {
+  position: relative;
+  margin-top: 14px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 40px 10px 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: IRANYekanFaNumber, sans-serif;
+  background: #00000005;
+  direction: rtl;
+}
+
+.search-box input::placeholder {
+  color: #999;
+}
+
+.search-box i {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 16px;
+}
+
+.filter-content {
+  margin-top: 8px;
+}
+
+.filter-list {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 12px;
+  padding-right: 4px;
+}
+
+.filter-item {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  transition: all 0.2s;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.filter-item:hover {
+  background: #f5f5f5;
+}
+
+.filter-item.selected {
+  background: #e8f5e9;
+}
+
+.filter-item > label {
+  flex: 1;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: IRANYekanFaNumber, sans-serif;
+  color: #333;
+  margin: 0;
+  order: 1;
+}
+
+.filter-item > p-checkbox {
+  flex-shrink: 0;
+  order: 2;
+}
+
+:host ::ng-deep .filter-item p-checkbox .p-checkbox {
+  width: 20px;
+  height: 20px;
+}
+
+:host ::ng-deep .filter-item p-checkbox .p-checkbox-box {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d0d0d0;
+  border-radius: 4px;
+  background: #fff;
+  transition: all 0.2s;
+}
+
+:host ::ng-deep .filter-item p-checkbox .p-checkbox-box:hover {
+  border-color: #00c7b1;
+}
+
+:host ::ng-deep .filter-item p-checkbox .p-checkbox-box.p-highlight {
+  background: #00c7b1 !important;
+  border-color: #00c7b1 !important;
+}
+
+:host ::ng-deep .filter-item p-checkbox .p-checkbox-icon {
+  font-size: 12px;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
