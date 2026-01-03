@@ -1,0 +1,11 @@
+<!-- Tab Navigation Menu -->
+<div class="tabs-menu hidden lg:flex">
+  @for (tab of tabs; track tab.id) {
+    <button
+      class="tab-button"
+      [ngClass]="{ 'active': activeTab === tab.id }"
+      (click)="setActiveTab(tab.id)">
+      {{ tab.label }}
+    </button>
+  }
+</div>

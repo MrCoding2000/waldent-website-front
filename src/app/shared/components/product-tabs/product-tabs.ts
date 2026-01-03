@@ -1,45 +1,71 @@
-import { Component, OnInit, OnDestroy, HostListener, ChangeDetectorRef } from '@angular/core';
-import { CommonModule, NgClass } from '@angular/common';
-import { SellerProductCard } from '../seller-product-card/seller-product-card';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {CommonModule, NgClass} from '@angular/common';
+import {SellerProductCard} from '../seller-product-card/seller-product-card';
+import {TabNavigationMenu} from '../tab-navigation-menu/tab-navigation-menu';
+import {PropertyBox} from '../property-box/property-box';
+import {SmallCommentsPointsBox} from '../small-comments-points-box/small-comments-points-box';
+import {Comments} from '../comments/comments';
+import {QuestionsList} from '../questions-list/questions-list';
 
 @Component({
   selector: 'app-product-tabs',
   standalone: true,
-  imports: [CommonModule, NgClass, SellerProductCard],
+  imports: [CommonModule, NgClass, SellerProductCard, TabNavigationMenu, PropertyBox, SmallCommentsPointsBox, Comments, QuestionsList],
   templateUrl: './product-tabs.html',
   styleUrl: './product-tabs.scss'
 })
 export class ProductTabs implements OnInit, OnDestroy {
   activeTab: string = 'specifications';
-  private isScrolling: boolean = false;
-  
-  constructor(private cdr: ChangeDetectorRef) {}
-  
-  tabs = [
-    { id: 'specifications', label: 'مشخصات کالا' },
-    { id: 'packaging', label: 'بسته‌بندی و ارسال' },
-    { id: 'services', label: 'خدمات تأمین کننده / فروشنده' },
-    { id: 'reviews', label: 'دیدگاه‌ها' },
-    { id: 'questions', label: 'پرسش‌ها' }
-  ];
 
-  // Sample data
-  specifications = [
-    { label: 'جنس', value: 'استیل ضد زنگ، فولاد' },
-    { label: 'برند', value: 'Zullu Industries' },
-    { label: 'استاندارد ها', value: 'CE' },
-    { label: 'گارانتی', value: 'شش ماه' }
-  ];
+  constructor() {
+  }
 
-  packagingInfo = [
-    { label: 'بسته‌بندی', value: 'مقوای چند لایه' },
-    { label: 'ارسال با پست', value: 'دارد' },
-    { label: 'ارسال با تیپاکس', value: 'دارد' }
+  tabs: { id: string, label: string }[] = [
+    {id: 'specifications', label: 'مشخصات کالا'},
+    {id: 'packaging', label: 'بسته‌بندی و ارسال'},
+    {id: 'services', label: 'خدمات تأمین کننده / فروشنده'},
+    {id: 'reviews', label: 'دیدگاه‌ها'},
+    {id: 'questions', label: 'پرسش‌ها'}
   ];
-
-  servicesInfo = [
-    { label: 'خدمات پس از فروش', value: 'پشتیبانی فنی آنلاین' },
-    { label: 'گارانتی', value: '۱ سال (دنتال ایران)' }
+  goodsPropertySections = [
+    {
+      id: 'specifications',
+      title: 'مشخصات کالا',
+      icon: '<svg width="19" height="15" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+        '<path d="M10.3652 10.25H4.36523C4.15273 10.25 3.97465 10.1781 3.83098 10.0343C3.68715 9.89042 3.61523 9.71225 3.61523 9.49975C3.61523 9.28708 3.68715 9.109 3.83098 8.9655C3.97465 8.82183 4.15273 8.75 4.36523 8.75H10.3652C10.5777 8.75 10.7558 8.82192 10.8995 8.96575C11.0433 9.10958 11.1152 9.28775 11.1152 9.50025C11.1152 9.71292 11.0433 9.891 10.8995 10.0345C10.7558 10.1782 10.5777 10.25 10.3652 10.25ZM10.3652 6.25H4.36523C4.15273 6.25 3.97465 6.17808 3.83098 6.03425C3.68715 5.89042 3.61523 5.71225 3.61523 5.49975C3.61523 5.28708 3.68715 5.109 3.83098 4.9655C3.97465 4.82183 4.15273 4.75 4.36523 4.75H10.3652C10.5777 4.75 10.7558 4.82192 10.8995 4.96575C11.0433 5.10958 11.1152 5.28775 11.1152 5.50025C11.1152 5.71292 11.0433 5.891 10.8995 6.0345C10.7558 6.17817 10.5777 6.25 10.3652 6.25ZM1.80775 15C1.30258 15 0.875 14.825 0.525 14.475C0.175 14.125 0 13.6974 0 13.1923V1.80775C0 1.30258 0.175 0.875 0.525 0.525C0.875 0.175 1.30258 0 1.80775 0H17.1923C17.6974 0 18.125 0.175 18.475 0.525C18.825 0.875 19 1.30258 19 1.80775V13.1923C19 13.6974 18.825 14.125 18.475 14.475C18.125 14.825 17.6974 15 17.1923 15H1.80775ZM1.80775 13.5H17.1923C17.2693 13.5 17.3398 13.4679 17.4038 13.4038C17.4679 13.3398 17.5 13.2692 17.5 13.1923V1.80775C17.5 1.73075 17.4679 1.66025 17.4038 1.59625C17.3398 1.53208 17.2693 1.5 17.1923 1.5H1.80775C1.73075 1.5 1.66025 1.53208 1.59625 1.59625C1.53208 1.66025 1.5 1.73075 1.5 1.80775V13.1923C1.5 13.2692 1.53208 13.3398 1.59625 13.4038C1.66025 13.4679 1.73075 13.5 1.80775 13.5Z" fill="#222222"/>\n' +
+        '<path d="M13.7347 3.67747C13.9039 3.50781 14.1139 3.42297 14.3647 3.42297C14.6156 3.42297 14.8258 3.50764 14.9955 3.67697C15.1652 3.84614 15.25 4.05614 15.25 4.30697C15.25 4.55781 15.1654 4.76806 14.9963 4.93772C14.8271 5.10739 14.6171 5.19222 14.3663 5.19222C14.1154 5.19222 13.9052 5.10764 13.7355 4.93847C13.5658 4.76914 13.481 4.55906 13.481 4.30822C13.481 4.05739 13.5656 3.84714 13.7347 3.67747Z" fill="#222222"/>\n' +
+        '<path d="M13.831 6.60022C13.9745 6.45639 14.1526 6.38447 14.3652 6.38447C14.5777 6.38447 14.7559 6.45639 14.8997 6.60022C15.0436 6.74389 15.1155 6.92197 15.1155 7.13447V10.827C15.1155 11.0395 15.0437 11.2176 14.9 11.3612C14.7565 11.5051 14.5784 11.577 14.3658 11.577C14.1533 11.577 13.9751 11.5051 13.8313 11.3612C13.6874 11.2176 13.6155 11.0395 13.6155 10.827V7.13447C13.6155 6.92197 13.6873 6.74389 13.831 6.60022Z" fill="#222222"/>\n' +
+        '</svg>\n',
+      items: [
+        {label: 'جنس', value: 'استیل ضد زنگ، فولاد'},
+        {label: 'برند', value: 'Zullu Industries'},
+        {label: 'استاندارد ها', value: 'CE'},
+        {label: 'گارانتی', value: 'شش ماه'}
+      ],
+    },
+    {
+      id: 'packaging',
+      title: 'اطلاعات بسته‌بندی',
+      icon: '<svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+        '<path d="M0.75 16.4428C0.5375 16.4428 0.359417 16.3709 0.21575 16.2271C0.0719166 16.0832 0 15.9051 0 15.6926C0 15.4799 0.0719166 15.3018 0.21575 15.1583C0.359417 15.0147 0.5375 14.9428 0.75 14.9428H4.673V12.6928H1.75C1.5375 12.6928 1.35942 12.6209 1.21575 12.4771C1.07192 12.3332 1 12.1551 1 11.9426C1 11.7299 1.07192 11.5518 1.21575 11.4083C1.35942 11.2647 1.5375 11.1928 1.75 11.1928H4.673V8.94282H2.8C2.5875 8.94282 2.40942 8.87091 2.26575 8.72707C2.12192 8.58324 2.05 8.40507 2.05 8.19257C2.05 7.97991 2.12192 7.80182 2.26575 7.65832C2.40942 7.51466 2.5875 7.44282 2.8 7.44282H4.673V4.51207L3.1385 1.16407C3.05383 0.978072 3.04608 0.786405 3.11525 0.589072C3.18458 0.391572 3.31217 0.250573 3.498 0.166073C3.684 0.0814059 3.87567 0.0736561 4.073 0.142823C4.2705 0.212156 4.4115 0.339739 4.496 0.525573L6.31525 4.44282H18.0308L16.4385 1.06782C16.3538 0.881989 16.3461 0.690323 16.4153 0.492823C16.4846 0.295489 16.6122 0.15449 16.798 0.0698231C16.9838 -0.0148435 17.1755 -0.0225113 17.373 0.046822C17.5705 0.115989 17.7115 0.24349 17.796 0.429323L19.4923 4.08132C19.5524 4.20116 19.5976 4.32466 19.6278 4.45182C19.6579 4.57899 19.673 4.70999 19.673 4.84482V14.9236C19.673 15.3454 19.5253 15.7041 19.2298 15.9996C18.9343 16.2951 18.5756 16.4428 18.1538 16.4428H0.75ZM10.173 9.69282H14.173C14.3855 9.69282 14.5637 9.62091 14.7075 9.47707C14.8512 9.33324 14.923 9.15507 14.923 8.94257C14.923 8.72991 14.8512 8.55182 14.7075 8.40832C14.5637 8.26466 14.3855 8.19282 14.173 8.19282H10.173C9.9605 8.19282 9.78242 8.26474 9.63875 8.40857C9.49492 8.55241 9.423 8.73057 9.423 8.94307C9.423 9.15574 9.49492 9.33382 9.63875 9.47732C9.78242 9.62099 9.9605 9.69282 10.173 9.69282ZM6.173 14.9428H18.173V5.94282H6.173V14.9428Z" fill="#222222"/>\n' +
+        '</svg>\n',
+      items: [
+        {label: 'بسته‌بندی', value: 'مقوای چند لایه'},
+        {label: 'ارسال با پست', value: 'دارد'},
+        {label: 'ارسال با تیپاکس', value: 'دارد'}
+      ],
+    },
+    {
+      id: 'services',
+      title: 'خدمات',
+      icon: '<svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">\n' +
+        '<path d="M6.30775 1.5H12.423C12.5128 1.5 12.5866 1.52883 12.6442 1.5865C12.7019 1.64417 12.7308 1.71783 12.7308 1.8075V8.625H6.30775V1.5ZM1.80775 1.5H4.80775V8.625H1.80775C1.71791 8.625 1.64417 8.59775 1.5865 8.54325C1.52883 8.48875 1.5 8.41658 1.5 8.32675V1.8075C1.5 1.71783 1.52883 1.64417 1.5865 1.5865C1.64417 1.52883 1.71791 1.5 1.80775 1.5ZM6.577 10.1248H13.6155V16.1152H7.95C7.6 16.1152 7.2625 16.0569 6.9375 15.9402C6.6125 15.8236 6.31667 15.6486 6.05 15.4152L1.9 11.9902C2.059 11.8249 2.23625 11.7009 2.43175 11.6182C2.62725 11.5354 2.83267 11.4773 3.048 11.444C3.325 11.4068 3.59525 11.4233 3.85875 11.4932C4.12208 11.5631 4.37042 11.6897 4.60375 11.873L6.35 13.271C6.51417 13.3978 6.68917 13.4966 6.875 13.5672C7.06083 13.6377 7.26083 13.673 7.475 13.673H10.4808C10.6936 13.673 10.8717 13.6012 11.0152 13.4575C11.1589 13.314 11.2308 13.1358 11.2308 12.923C11.2308 12.7102 11.1589 12.5319 11.0152 12.3883C10.8717 12.2448 10.6936 12.173 10.4808 12.173H7.36925L6.18275 11.2057C6.09292 11.1429 6.02875 11.0634 5.99025 10.9672C5.95192 10.8711 5.94233 10.7666 5.9615 10.6538C5.98067 10.4999 6.04958 10.3733 6.16825 10.274C6.28675 10.1745 6.423 10.1248 6.577 10.1248ZM15.1152 10.1152H17.1923C17.2821 10.1152 17.3558 10.1441 17.4135 10.2017C17.4712 10.2594 17.5 10.3332 17.5 10.423V16.8075C17.5 16.8973 17.4712 16.9711 17.4135 17.0287C17.3558 17.0864 17.2821 17.1152 17.1923 17.1152H15.423C15.3333 17.1152 15.2597 17.0864 15.202 17.0287C15.1442 16.9711 15.1152 16.8973 15.1152 16.8075V10.1152ZM14.2308 10.1248V1.8075C14.2308 1.3025 14.0557 0.875 13.7057 0.525C13.3558 0.175 12.9282 0 12.423 0H1.80775C1.30258 0 0.875 0.175 0.525 0.525C0.174999 0.875 0 1.3025 0 1.8075V8.31725C0 8.82242 0.174999 9.24992 0.525 9.59975C0.875 9.94975 1.30258 10.1248 1.80775 10.1248H14.2308ZM15.423 18.6248H17.1923C17.6974 18.6248 18.125 18.4498 18.475 18.0998C18.825 17.7498 19 17.3223 19 16.8173V10.4325C19 9.9275 18.825 9.5 18.475 9.15C18.125 8.8 17.6974 8.625 17.1923 8.625H6.5865C5.38783 8.625 4.24075 8.84583 3.14525 9.2875C2.04975 9.72917 1.14367 10.4256 0.427 11.3767C0.262833 11.6024 0.199333 11.8572 0.2365 12.1412C0.273666 12.4253 0.403166 12.6647 0.625 12.8595L5.077 16.5903C5.48217 16.9287 5.9325 17.1857 6.428 17.3612C6.9235 17.5369 7.43083 17.6248 7.95 17.6248H13.8135C13.9648 17.9247 14.1824 18.1664 14.4662 18.3498C14.7502 18.5331 15.0692 18.6248 15.423 18.6248Z" fill="#222222"/>\n' +
+        '</svg>',
+      items: [
+        {label: 'خدمات پس از فروش', value: 'پشتیبانی فنی آنلاین'},
+        {label: 'گارانتی', value: '۱ سال (دنتال ایران)'}
+      ],
+    }
   ];
 
   reviews = [
@@ -107,13 +133,6 @@ export class ProductTabs implements OnInit, OnDestroy {
     }
   ];
 
-  questionSortOptions = [
-    { id: 'newest', label: 'جدیدترین' },
-    { id: 'mostAnswered', label: 'بیشترین پاسخ' }
-  ];
-  
-  selectedQuestionSort: string = 'newest';
-
   reviewSummary = {
     totalReviews: 2,
     averageRating: 4.8,
@@ -124,13 +143,11 @@ export class ProductTabs implements OnInit, OnDestroy {
   };
 
   reviewSortOptions = [
-    { id: 'mostHelpful', label: 'مفیدترین' },
-    { id: 'newest', label: 'جدیدترین' },
-    { id: 'highestRating', label: 'بیشترین امتیاز' },
-    { id: 'lowestRating', label: 'کمترین امتیاز' }
+    {id: 'mostHelpful', label: 'مفیدترین'},
+    {id: 'newest', label: 'جدیدترین'},
+    {id: 'highestRating', label: 'بیشترین امتیاز'},
+    {id: 'lowestRating', label: 'کمترین امتیاز'}
   ];
-  
-  selectedSortOption: string = 'mostHelpful';
 
   ngOnInit() {
     this.setupScrollListener();
@@ -142,66 +159,6 @@ export class ProductTabs implements OnInit, OnDestroy {
 
   setupScrollListener() {
     // This will be handled by scroll event
-  }
-
-  @HostListener('window:scroll', ['$event'])
-  onScroll() {
-    if (!this.isScrolling) {
-      this.updateActiveTabOnScroll();
-    }
-  }
-
-  updateActiveTabOnScroll() {
-    const sections = this.tabs.map(tab => {
-      const element = document.getElementById(tab.id);
-      return element ? { id: tab.id, element, top: element.offsetTop, bottom: element.offsetTop + element.offsetHeight } : null;
-    }).filter(section => section !== null);
-
-    const scrollPosition = window.scrollY + 300; // Offset for better UX
-
-    for (let i = sections.length - 1; i >= 0; i--) {
-      const section = sections[i];
-      if (section && scrollPosition >= section.top && scrollPosition < section.bottom) {
-        if (this.activeTab !== section.id) {
-          this.activeTab = section.id;
-        }
-        break;
-      }
-    }
-  }
-
-  setActiveTab(tabId: string) {
-    if (this.activeTab === tabId) {
-      return; // Already active
-    }
-    
-    this.isScrolling = true;
-    this.activeTab = tabId;
-    this.cdr.detectChanges(); // Force change detection
-    
-    const element = document.getElementById(tabId);
-    if (element) {
-      const offsetTop = element.offsetTop - 150; // Account for header/sticky menu
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
-      
-      // Re-enable scroll detection after scroll animation completes
-      setTimeout(() => {
-        this.isScrolling = false;
-      }, 1000);
-    } else {
-      this.isScrolling = false;
-    }
-  }
-
-  getStars(rating: number): number[] {
-    return Array.from({ length: 5 }, (_, i) => i < rating ? 1 : 0);
-  }
-
-  getRoundedRating(rating: number): number {
-    return Math.round(rating);
   }
 }
 

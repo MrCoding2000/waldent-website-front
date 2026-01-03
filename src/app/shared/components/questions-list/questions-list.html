@@ -1,0 +1,127 @@
+<section id="questions" class="bg-gray-50 rounded-2xl p-6 mt-4">
+  <!-- Header -->
+  <header class="questions-header-wrapper flex justify-between items-start">
+    <div class="questions-header-right">
+      <div class="flex items-center gap-2 mb-2">
+        <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9.5 9.82125L7.7155 10.9038C7.55133 11.0076 7.38717 11.0018 7.223 10.8865C7.059 10.7712 6.99875 10.6148 7.04225 10.4173L7.5135 8.3865L5.92875 7.01725C5.77492 6.88008 5.72817 6.71858 5.7885 6.53275C5.84867 6.34675 5.98267 6.24542 6.1905 6.22875L8.27125 6.05375L9.0885 4.1385C9.16533 3.95767 9.3025 3.86725 9.5 3.86725C9.6975 3.86725 9.83467 3.95767 9.9115 4.1385L10.7287 6.05375L12.8095 6.22875C13.0173 6.24542 13.1513 6.34675 13.2115 6.53275C13.2718 6.71858 13.2251 6.88008 13.0712 7.01725L11.4865 8.3865L11.9577 10.4173C12.0012 10.6148 11.941 10.7712 11.777 10.8865C11.6128 11.0018 11.4487 11.0076 11.2845 10.9038L9.5 9.82125ZM15.4615 15L17.4635 17.0018C17.748 17.2864 18.0752 17.3509 18.4452 17.1952C18.8151 17.0394 19 16.7589 19 16.3538V1.80775C19 1.30258 18.825 0.875 18.475 0.525C18.125 0.175 17.6974 0 17.1923 0H1.80775C1.30258 0 0.875 0.175 0.525 0.525C0.174999 0.875 0 1.30258 0 1.80775V13.1923C0 13.6974 0.174999 14.125 0.525 14.475C0.875 14.825 1.30258 15 1.80775 15H15.4615ZM16.1 13.5H1.80775C1.73075 13.5 1.66025 13.4679 1.59625 13.4038C1.53208 13.3398 1.5 13.2692 1.5 13.1923V1.80775C1.5 1.73075 1.53208 1.66025 1.59625 1.59625C1.66025 1.53208 1.73075 1.5 1.80775 1.5H17.1923C17.2693 1.5 17.3397 1.53208 17.4037 1.59625C17.4679 1.66025 17.5 1.73075 17.5 1.80775V14.8848L16.1 13.5Z" fill="#222222"/>
+        </svg>
+        <h3 class="text-lg font-bold text-gray-800">پرسش‌ها</h3>
+      </div>
+      <p class="text-sm text-gray-500">
+        اگر پرسشی درباره این کالا دارید بپرسید
+      </p>
+    </div>
+    <button
+      class="border border-emerald-500 text-emerald-600 rounded-xl px-6 py-2 text-sm font-medium hover:bg-emerald-50 transition">
+      ثبت پرسش
+    </button>
+  </header>
+  <app-sort-options-container [sortOptions]="questionSortOptions" [selectedSortOption]="selectedQuestionSort"></app-sort-options-container>
+  <!-- Questions -->
+  <div class="space-y-6">
+    @for (question of questionsList; track question.id) {
+      <div class="bg-white rounded-2xl p-5 shadow-sm">
+
+        <!-- Question header -->
+        <div class="flex justify-between items-start mb-3">
+          <div class="flex gap-3">
+            <div class="w-10 h-10 rounded-full bg-gray-200"></div>
+            <div class="text-sm">
+              <p class="font-medium text-gray-800">{{ question.userName }}</p>
+              <p class="text-xs text-gray-400">{{ question.date }}</p>
+            </div>
+          </div>
+
+          <button class="text-xs text-gray-400 hover:text-red-500">
+            گزارش پرسش
+          </button>
+        </div>
+
+        <!-- Question text -->
+        <p class="text-sm text-gray-700 leading-7 mb-4">
+          {{ question.question }}
+        </p>
+
+        <!-- Answers -->
+        @if (question.answers?.length) {
+          <div class="border-r-2 border-emerald-500 pr-4 space-y-4">
+            @for (answer of question.answers; track answer.id) {
+              <div class="bg-gray-50 rounded-xl p-4">
+
+                <!-- Answer header -->
+                <div class="flex justify-between items-start mb-2">
+                  <div class="flex gap-3 items-center">
+                    <div
+                      class="w-10 h-10 rounded-full flex items-center justify-center"
+                      [ngClass]="answer.isOfficial ? 'bg-emerald-500 text-white' : 'bg-gray-300'">
+                      <span class="text-sm font-bold">
+                        {{ answer.userName[0] }}
+                      </span>
+                    </div>
+
+                    <div class="text-sm">
+                      <p class="font-medium text-gray-800">
+                        {{ answer.userName }}
+                        <span *ngIf="answer.isOfficial"
+                              class="text-emerald-600 text-xs mr-1">
+                          (والدت)
+                        </span>
+                      </p>
+                      <p class="text-xs text-gray-400">{{ answer.date }}</p>
+                    </div>
+                  </div>
+
+                  <button class="text-xs text-gray-400 hover:text-red-500">
+                    گزارش پاسخ
+                  </button>
+                </div>
+
+                <!-- Answer text -->
+                <p class="text-sm text-gray-700 leading-7 mb-3">
+                  {{ answer.text }}
+                </p>
+
+                <!-- Helpful -->
+                <div class="flex items-center gap-4 text-xs text-gray-500">
+                  <span>آیا این پاسخ مفید است؟</span>
+
+                  <button class="flex items-center gap-1 text-emerald-600">
+                    👍 {{ answer.helpfulCount }}
+                  </button>
+
+                  <button class="flex items-center gap-1">
+                    👎 {{ answer.notHelpfulCount }}
+                  </button>
+                </div>
+              </div>
+            }
+          </div>
+        }
+
+        <!-- Submit answer -->
+        <div class="flex justify-between items-center mt-4 pt-4 border-t text-sm">
+          <span class="text-gray-600">برای این پرسش پاسخی دارید؟</span>
+          <button class="text-blue-600 font-medium flex items-center gap-1">
+            ثبت پاسخ
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+                 viewBox="0 0 24 24">
+              <path d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- View more -->
+  <div class="flex justify-center mt-6">
+    <button class="text-blue-600 text-sm font-medium flex items-center gap-2">
+      مشاهده ۱۰ سوال دیگر
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M5 7l5 5 5-5"/>
+      </svg>
+    </button>
+  </div>
+
+</section>

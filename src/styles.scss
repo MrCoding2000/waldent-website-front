@@ -26,6 +26,11 @@
   src: url('/assets/fonts/IRANYekanXFaNum-Light.ttf') format('woff'),
   url('/assets/fonts/IRANYekanXFaNum-Light.ttf') format('woff');
 }
+@font-face {
+  font-family: 'IRANYekanXBoldFaNumber';
+  src: url('/assets/fonts/IRANYekanXFaNum-Bold.woff') format('woff'),
+  url('/assets/fonts/IRANYekanXFaNum-Bold.woff') format('woff');
+}
 
 @tailwind base;
 @tailwind components;
@@ -38,8 +43,9 @@
 }
 
 html {
-  --app-font: 'IRANYekanXFaNum', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --app-font: 'IRANYekanMediumFaNumber', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   font-family: var(--app-font);
+  direction: rtl;
 }
 
 html[lang="en"] {
@@ -54,6 +60,53 @@ body {
 * {
   font-family: IRANYekanMediumFaNumber;
   direction: rtl;
+
   margin: 0;
   padding: 0;
+}
+
+.all-list-button {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: var(--Color-Schema-Main-Colors-Secondary, #0058CC);
+}
+
+.tab-section {
+  background: #F7F9FB;
+  padding: 16px;
+  border-radius: 28px;
+  .left-side-container {
+    max-width: 642px;
+  }
+
+  .register-prompt {
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 20px;
+    letter-spacing: 0;
+    text-align: justify;
+    color: var(--Color-Schema-On-Surface-Primary, #222222);
+    margin: 8px 0;
+  }
+
+  .register-review-btn {
+    width: 100%;
+    height: 48px;
+    gap: 8px;
+    opacity: 1;
+    border-radius: 20px;
+    padding: 8px 16px;
+    border: 1px solid var(--Color-Schema-Main-Colors-Primary, #009975);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: var(--Color-Schema-Main-Colors-Primary, #009975);
+
+    &:hover {
+      //background: #007A5E;
+    }
+  }
 }
