@@ -1,11 +1,13 @@
 import {Component, Input} from '@angular/core';
 import {SortOptionsContainer} from '../sort-options-container/sort-options-container';
+import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-questions-list',
   standalone: true,
   imports: [
-    SortOptionsContainer
+    SortOptionsContainer,
+    NgClass
   ],
   templateUrl: './questions-list.html',
   styleUrl: './questions-list.scss'
