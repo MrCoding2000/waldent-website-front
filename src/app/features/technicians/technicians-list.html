@@ -1,10 +1,19 @@
-<section class="technicians-list-page w-full bg-gray-50">
+<section class="technicians-list-page w-full bg-gray-50 lg:bg-white">
+  <app-technicians-breadcrumb 
+    [activeFilters]="activeFilters"
+    (removeFilter)="onRemoveFilter($event)"
+    (removeAllFilters)="onRemoveAllFilters()">
+  </app-technicians-breadcrumb>
   <div class="max-w-[1220px] mx-auto px-4 lg:px-16 py-6">
     <div class="flex flex-col lg:flex-row gap-6">
-      
-      <!-- Filter Sidebar -->
-      <aside class="w-full lg:w-auto lg:flex-shrink-0">
-        <app-technician-filter (filterChange)="onFilterChange($event)"></app-technician-filter>
+
+      <!-- Filter Sidebar (Desktop only) -->
+      <aside class="hidden lg:block lg:w-auto lg:flex-shrink-0">
+        <app-technician-filter 
+          #filterComponent
+          (filterChange)="onFilterChange($event)"
+          (activeFiltersChange)="onActiveFiltersChange($event)">
+        </app-technician-filter>
       </aside>
 
       <!-- Main Content -->
@@ -14,8 +23,8 @@
           <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             <div class="flex items-center gap-4">
               <span class="text-gray-850 text-[14px]">همه دسته بندی ها:</span>
-              <button 
-                type="button" 
+              <button
+                type="button"
                 class="text-[#0058CC] text-[14px] hover:underline"
                 (click)="removeAllFilters()">
                 حذف همه فیلترها
@@ -85,31 +94,13 @@
             </div>
           </div>
 
-          <!-- Active Filters Display (Mobile) -->
-          @if (activeFilters.length > 0) {
-            <div class="mt-4 pt-4 border-t border-gray-200 lg:hidden">
-              <div class="text-gray-850 text-[12px] font-semibold mb-2">فیلترهای فعال</div>
-              <div class="flex flex-wrap gap-2">
-                @for (filter of activeFilters; track filter) {
-                  <div class="inline-flex items-center gap-2 bg-gray-100 rounded-[20px] px-3 py-1.5 text-[12px] text-gray-850">
-                    <span>{{ filter }}</span>
-                    <button type="button" class="text-gray-500 hover:text-gray-850" (click)="removeAllFilters()">
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                        <path d="M9 3L3 9M3 3L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                      </svg>
-                    </button>
-                  </div>
-                }
-              </div>
-            </div>
-          }
         </div>
 
         <!-- Technicians List -->
         @if (viewMode === 'grid') {
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             @for (technician of filteredTechnicians; track technician.id) {
-              <div class="bg-white rounded-[12px] p-4 border border-gray-200 cursor-pointer hover:shadow-md transition-shadow" 
+              <div class="bg-white rounded-[12px] p-4 border border-gray-200 cursor-pointer hover:shadow-md transition-shadow"
                    [routerLink]="['/technician', technician.id]">
                 <div class="flex items-start gap-3 mb-3">
                   <div class="w-12 h-12 bg-gray-150 rounded-[8px] flex items-center justify-center flex-shrink-0">
@@ -144,7 +135,7 @@
         } @else {
           <div class="space-y-4">
             @for (technician of filteredTechnicians; track technician.id) {
-              <div class="bg-white rounded-[12px] p-4 border border-gray-200 cursor-pointer hover:shadow-md transition-shadow" 
+              <div class="bg-white rounded-[12px] p-4 border border-gray-200 cursor-pointer hover:shadow-md transition-shadow"
                    [routerLink]="['/technician', technician.id]">
                 <div class="flex items-start justify-between mb-3">
                   <div class="flex items-center gap-3 flex-1">

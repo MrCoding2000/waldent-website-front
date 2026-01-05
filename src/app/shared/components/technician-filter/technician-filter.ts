@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Checkbox } from 'primeng/checkbox';
@@ -11,8 +11,10 @@ import { ToggleSwitch } from '../toggle-switch/toggle-switch';
   templateUrl: './technician-filter.html',
   styleUrl: './technician-filter.scss'
 })
-export class TechnicianFilter {
+export class TechnicianFilter implements OnChanges {
   @Output() filterChange = new EventEmitter<any>();
+  @Output() activeFiltersChange = new EventEmitter<string[]>();
+  @Input() removeFilterName: string | null = null;
 
   available = false;
   expandedSections = {
@@ -76,10 +78,24 @@ export class TechnicianFilter {
   get activeFilters(): string[] {
     const filters: string[] = [];
     const selectedProvinces = this.provinces.filter(p => p.selected).map(p => p.name);
+    const selectedCities = this.cities.filter(c => c.selected).map(c => c.name);
     if (selectedProvinces.length > 0) {
       filters.push(...selectedProvinces);
     }
+    if (selectedCities.length > 0) {
+      filters.push(...selectedCities);
+    }
     return filters;
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['removeFilterName'] && this.removeFilterName) {
+      this.removeActiveFilter(this.removeFilterName);
+      // Reset after processing
+      setTimeout(() => {
+        this.removeFilterName = null;
+      }, 0);
+    }
   }
 
   toggleSection(section: 'specialty' | 'province' | 'city') {
@@ -99,6 +115,19 @@ export class TechnicianFilter {
     }
   }
 
+  removeAllFilters() {
+    this.provinces.forEach(p => p.selected = false);
+    this.cities.forEach(c => c.selected = false);
+    this.specialties.forEach(s => s.selected = false);
+    this.available = false;
+    this.emitFilterChange();
+  }
+
+  // Public method to remove a filter by name (can be called from parent)
+  public removeFilterByName(filterName: string) {
+    this.removeActiveFilter(filterName);
+  }
+
   onAvailableChange(checked: boolean) {
     this.available = checked;
     this.emitFilterChange();
@@ -108,6 +137,9 @@ export class TechnicianFilter {
     const selectedSpecialties = this.specialties.filter(s => s.selected).map(s => s.name);
     const selectedProvinces = this.provinces.filter(p => p.selected).map(p => p.name);
     const selectedCities = this.cities.filter(c => c.selected).map(c => c.name);
+    
+    const activeFilters = [...selectedProvinces, ...selectedCities];
+    this.activeFiltersChange.emit(activeFilters);
     
     this.filterChange.emit({
       specialties: selectedSpecialties,

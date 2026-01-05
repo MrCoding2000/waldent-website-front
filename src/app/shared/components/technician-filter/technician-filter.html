@@ -4,26 +4,6 @@
     <span class="title">فیلترها</span>
   </div>
 
-  <!-- Active Filters -->
-  @if (activeFilters.length > 0) {
-    <div class="section">
-      <div class="active-filters-title">فیلترهای فعال</div>
-      <div class="active-filters-list">
-        @for (filter of activeFilters; track filter) {
-          <div class="active-filter-tag">
-            <span>{{ filter }}</span>
-            <button type="button" class="remove-filter-btn" (click)="removeActiveFilter(filter)">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 3L3 9M3 3L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-          </div>
-        }
-      </div>
-    </div>
-    <div class="divider"></div>
-  }
-
   <!-- Available Toggle -->
   <div class="section">
     <div class="checkbox-item">

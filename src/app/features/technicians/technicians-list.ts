@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TechnicianFilter } from '../../shared/components/technician-filter/technician-filter';
+import { TechniciansBreadcrumb } from '../../shared/components/technicians-breadcrumb/technicians-breadcrumb';
 
 export interface Technician {
   id: number;
@@ -18,11 +19,13 @@ export interface Technician {
 @Component({
   selector: 'app-technicians-list',
   standalone: true,
-  imports: [CommonModule, RouterLink, TechnicianFilter],
+  imports: [CommonModule, RouterLink, TechnicianFilter, TechniciansBreadcrumb],
   templateUrl: './technicians-list.html',
   styleUrl: './technicians-list.scss'
 })
 export class TechniciansList {
+  @ViewChild('filterComponent') filterComponent?: TechnicianFilter;
+  
   viewMode: 'grid' | 'list' = 'grid';
   sortBy: 'closest' | 'rating' = 'closest';
 
@@ -67,15 +70,42 @@ export class TechniciansList {
     this.updateActiveFilters(filters);
   }
 
+  onActiveFiltersChange(activeFilters: string[]) {
+    this.activeFilters = activeFilters;
+  }
+
   private updateActiveFilters(filters: any) {
     this.activeFilters = [];
     if (filters.provinces?.length > 0) {
       this.activeFilters.push(...filters.provinces);
     }
+    if (filters.cities?.length > 0) {
+      this.activeFilters.push(...filters.cities);
+    }
+  }
+
+  onRemoveFilter(filter: string) {
+    // Remove from filter component if available
+    if (this.filterComponent) {
+      this.filterComponent.removeFilterByName(filter);
+    } else {
+      // Fallback: just update local state
+      this.activeFilters = this.activeFilters.filter(f => f !== filter);
+    }
   }
 
   removeAllFilters() {
     this.activeFilters = [];
+  }
+
+  onRemoveAllFilters() {
+    // Remove all from filter component if available
+    if (this.filterComponent) {
+      this.filterComponent.removeAllFilters();
+    } else {
+      // Fallback: just update local state
+      this.removeAllFilters();
+    }
   }
 
   setViewMode(mode: 'grid' | 'list') {
