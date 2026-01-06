@@ -1,6 +1,6 @@
 <!-- Desktop Breadcrumb -->
 <div class="technicians-breadcrumb hidden lg:block">
-  <div class="breadcrumb-container" [class.has-active-filters]="activeFilters.length > 0">
+  <div class="breadcrumb-container">
     <div class="breadcrumb-top-row">
       <div class="breadcrumb-right">
         <span class="breadcrumb-category">دسته بندی</span>
@@ -17,31 +17,6 @@
         </button>
       </div>
     </div>
-
-    <!-- Active Filters Section (Desktop) -->
-    @if (activeFilters.length > 0) {
-      <div class="active-filters-section">
-        <div class="active-filters-container">
-          <div class="active-filters-right">
-            <span class="active-filters-label">فیلترهای فعال:</span>
-            <div class="active-filters-tags">
-              @for (filter of activeFilters; track filter) {
-                <div class="active-filter-tag">
-                  <span class="filter-tag-text">{{ filter }}</span>
-                  <button type="button" class="filter-tag-remove" (click)="onRemoveFilter(filter)" aria-label="Remove filter">
-                    <img src="assets/images/multiplay.svg" alt="">
-                  </button>
-                </div>
-              }
-            </div>
-          </div>
-
-          <button type="button" class="remove-all-filters-btn" (click)="onRemoveAllFilters()">
-            حذف همه فیلترها
-          </button>
-        </div>
-      </div>
-    }
   </div>
 </div>
 

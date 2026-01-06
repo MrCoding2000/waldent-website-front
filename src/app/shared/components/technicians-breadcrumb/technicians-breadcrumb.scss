@@ -22,11 +22,6 @@
   @media (min-width: 1024px) {
     background: #f9fafb;
   }
-
-  &.has-active-filters {
-    border-radius: 20px;
-    padding-bottom: 0.75rem;
-  }
 }
 
 .breadcrumb-top-row {
@@ -400,111 +395,13 @@
   }
 }
 
-// Active Filters Section (Desktop)
-.active-filters-section {
-  width: 100%;
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid #e5e5e5;
-}
-
-.active-filters-container {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  direction: rtl;
-}
-
-.remove-all-filters-btn {
-  background: transparent;
-  border-right: 1px solid #d1d5db ;
-  padding-right: 24px;
-  cursor: pointer;
-  color: #4b5563;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.5;
-  font-family: IRANYekanFaNumber, sans-serif;
-  white-space: nowrap;
-  transition: color 0.2s;
-
-  &:hover {
-    color: #1a1a1a;
-  }
-}
-
-.active-filters-right {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.active-filters-label {
-  color: #1a1a1a;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.5;
-  font-family: IRANYekanFaNumber, sans-serif;
-  white-space: nowrap;
-}
-
-.active-filters-tags {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.active-filter-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: #f5f5f5;
-  border-radius: 20px;
-  padding: 0.375rem 0.75rem;
-  font-family: IRANYekanFaNumber, sans-serif;
-}
-
-.filter-tag-text {
-  color: #1a1a1a;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.5;
-}
-
-.filter-tag-remove {
-  background: transparent;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #1a1a1a;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-  transition: color 0.2s;
-
-  &:hover {
-    color: #4b5563;
-  }
-
-  svg {
-    width: 12px;
-    height: 12px;
-  }
-}
-
 // Active Filters Section (Mobile)
 .active-filters-section-mobile {
   width: 100%;
   margin-top: 0.75rem;
   padding-top: 0.75rem;
   border-top: 1px solid #e5e5e5;
+  direction: rtl;
 }
 
 .active-filters-container-mobile {
@@ -545,7 +442,6 @@
     color: #003d7a;
   }
 }
-
 
 .active-filters-label-mobile {
   color: #1a1a1a;
@@ -610,5 +506,6 @@
     display: block;
   }
 }
+
 
 

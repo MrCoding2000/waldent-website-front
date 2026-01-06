@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TechnicianFilter } from '../../shared/components/technician-filter/technician-filter';
 import { TechniciansBreadcrumb } from '../../shared/components/technicians-breadcrumb/technicians-breadcrumb';
+import { ActiveFilters } from '../../shared/components/active-filters/active-filters';
 
 export interface Technician {
   id: number;
@@ -19,7 +20,7 @@ export interface Technician {
 @Component({
   selector: 'app-technicians-list',
   standalone: true,
-  imports: [CommonModule, RouterLink, TechnicianFilter, TechniciansBreadcrumb],
+  imports: [CommonModule, RouterLink, TechnicianFilter, TechniciansBreadcrumb, ActiveFilters],
   templateUrl: './technicians-list.html',
   styleUrl: './technicians-list.scss'
 })

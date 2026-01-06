@@ -1,4 +1,4 @@
-import { Component, Inject, OnDestroy, Input, Output, EventEmitter, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, Inject, OnDestroy, ViewChild, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DOCUMENT } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -11,7 +11,7 @@ import { TechnicianFilter } from '../technician-filter/technician-filter';
   templateUrl: './technicians-breadcrumb.html',
   styleUrl: './technicians-breadcrumb.scss'
 })
-export class TechniciansBreadcrumb implements AfterViewInit {
+export class TechniciansBreadcrumb implements AfterViewInit, OnDestroy {
   @Input() activeFilters: string[] = [];
   @Output() removeFilter = new EventEmitter<string>();
   @Output() removeAllFilters = new EventEmitter<void>();
@@ -43,7 +43,7 @@ export class TechniciansBreadcrumb implements AfterViewInit {
 
   ngAfterViewInit() {
     // Sync active filters when mobile filter component is available
-    if (this.mobileFilterComponent && this.activeFilters.length > 0) {
+    if (this.mobileFilterComponent) {
       // The filter component will emit activeFiltersChange when initialized
     }
   }
