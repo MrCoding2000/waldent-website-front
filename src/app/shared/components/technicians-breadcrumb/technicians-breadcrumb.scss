@@ -366,7 +366,7 @@
 }
 
 .filter-sidebar-header {
-  @apply flex items-center justify-between p-4 border-b border-gray-200 sticky top-0 bg-white z-10;
+  @apply flex items-center justify-between p-4 border-b border-gray-200 sticky top-0 bg-[#F7F9FB] z-10;
 }
 
 .filter-sidebar-title {
@@ -384,10 +384,10 @@
     width: 100%;
     min-width: 0;
     max-width: none;
-    background: white;
     border-radius: 0;
     padding: 0;
     max-height: none;
+    overflow-y: auto;
 
     .header-row {
       display: none;

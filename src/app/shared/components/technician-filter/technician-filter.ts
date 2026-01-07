@@ -1,13 +1,12 @@
 import { Component, EventEmitter, Output, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Checkbox } from 'primeng/checkbox';
 import { ToggleSwitch } from '../toggle-switch/toggle-switch';
 
 @Component({
   selector: 'app-technician-filter',
   standalone: true,
-  imports: [CommonModule, FormsModule, Checkbox, ToggleSwitch],
+  imports: [CommonModule, FormsModule, ToggleSwitch],
   templateUrl: './technician-filter.html',
   styleUrl: './technician-filter.scss'
 })
@@ -28,10 +27,10 @@ export class TechnicianFilter implements OnChanges {
   citySearch = '';
 
   specialties: Array<{ name: string; selected: boolean }> = [
-    { name: 'یونیت و صندلی دندانپزشکی', selected: false },
-    { name: 'اتوکلاو و استریلیزاسیون', selected: false },
+    { name: 'یونیت و صندلی ', selected: false },
+    { name: 'اتوکلاو ', selected: false },
     { name: 'تعمیر هندپیس', selected: false },
-    { name: 'تجهیزات تصویربرداری', selected: false },
+    { name: 'تجهیزات ', selected: false },
     { name: 'سیستم‌های ساکشن', selected: false },
     { name: 'کمپرسور', selected: false },
   ];
@@ -137,10 +136,10 @@ export class TechnicianFilter implements OnChanges {
     const selectedSpecialties = this.specialties.filter(s => s.selected).map(s => s.name);
     const selectedProvinces = this.provinces.filter(p => p.selected).map(p => p.name);
     const selectedCities = this.cities.filter(c => c.selected).map(c => c.name);
-    
+
     const activeFilters = [...selectedProvinces, ...selectedCities];
     this.activeFiltersChange.emit(activeFilters);
-    
+
     this.filterChange.emit({
       specialties: selectedSpecialties,
       provinces: selectedProvinces,
