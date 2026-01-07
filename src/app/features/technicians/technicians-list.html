@@ -1,138 +1,134 @@
-<section class="technicians-list-page w-full bg-gray-50">
+<section class="technicians-list-page w-full bg-gray-50 lg:bg-white">
+  <app-technicians-breadcrumb
+    [activeFilters]="activeFilters"
+    (removeFilter)="onRemoveFilter($event)"
+    (removeAllFilters)="onRemoveAllFilters()">
+  </app-technicians-breadcrumb>
+
+  <!-- Active Filters (Desktop) -->
+  <div class="hidden lg:block px-4 lg:px-16">
+    <div class="max-w-[1220px] mx-auto">
+      <app-active-filters
+        [activeFilters]="activeFilters"
+        (removeFilter)="onRemoveFilter($event)"
+        (removeAllFilters)="onRemoveAllFilters()">
+      </app-active-filters>
+    </div>
+  </div>
   <div class="max-w-[1220px] mx-auto px-4 lg:px-16 py-6">
     <div class="flex flex-col lg:flex-row gap-6">
-      
-      <!-- Filter Sidebar -->
-      <aside class="w-full lg:w-auto lg:flex-shrink-0">
-        <app-technician-filter (filterChange)="onFilterChange($event)"></app-technician-filter>
+
+      <!-- Filter Sidebar (Desktop only) -->
+      <aside class="hidden lg:block lg:w-auto lg:flex-shrink-0">
+        <app-technician-filter
+          #filterComponent
+          (filterChange)="onFilterChange($event)"
+          (activeFiltersChange)="onActiveFiltersChange($event)">
+        </app-technician-filter>
       </aside>
 
       <!-- Main Content -->
       <main class="flex-1 min-w-0">
         <!-- Top Bar -->
-        <div class="bg-white rounded-[12px] p-4 mb-4">
-          <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-            <div class="flex items-center gap-4">
-              <span class="text-gray-850 text-[14px]">همه دسته بندی ها:</span>
-              <button 
-                type="button" 
-                class="text-[#0058CC] text-[14px] hover:underline"
-                (click)="removeAllFilters()">
-                حذف همه فیلترها
+        <div class="hidden lg:flex bg-[#F7F9FB] rounded-[28px] mb-4 items-center justify-between direction-rtl py-2 pl-2 pr-4 h-16">
+          <!-- Sort Options (Right) -->
+          <div class="flex items-center gap-3">
+            <span class="text-gray-850 text-[14px]">ترتیب نمایش:</span>
+            <div class="flex items-center gap-2">
+              <button
+                type="button"
+                [ngClass]="{
+                  ' bg-[#FFFFFF] text-[#009975] rounded-[20px]': sortBy === 'closest',
+                  'text-gray-850': sortBy !== 'closest'
+                }"
+                class="text-[14px] transition-colors py-2 px-4 h-12"
+                (click)="setSortBy('closest')">
+                نزدیکترین ها
               </button>
-            </div>
-
-            <div class="flex items-center gap-4">
-              <!-- View Mode Toggles -->
-              <div class="flex items-center gap-2 border border-gray-200 rounded-[8px] p-1">
-                <button
-                  type="button"
-                  class="p-2 rounded-[6px] transition-colors"
-                  [class.bg-gray-100]="viewMode === 'grid'"
-                  [class.text-gray-850]="viewMode === 'grid'"
-                  [class.text-gray-400]="viewMode !== 'grid'"
-                  (click)="setViewMode('grid')"
-                  aria-label="Grid view">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8.33333 3.33333H3.33333V8.33333H8.33333V3.33333Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M16.6667 3.33333H11.6667V8.33333H16.6667V3.33333Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M8.33333 11.6667H3.33333V16.6667H8.33333V11.6667Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M16.6667 11.6667H11.6667V16.6667H16.6667V11.6667Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  class="p-2 rounded-[6px] transition-colors"
-                  [class.bg-gray-100]="viewMode === 'list'"
-                  [class.text-gray-850]="viewMode === 'list'"
-                  [class.text-gray-400]="viewMode !== 'list'"
-                  (click)="setViewMode('list')"
-                  aria-label="List view">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3.33333 5H16.6667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M3.33333 10H16.6667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M3.33333 15H16.6667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </button>
-              </div>
-
-              <!-- Sort Options -->
-              <div class="flex items-center gap-3">
-                <span class="text-gray-850 text-[14px]">ترتیب نمایش:</span>
-                <div class="flex items-center gap-2">
-                  <button
-                    type="button"
-                    class="px-4 py-2 rounded-[8px] text-[14px] transition-colors"
-                    [class.bg-[#009975]!important]="sortBy === 'closest'"
-                    [class.text-white]="sortBy === 'closest'"
-                    [class.bg-gray-100]="sortBy !== 'closest'"
-                    [class.text-gray-850]="sortBy !== 'closest'"
-                    (click)="setSortBy('closest')">
-                    نزدیکترین ها
-                  </button>
-                  <button
-                    type="button"
-                    class="px-4 py-2 rounded-[8px] text-[14px] transition-colors"
-                    [class.bg-[#009975]!important]="sortBy === 'rating'"
-                    [class.text-white]="sortBy === 'rating'"
-                    [class.bg-gray-100]="sortBy !== 'rating'"
-                    [class.text-gray-850]="sortBy !== 'rating'"
-                    (click)="setSortBy('rating')">
-                    بیشترین امتیاز
-                  </button>
-                </div>
-              </div>
+              <button
+                type="button"
+                [ngClass]="{
+                  'bg-[#FFFFFF] text-[#009975] rounded-[20px]': sortBy === 'rating',
+                  'text-gray-850': sortBy !== 'rating'
+                }"
+                class="text-[14px] transition-colors py-2 px-4 h-12"
+                (click)="setSortBy('rating')">
+                بیشترین امتیاز
+              </button>
             </div>
           </div>
 
-          <!-- Active Filters Display (Mobile) -->
-          @if (activeFilters.length > 0) {
-            <div class="mt-4 pt-4 border-t border-gray-200 lg:hidden">
-              <div class="text-gray-850 text-[12px] font-semibold mb-2">فیلترهای فعال</div>
-              <div class="flex flex-wrap gap-2">
-                @for (filter of activeFilters; track filter) {
-                  <div class="inline-flex items-center gap-2 bg-gray-100 rounded-[20px] px-3 py-1.5 text-[12px] text-gray-850">
-                    <span>{{ filter }}</span>
-                    <button type="button" class="text-gray-500 hover:text-gray-850" (click)="removeAllFilters()">
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                        <path d="M9 3L3 9M3 3L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                      </svg>
-                    </button>
-                  </div>
-                }
-              </div>
-            </div>
-          }
+          <!-- View Mode Toggles (Left) -->
+          <div class="flex items-center gap-2">
+            <button
+              type="button"
+              class="p-2 transition-colors"
+              [class.text-[#009975]]="viewMode === 'list'"
+              [class.text-gray-850]="viewMode !== 'list'"
+              (click)="setViewMode('list')"
+              aria-label="List view">
+              <img src="assets/images/equal.svg" alt="">
+
+            </button>
+            <button
+              type="button"
+              class="p-2 transition-colors"
+              [class.text-[#009975]]="viewMode === 'grid'"
+              [class.text-gray-850]="viewMode !== 'grid'"
+              (click)="setViewMode('grid')"
+              aria-label="Grid view">
+              <img class="text-[#009975]" src="assets/images/squre-chart.svg" alt="">
+            </button>
+
+          </div>
         </div>
 
         <!-- Technicians List -->
         @if (viewMode === 'grid') {
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             @for (technician of filteredTechnicians; track technician.id) {
-              <div class="bg-white rounded-[12px] p-4 border border-gray-200 cursor-pointer hover:shadow-md transition-shadow" 
+              <div class="bg-white rounded-[12px] p-4 cursor-pointer"
                    [routerLink]="['/technician', technician.id]">
-                <div class="flex items-start gap-3 mb-3">
-                  <div class="w-12 h-12 bg-gray-150 rounded-[8px] flex items-center justify-center flex-shrink-0">
-                    <span class="text-gray-850 text-lg font-semibold">{{ technician.name.charAt(0) }}</span>
-                  </div>
-                  <div class="flex-1 min-w-0">
-                    <div class="flex items-center justify-between mb-1">
-                      <h3 class="text-gray-850 font-semibold text-[14px] leading-5 truncate">{{ technician.name }}</h3>
-                      <button type="button" class="text-gray-400 hover:text-red-500 ml-2">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                      </button>
-                    </div>
-                    <div class="flex items-center gap-1">
-                      <span class="text-[#F5A300] text-[12px]">★</span>
-                      <span class="text-gray-850 text-[12px]">{{ technician.rating }}/5</span>
+                <!-- Top Section: Heart/Star/Rating | Name | Avatar -->
+                <div class="flex items-center justify-between mb-3">
+                  <!-- Right: Small Avatar -->
+                  <div class="flex-shrink-0">
+                    <div class="w-10 h-10 rounded-[16px] bg-[#F7F9FB] flex items-center justify-center">
+                      <img src="assets/images/technician.png" alt="{{ technician.name }}" class="w-5 h-5">
                     </div>
                   </div>
+
+                  <!-- Center: Name -->
+                  <h3 class="text-gray-850 font-semibold text-[14px] leading-5 flex-1 px-2">{{ technician.name }}</h3>
+
+                  <!-- Left: Heart Icon, Star Icon, Rating -->
+                  <div class="flex items-center gap-2 flex-shrink-0">
+                    <span class="text-gray-850 text-[12px]">{{ technician.rating }}/5</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-gray-850">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/>
+                    </svg>
+                    <button type="button" class="text-gray-400 hover:text-red-500" (click)="$event.preventDefault(); $event.stopPropagation();">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </button>
+
+                  </div>
+
                 </div>
-                <p class="text-gray-850/70 text-[12px] leading-5 line-clamp-2 mb-3">{{ technician.specialty }}</p>
-                <div class="flex items-center gap-1 text-gray-850/70 text-[12px]">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+
+                <!-- Middle Section: Briefcase Icon + Specialty -->
+                <div class="flex items-center gap-2 mb-3">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="text-gray-400 flex-shrink-0">
+                    <rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" stroke="currentColor" stroke-width="1.5"/>
+                  </svg>
+                  <p class="text-gray-850/70 text-[12px] leading-5 line-clamp-2">{{ technician.specialty }}</p>
+                </div>
+
+                <!-- Bottom Section: Location Icon + Province/City -->
+                <div class="flex items-center gap-1 text-gray-850/70 text-[12px] bg-gray-150 p-1 rounded-[8px]">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="flex-shrink-0">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="1.5"/>
                     <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/>
                   </svg>
@@ -144,7 +140,7 @@
         } @else {
           <div class="space-y-4">
             @for (technician of filteredTechnicians; track technician.id) {
-              <div class="bg-white rounded-[12px] p-4 border border-gray-200 cursor-pointer hover:shadow-md transition-shadow" 
+              <div class="bg-white rounded-[12px] p-4 border border-gray-200 cursor-pointer hover:shadow-md transition-shadow"
                    [routerLink]="['/technician', technician.id]">
                 <div class="flex items-start justify-between mb-3">
                   <div class="flex items-center gap-3 flex-1">

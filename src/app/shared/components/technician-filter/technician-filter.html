@@ -4,26 +4,6 @@
     <span class="title">فیلترها</span>
   </div>
 
-  <!-- Active Filters -->
-  @if (activeFilters.length > 0) {
-    <div class="section">
-      <div class="active-filters-title">فیلترهای فعال</div>
-      <div class="active-filters-list">
-        @for (filter of activeFilters; track filter) {
-          <div class="active-filter-tag">
-            <span>{{ filter }}</span>
-            <button type="button" class="remove-filter-btn" (click)="removeActiveFilter(filter)">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 3L3 9M3 3L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-          </div>
-        }
-      </div>
-    </div>
-    <div class="divider"></div>
-  }
-
   <!-- Available Toggle -->
   <div class="section">
     <div class="checkbox-item">
@@ -37,23 +17,22 @@
   <div class="section">
     <div class="row-between" (click)="toggleSection('specialty')">
       <span class="label">تخصص</span>
-      <i class="pi" [ngClass]="expandedSections.specialty ? 'pi-chevron-up' : 'pi-chevron-down'"></i>
+      <img src="assets/images/arrow-up.svg" alt="" class="transition-transform duration-300 ease-in-out" [ngClass]="expandedSections.specialty ? '' : 'rotate-180'">
     </div>
     @if (expandedSections.specialty) {
       <div class="filter-content">
         <div class="search-box">
-          <i class="pi pi-search"></i>
+          <img src="assets/images/search.svg" alt="">
           <input type="text" placeholder="جستجو تخصص" [(ngModel)]="specialtySearch" />
         </div>
         <div class="filter-list">
           @for (specialty of filteredSpecialties; track specialty.name) {
             <div class="filter-item">
-              <label>{{ specialty.name }}</label>
-              <p-checkbox 
-                [binary]="true" 
-                [(ngModel)]="specialty.selected"
-                (onChange)="emitFilterChange()"
-              ></p-checkbox>
+              <span class="filter-item-label">{{ specialty.name }}</span>
+              <label class="custom-checkbox">
+                <input type="checkbox" [(ngModel)]="specialty.selected" (change)="emitFilterChange()">
+                <span class="checkmark"></span>
+              </label>
             </div>
           }
         </div>
@@ -67,23 +46,23 @@
   <div class="section">
     <div class="row-between" (click)="toggleSection('province')">
       <span class="label">استان</span>
-      <i class="pi" [ngClass]="expandedSections.province ? 'pi-chevron-up' : 'pi-chevron-down'"></i>
+      <img src="assets/images/arrow-up.svg" alt="" class="transition-transform duration-300 ease-in-out" [ngClass]="expandedSections.province ? '' : 'rotate-180'">
+
     </div>
     @if (expandedSections.province) {
       <div class="filter-content">
         <div class="search-box">
-          <i class="pi pi-search"></i>
+          <img src="assets/images/search.svg" alt="">
           <input type="text" placeholder="جستجو استان" [(ngModel)]="provinceSearch" />
         </div>
         <div class="filter-list">
           @for (province of filteredProvinces; track province.name) {
             <div class="filter-item" [class.selected]="province.selected">
-              <label>{{ province.name }}</label>
-              <p-checkbox 
-                [binary]="true" 
-                [(ngModel)]="province.selected"
-                (onChange)="emitFilterChange()"
-              ></p-checkbox>
+              <span class="filter-item-label">{{ province.name }}</span>
+              <label class="custom-checkbox">
+                <input type="checkbox" [(ngModel)]="province.selected" (change)="emitFilterChange()">
+                <span class="checkmark"></span>
+              </label>
             </div>
           }
         </div>
@@ -97,23 +76,23 @@
   <div class="section">
     <div class="row-between" (click)="toggleSection('city')">
       <span class="label">شهر</span>
-      <i class="pi" [ngClass]="expandedSections.city ? 'pi-chevron-up' : 'pi-chevron-down'"></i>
+      <img src="assets/images/arrow-up.svg" alt="" class="transition-transform duration-300 ease-in-out" [ngClass]="expandedSections.city ? '' : 'rotate-180'">
+
     </div>
     @if (expandedSections.city) {
       <div class="filter-content">
         <div class="search-box">
-          <i class="pi pi-search"></i>
+          <img src="assets/images/search.svg" alt="">
           <input type="text" placeholder="جستجو شهر" [(ngModel)]="citySearch" />
         </div>
         <div class="filter-list">
           @for (city of filteredCities; track city.name) {
             <div class="filter-item" [class.selected]="city.selected">
-              <label>{{ city.name }}</label>
-              <p-checkbox 
-                [binary]="true" 
-                [(ngModel)]="city.selected"
-                (onChange)="emitFilterChange()"
-              ></p-checkbox>
+              <span class="filter-item-label">{{ city.name }}</span>
+              <label class="custom-checkbox">
+                <input type="checkbox" [(ngModel)]="city.selected" (change)="emitFilterChange()">
+                <span class="checkmark"></span>
+              </label>
             </div>
           }
         </div>
