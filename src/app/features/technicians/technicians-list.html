@@ -30,7 +30,7 @@
       <!-- Main Content -->
       <main class="flex-1 min-w-0">
         <!-- Top Bar -->
-        <div class="bg-[#F7F9FB] rounded-[28px] mb-4 flex items-center justify-between direction-rtl" style="padding: 8px 16px 8px 8px; height: 64px;">
+        <div class="hidden lg:flex bg-[#F7F9FB] rounded-[28px] mb-4 items-center justify-between direction-rtl py-2 pl-2 pr-4 h-16">
           <!-- Sort Options (Right) -->
           <div class="flex items-center gap-3">
             <span class="text-gray-850 text-[14px]">ترتیب نمایش:</span>
@@ -41,9 +41,7 @@
                   ' bg-[#FFFFFF] text-[#009975] rounded-[20px]': sortBy === 'closest',
                   'text-gray-850': sortBy !== 'closest'
                 }"
-                class="text-[14px] transition-colors"
-                [style.padding]="sortBy === 'closest' ? '8px 16px' : '0'"
-                [style.height]="sortBy === 'closest' ? '48px' : 'auto'"
+                class="text-[14px] transition-colors py-2 px-4 h-12"
                 (click)="setSortBy('closest')">
                 نزدیکترین ها
               </button>
@@ -53,9 +51,7 @@
                   'bg-[#FFFFFF] text-[#009975] rounded-[20px]': sortBy === 'rating',
                   'text-gray-850': sortBy !== 'rating'
                 }"
-                class="text-[14px] transition-colors"
-                [style.padding]="sortBy === 'rating' ? '8px 16px' : '0'"
-                [style.height]="sortBy === 'rating' ? '48px' : 'auto'"
+                class="text-[14px] transition-colors py-2 px-4 h-12"
                 (click)="setSortBy('rating')">
                 بیشترین امتیاز
               </button>
