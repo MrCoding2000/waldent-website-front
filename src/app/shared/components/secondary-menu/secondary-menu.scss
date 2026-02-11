@@ -1,0 +1,92 @@
+.secondary-menu-container {
+  .secondary-menu-items-container {
+    .menu-item {
+      gap: 8px;
+      opacity: 1;
+      padding: 12px 24px;
+      border-radius: 20px;
+      font-family: IRANYekanXLightFaNumber;
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 24px;
+      color: var(--Color-Schema-On-Surface-Primary, #222222);
+      cursor: pointer;
+      position: relative;
+    }
+    .soon {
+      width: 53px;
+      height: 24px;
+      gap: 10px;
+      angle: 0 deg;
+      opacity: 1;
+      border-radius: 10px;
+      padding: 10px;
+      color: var(--Color-Schema-Main-Colors-On-Primary, #FFFFFF);
+      background: var(--Color-Schema-Main-Colors-Primary, #009975);
+      font-family: IRANYekanMediumFaNumber;
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 24px;
+      letter-spacing: 0;
+      vertical-align: middle;
+      position: absolute;
+      top: -25%;
+      left: -6%;
+      z-index: 100;
+    }
+    .routerLinkActive {
+      font-family: IRANYekanXBoldFaNumber;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 24px;
+      letter-spacing: 0;
+      color: var(--Color-Schema-Main-Colors-Primary, #009975);
+      background: var(--Color-Schema-Surface-Secondary, #F7F9FB);
+    }
+  }
+
+  .search-box-form-container {
+    width: 480px;
+    .search-box-input {
+      width: 351px;
+      height: 48px;
+      gap: 8px;
+      angle: 0 deg;
+      opacity: 1;
+      padding: 8px 16px;
+      border-radius: 20px;
+      background: var(--Color-Schema-Surface-Tertiary, #00000005);
+      box-shadow: 0 1px 2px 2px var(--OpacityBlack8) inset;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+      letter-spacing: 0;
+      text-align: right;
+      color: var(--Color-Schema-On-Surface-Tertiary, #999999);
+      outline: none;
+    }
+    .search-box-button {
+      width: 113px;
+      height: 45px;
+      gap: 8px;
+      opacity: 1;
+      padding: 8px 16px;
+      border-radius: 20px;
+      background: var(--Color-Schema-Main-Colors-Secondary, #0058CC);
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+      letter-spacing: 0;
+      color: var(--Color-Schema-Main-Colors-On-Secondary, #FFFFFF);
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .secondary-menu-items-container {
+    .menu-item {
+      padding: 8px 18px !important;
+      font-size: 16px !important;
+    }
+  }
+}
