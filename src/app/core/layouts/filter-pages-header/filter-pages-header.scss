@@ -1,0 +1,65 @@
+.filter-pages-header-container {
+
+  justify-content: space-between;
+  opacity: 1;
+  .filter-pages-header-right-section {
+    max-width: 640px;
+    height: 48px;
+    opacity: 1;
+    gap: 16px;
+
+    .logo-container {
+      .main-title {
+        font-family: IRANYekanXDemiBoldFaNumber;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: 0;
+        color: var(--Color-Schema-On-Surface-Primary, #222222);
+      }
+    }
+
+    .search-box-form-container {
+      position: relative;
+      .search-box-input {
+        display: block;
+        width: 543px;
+        height: 48px;
+        border-radius: 20px;
+        opacity: 1;
+        gap: 8px;
+        padding: 8px 45px;
+        background: var(--Negatives-Black-4, #0000000A);
+        box-shadow: 0 1px 2px 2px var(--OpacityBlack8) inset;
+        outline: none;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        letter-spacing: 0;
+        text-align: right;
+        color: var(--Negatives-Black-50, #00000080);
+      }
+      .search {
+        position: absolute;
+        top: 35%;
+        right: 12px;
+        z-index: 1000;
+        color: var(--Color-Schema-On-Surface-Tertiary, #999999);
+      }
+    }
+  }
+  .filter-pages-header-left-section {
+    .login-register-button {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+      letter-spacing: 0;
+      color: var(--Color-Schema-On-Surface-Primary, #222222);
+    }
+    .divider {
+      width: 1px;
+      height: 24px;
+      border: 1px solid var(--Color-Schema-On-Surface-Separator, #E6E6E6)
+    }
+  }
+}

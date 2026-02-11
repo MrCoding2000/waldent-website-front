@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import {ProductFilter} from '../../shared/components/product-filter/product-filter';
 import {ProductsCards} from '../../shared/components/products-cards/products-cards';
 import {SecondaryMenu} from '../../shared/components/secondary-menu/secondary-menu';
+import {Categories} from '../../shared/components/categories/categories';
+import {FilterPagesHeader} from '../../core/layouts/filter-pages-header/filter-pages-header';
 
 @Component({
   selector: 'app-products',
@@ -9,7 +11,9 @@ import {SecondaryMenu} from '../../shared/components/secondary-menu/secondary-me
   imports: [
     ProductFilter,
     ProductsCards,
-    SecondaryMenu
+    SecondaryMenu,
+    Categories,
+    FilterPagesHeader
   ],
   templateUrl: './products.html',
   styleUrl: './products.scss'
@@ -19,7 +23,7 @@ export class Products {
     { title: 'محصولات', routerLink: '/products', isSoon: false },
     { title: 'فروشندگان', routerLink: '/sellers', isSoon: true },
     { title: 'تکنسین ها', routerLink: '/technicians', isSoon: true },
-    { title: 'آگهی ها', routerLink: '/technicians', isSoon: false },
+    { title: 'آگهی ها', routerLink: '/advertisements', isSoon: false },
   ];
 
 }
