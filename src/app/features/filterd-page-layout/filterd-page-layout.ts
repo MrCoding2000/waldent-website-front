@@ -4,6 +4,8 @@ import {FilterPagesHeader} from '../../core/layouts/filter-pages-header/filter-p
 import {Categories} from '../../shared/components/categories/categories';
 import {ProductsCards} from '../../shared/components/products-cards/products-cards';
 import {BaseService} from '../../core/services/base.service';
+import {ProductFilter} from '../../shared/components/product-filter/product-filter';
+import {Filter} from '../../shared/components/filter/filter';
 
 @Component({
   selector: 'app-filtered-page-layout',
@@ -12,7 +14,9 @@ import {BaseService} from '../../core/services/base.service';
     RouterOutlet,
     FilterPagesHeader,
     Categories,
-    ProductsCards
+    ProductsCards,
+    ProductFilter,
+    Filter
   ],
   templateUrl: './filterd-page-layout.html',
   styleUrl: './filterd-page-layout.scss'
