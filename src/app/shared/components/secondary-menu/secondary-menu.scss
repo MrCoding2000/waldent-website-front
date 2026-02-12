@@ -93,8 +93,10 @@
 @media only screen and (max-width: 767px) {
   .secondary-menu-items-container {
     .menu-item {
-      padding: 8px 18px !important;
-      font-size: 15px !important;
+      button {
+        padding: 8px 18px !important;
+        font-size: 15px !important;
+      }
     }
   }
 }

@@ -50,7 +50,7 @@ export class Categories {
   ];
   secondaryMenuItems: { title: string; routerLink: string; isSoon: boolean }[] = [
     {title: 'محصولات', routerLink: '/filtered-layout/products', isSoon: false},
-    {title: 'آگهی ها', routerLink: '/filtered-layout/advertisements', isSoon: false},
+    {title: 'آگهی ها', routerLink: '/filtered-layout/advertisements', isSoon: true},
     {title: 'فروشندگان', routerLink: '/filtered-layout/sellers', isSoon: true},
     {title: 'تکنسین ها', routerLink: '/filtered-layout/technicians', isSoon: false},
   ];

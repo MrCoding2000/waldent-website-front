@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule, NgClass} from '@angular/common';
 import {SellerProductCard} from '../seller-product-card/seller-product-card';
 import {TabNavigationMenu} from '../tab-navigation-menu/tab-navigation-menu';
@@ -148,6 +148,7 @@ export class ProductTabs implements OnInit, OnDestroy {
     {id: 'highestRating', label: 'بیشترین امتیاز'},
     {id: 'lowestRating', label: 'کمترین امتیاز'}
   ];
+  @Input() hasCost: boolean = true;
 
   ngOnInit() {
     this.setupScrollListener();

@@ -1,14 +1,4 @@
-<section class="product-tabs-container flex flex-row-reverse lg:p-4 lg:mt-4 gap-8">
-  <div class="seller-card-wrapper hidden lg:block">
-    <app-seller-product-card
-      [sellerName]="'ZULLO INDUSTRIES'"
-      [rating]="4.8"
-      [price]="5000000"
-      [successfulPurchases]="500"
-      [warrantyText]="'۷ روز تضمین بازگشت کالا'">
-    </app-seller-product-card>
-  </div>
-
+<section class="product-tabs-container flex flex-row lg:p-4 lg:mt-4 gap-8">
   <section class="w-full lg:w-[77%]">
     <app-tab-navigation-menu [tabs]="tabs" [activeTab]="activeTab"></app-tab-navigation-menu>
     <!-- Tab Content -->
@@ -18,9 +8,20 @@
       <app-comments [reviewSummary]="reviewSummary" [reviewSortOptions]="reviewSortOptions"
                     [reviews]="reviews"></app-comments>
       <!-- Questions Tab -->
-      <app-questions-list [questionsList]="questions"></app-questions-list>
+<!--      <app-questions-list [questionsList]="questions"></app-questions-list>-->
     </div>
   </section>
+  @if (hasCost) {
+    <div class="seller-card-wrapper hidden lg:block">
+      <app-seller-product-card
+        [sellerName]="'ZULLO INDUSTRIES'"
+        [rating]="4.8"
+        [price]="5000000"
+        [successfulPurchases]="500"
+        [warrantyText]="'۷ روز تضمین بازگشت کالا'">
+      </app-seller-product-card>
+    </div>
+  }
 </section>
 
 
