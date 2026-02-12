@@ -23,8 +23,9 @@ import {FormsModule} from '@angular/forms';
   styleUrl: './categories.scss'
 })
 export class Categories {
-  filteredItem: { value: string, icon: string } =
+  filteredItem: {key: string, value: string, icon: string } =
     {
+      key: 'همه',
       value: 'all',
       icon: `<svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M3.5 9L9 0L14.5 9H3.5ZM14.5 20C13.25 20 12.1875 19.5625 11.3125 18.6875C10.4375 17.8125 10 16.75 10 15.5C10 14.25 10.4375 13.1875 11.3125 12.3125C12.1875 11.4375 13.25 11 14.5 11C15.75 11 16.8125 11.4375 17.6875 12.3125C18.5625 13.1875 19 14.25 19 15.5C19 16.75 18.5625 17.8125 17.6875 18.6875C16.8125 19.5625 15.75 20 14.5 20ZM0 19.5V11.5H8V19.5H0Z" fill="#222222"/>
@@ -48,14 +49,14 @@ export class Categories {
     }
   ];
   secondaryMenuItems: { title: string; routerLink: string; isSoon: boolean }[] = [
-    {title: 'محصولات', routerLink: '/products', isSoon: false},
-    {title: 'آگهی ها', routerLink: '/advertisements', isSoon: false},
-    {title: 'فروشندگان', routerLink: '/sellers', isSoon: false},
-    {title: 'تکنسین ها', routerLink: '/technicians', isSoon: false},
+    {title: 'محصولات', routerLink: '/filtered-layout/products', isSoon: false},
+    {title: 'آگهی ها', routerLink: '/filtered-layout/advertisements', isSoon: false},
+    {title: 'فروشندگان', routerLink: '/filtered-layout/sellers', isSoon: true},
+    {title: 'تکنسین ها', routerLink: '/filtered-layout/technicians', isSoon: false},
   ];
   private activeStatementFilterCategoryItems!: number;
   selectedLocation: string = 'تهران';
-  @Input() categoryListItems!: { value: string, icon: string }[];
+  @Input() categoryListItems!: {key: string, value: string, icon: string }[];
   @Input() isMobile: boolean = false;
   showCategories: boolean = false;
   checked: any;
@@ -103,7 +104,7 @@ export class Categories {
     this.showCategories = !this.showCategories;
   }
 
-  onSetNewCategory(categoryItem: { value: string; icon: string }) {
+  onSetNewCategory(categoryItem: {key: string, value: string; icon: string }) {
     this.filteredItem = categoryItem;
   }
 

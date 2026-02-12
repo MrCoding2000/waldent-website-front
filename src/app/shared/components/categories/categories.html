@@ -8,7 +8,7 @@
           <span [innerHTML]="sanitizer.bypassSecurityTrustHtml(filteredItem.icon)"></span>
           <span>
         <span>دسته بندی : </span>
-        <span>{{ filteredItem.value }}</span>
+        <span>{{ filteredItem.key }}</span>
       </span>
         </button>
       </section>
@@ -26,7 +26,7 @@
         @for(statementFilterItem of statementFilterCategoryItems; track statementFilteredItem) {
           <button class="flex items-center gap-2">
             <span [innerHTML]="sanitizer.bypassSecurityTrustHtml(statementFilterItem.icon)"></span>
-            <span>{{statementFilterItem.value}}</span>
+            <span>{{statementFilterItem.key}}</span>
           </button>
         }
       </section>
@@ -112,7 +112,7 @@
         <span
           class="icon-container"
           [innerHTML]="sanitizer.bypassSecurityTrustHtml(categoryItem.icon)"></span>
-        <span>{{categoryItem.value}}</span>
+        <span>{{categoryItem.key}}</span>
       </button>
     }
   </section>
