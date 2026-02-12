@@ -1,14 +1,17 @@
 .secondary-menu-container {
   .secondary-menu-items-container {
+    margin-bottom: 0;
     .menu-item {
-      gap: 8px;
-      opacity: 1;
-      padding: 12px 24px;
+      height: 48px;
       border-radius: 20px;
+      opacity: 1;
+      gap: 8px;
+      padding: 8px 24px;
       font-family: IRANYekanXLightFaNumber;
       font-weight: 300;
-      font-size: 20px;
+      font-size: 14px;
       line-height: 24px;
+      letter-spacing: 0;
       color: var(--Color-Schema-On-Surface-Primary, #222222);
       cursor: pointer;
       position: relative;
@@ -17,7 +20,6 @@
       width: 53px;
       height: 24px;
       gap: 10px;
-      angle: 0 deg;
       opacity: 1;
       border-radius: 10px;
       padding: 10px;
@@ -37,7 +39,7 @@
     .routerLinkActive {
       font-family: IRANYekanXBoldFaNumber;
       font-weight: 700;
-      font-size: 20px;
+      font-size: 14px;
       line-height: 24px;
       letter-spacing: 0;
       color: var(--Color-Schema-Main-Colors-Primary, #009975);

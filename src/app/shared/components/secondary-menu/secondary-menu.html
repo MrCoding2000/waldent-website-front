@@ -2,7 +2,7 @@
   <ul class="secondary-menu-items-container flex justify-between lg:justify-start mb-6">
     @for (secondaryMenuItem of secondaryMenuItems; track secondaryMenuItem) {
       <li
-        class="menu-item"
+        class="menu-item flex items-center"
         [routerLink]="secondaryMenuItem.routerLink"
         [routerLinkActive]="'routerLinkActive'">
         {{secondaryMenuItem.title}}
@@ -12,11 +12,11 @@
       </li>
     }
   </ul>
-  <form class="search-box-form-container hidden lg:flex justify-between">
-    <button class="search-box-button inline-flex items-center justify-evenly">
-      <i class="pi pi-search"></i>
-       جستجو
-    </button>
-    <input class="search-box-input" placeholder="جستجو بین محصولات">
-  </form>
+<!--  <form class="search-box-form-container hidden lg:flex justify-between">-->
+<!--    <button class="search-box-button inline-flex items-center justify-evenly">-->
+<!--      <i class="pi pi-search"></i>-->
+<!--       جستجو-->
+<!--    </button>-->
+<!--    <input class="search-box-input" placeholder="جستجو بین محصولات">-->
+<!--  </form>-->
 </section>
