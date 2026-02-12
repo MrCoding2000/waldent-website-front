@@ -1,0 +1,24 @@
+<section class="secondary-menu-container flex justify-center lg:justify-between">
+  <ul class="secondary-menu-items-container flex justify-between lg:justify-start mb-6">
+    @for (secondaryMenuItem of secondaryMenuItems; track secondaryMenuItem) {
+      <li class="menu-item flex items-center">
+        <button
+          [disabled]="secondaryMenuItem.isSoon"
+            [routerLink]="secondaryMenuItem.routerLink"
+            [routerLinkActive]="'routerLinkActive'">
+          {{ secondaryMenuItem.title }}
+          @if (secondaryMenuItem.isSoon) {
+            <small class="soon hidden lg:flex items-center justify-center">بزودی</small>
+          }
+        </button>
+      </li>
+    }
+  </ul>
+  <!--  <form class="search-box-form-container hidden lg:flex justify-between">-->
+  <!--    <button class="search-box-button inline-flex items-center justify-evenly">-->
+  <!--      <i class="pi pi-search"></i>-->
+  <!--       جستجو-->
+  <!--    </button>-->
+  <!--    <input class="search-box-input" placeholder="جستجو بین محصولات">-->
+  <!--  </form>-->
+</section>

@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { TechniciansService } from './technicians.service';
 import { TechnicianPageDto } from './technicians.types';
+import {ProductTabs} from '../../shared/components/product-tabs/product-tabs';
 
 @Component({
   selector: 'app-technicians',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ProductTabs],
   templateUrl: './technicians.html',
   styleUrl: './technicians.scss',
 })

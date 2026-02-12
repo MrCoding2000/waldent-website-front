@@ -1,0 +1,14 @@
+<app-filter-pages-header></app-filter-pages-header>
+<section class="filtered-page-container">
+  <!--Category-->
+  <app-categories [categoryListItems]="baseService.filteredPageCategoryItems()" [isMobile]="isMobile"></app-categories>
+  <!--Content-->
+  <section class="w-full flex products-content">
+    <!--Products-filter-->
+    <app-filter></app-filter>
+    <!--Items-->
+    <section class="w-full">
+      <router-outlet></router-outlet>
+    </section>
+  </section>
+</section>

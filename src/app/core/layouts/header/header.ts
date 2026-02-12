@@ -16,9 +16,6 @@ import {Router} from '@angular/router';
 export class Header {
   isMenuOpen = false;
   menuItems = [
-    {labelKey: 'header.menu.items.products', path: 'products'},
-    {labelKey: 'header.menu.items.sellers', path: 'sellers'},
-    {labelKey: 'header.menu.items.technicians', path: 'technicians'},
     {labelKey: 'header.menu.items.order_security', path: 'order-security'},
     {labelKey: 'header.menu.items.support', path: 'support'},
     {labelKey: 'header.menu.items.about_us', path: 'about-us'},
