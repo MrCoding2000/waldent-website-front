@@ -1,9 +1,9 @@
 <section class="categories-container">
-  <section class="category-header mb-4 flex justify-between items-center mr-4">
+  <section class="category-header bg-white mb-4 flex flex-col lg:flex-row lg:bg-transparent lg:justify-between lg:items-center mr-4">
     <!--Right Section-->
     <section class="right-section flex items-center">
       <!--Filtered Category-->
-      <section class="filtered-category">
+      <section class="filtered-category hidden lg:block">
         <button class="flex items-center gap-3" (click)="onOpenCloseCategoryItems()">
           <span [innerHTML]="sanitizer.bypassSecurityTrustHtml(filteredItem.icon)"></span>
           <span>
@@ -12,15 +12,15 @@
       </span>
         </button>
       </section>
-      <span class="divider ml-4 mr-6"></span>
+      <span class="divider ml-4 mr-6 hidden lg:block"></span>
       <!--Secondary Menu-->
       <section class="secondary-menu-container">
         <app-secondary-menu [secondaryMenuItems]="secondaryMenuItems"></app-secondary-menu>
       </section>
-      <span class="divider ml-4 mr-6"></span>
+      <span class="divider ml-4 mr-6 hidden lg:block"></span>
     </section>
     <!--Left Section-->
-    <section class="left-section flex items-center">
+    <section class="left-section hidden lg:flex items-center">
       <!--Statement Filter-->
       <section class="statement-filter-container flex items-center gap-4">
         @for(statementFilterItem of statementFilterCategoryItems; track statementFilteredItem) {
@@ -42,15 +42,68 @@
         </button>
       </section>
     </section>
+    <!--Responsive Bottom Section-->
+    <section class="flex lg:hidden items-center justify-between my-6 mx-1">
+      <section class="flex items-center gap-9">
+        <button (click)="onOpenCloseCategoryItems()">
+        <span>
+          <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.646 5.66525L7.84225 0.426999C7.93575 0.273166 8.05033 0.1635 8.186 0.0979996C8.3215 0.0326662 8.46458 0 8.61525 0C8.76592 0 8.909 0.0326662 9.0445 0.0979996C9.18017 0.1635 9.29475 0.273166 9.38825 0.426999L12.5845 5.66525C12.678 5.81592 12.7247 5.97408 12.7247 6.13975C12.7247 6.30558 12.6863 6.45708 12.6095 6.59425C12.5325 6.73142 12.4268 6.841 12.2923 6.923C12.1576 7.005 12.0005 7.046 11.821 7.046H5.4095C5.22933 7.046 5.07167 7.00458 4.9365 6.92175C4.80133 6.83892 4.69617 6.72975 4.621 6.59425C4.54417 6.45908 4.50575 6.30892 4.50575 6.14375C4.50575 5.97858 4.5525 5.81908 4.646 5.66525ZM14.1152 18.046C12.9677 18.046 11.995 17.647 11.197 16.849C10.399 16.051 10 15.0782 10 13.9307C10 12.7832 10.399 11.8105 11.197 11.0125C11.995 10.2145 12.9677 9.8155 14.1152 9.8155C15.2627 9.8155 16.2355 10.2145 17.0335 11.0125C17.8315 11.8105 18.2305 12.7832 18.2305 13.9307C18.2305 15.0782 17.8315 16.051 17.0335 16.849C16.2355 17.647 15.2627 18.046 14.1152 18.046ZM0 16.642V11.217C0 10.9608 0.0865833 10.7465 0.25975 10.574C0.433083 10.4017 0.647833 10.3155 0.904 10.3155H6.329C6.58517 10.3155 6.7995 10.4021 6.972 10.5752C7.14433 10.7486 7.2305 10.9633 7.2305 11.2195V16.6445C7.2305 16.9007 7.14392 17.115 6.97075 17.2875C6.79742 17.4598 6.58267 17.546 6.3265 17.546H0.9015C0.645333 17.546 0.431 17.4594 0.2585 17.2862C0.0861666 17.1129 0 16.8982 0 16.642ZM14.115 16.5462C14.8472 16.5462 15.4662 16.2934 15.972 15.7878C16.4778 15.2821 16.7307 14.6632 16.7307 13.931C16.7307 13.1988 16.4779 12.5798 15.9723 12.074C15.4666 11.5682 14.8477 11.3152 14.1155 11.3152C13.3833 11.3152 12.7643 11.5681 12.2585 12.0737C11.7527 12.5794 11.4998 13.1983 11.4998 13.9305C11.4998 14.6627 11.7526 15.2817 12.2582 15.7875C12.7639 16.2933 13.3828 16.5462 14.115 16.5462ZM1.49975 16.0462H5.73075V11.8152H1.49975V16.0462ZM6.45375 5.54625H10.7768L8.61525 2.06925L6.45375 5.54625Z" fill="#222222"/>
+          </svg>
+        </span>
+        </button>
+        <button (click)="onOpenCloseFilterItems()">
+        <span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.6538 19.6537C16.7169 19.6537 15.925 19.3303 15.278 18.6834C14.6312 18.0364 14.3077 17.2445 14.3077 16.3077C14.3077 15.3707 14.6312 14.5788 15.278 13.9319C15.925 13.2849 16.7169 12.9614 17.6538 12.9614C18.5908 12.9614 19.3827 13.2849 20.0295 13.9319C20.6765 14.5788 21 15.3707 21 16.3077C21 17.2445 20.6765 18.0364 20.0295 18.6834C19.3827 19.3303 18.5908 19.6537 17.6538 19.6537ZM17.6528 18.1537C18.1624 18.1537 18.5977 17.9736 18.9587 17.6134C19.3196 17.2531 19.5 16.8182 19.5 16.3087C19.5 15.799 19.3198 15.3637 18.9595 15.0027C18.5993 14.6419 18.1644 14.4614 17.6547 14.4614C17.1451 14.4614 16.7098 14.6416 16.349 15.0019C15.9882 15.3621 15.8077 15.797 15.8077 16.3067C15.8077 16.8164 15.9878 17.2516 16.348 17.6124C16.7083 17.9733 17.1433 18.1537 17.6528 18.1537ZM11.3655 17.0577H5.25C5.0375 17.0577 4.85942 16.9858 4.71575 16.8419C4.57192 16.6981 4.5 16.5199 4.5 16.3072C4.5 16.0947 4.57192 15.9166 4.71575 15.7729C4.85942 15.6294 5.0375 15.5577 5.25 15.5577H11.3655C11.578 15.5577 11.7561 15.6296 11.8997 15.7734C12.0436 15.9173 12.1155 16.0954 12.1155 16.3079C12.1155 16.5206 12.0436 16.6987 11.8997 16.8422C11.7561 16.9859 11.578 17.0577 11.3655 17.0577ZM6.34625 11.0384C5.40925 11.0384 4.61733 10.7149 3.9705 10.0679C3.3235 9.42111 3 8.62919 3 7.69219C3 6.75536 3.3235 5.96344 3.9705 5.31644C4.61733 4.66961 5.40925 4.34619 6.34625 4.34619C7.28308 4.34619 8.075 4.66961 8.722 5.31644C9.36883 5.96344 9.69225 6.75536 9.69225 7.69219C9.69225 8.62919 9.36883 9.42111 8.722 10.0679C8.075 10.7149 7.28308 11.0384 6.34625 11.0384ZM6.34525 9.53844C6.85492 9.53844 7.29017 9.35827 7.651 8.99794C8.01183 8.63777 8.19225 8.20286 8.19225 7.69319C8.19225 7.18352 8.01217 6.74828 7.652 6.38744C7.29167 6.02661 6.85675 5.84619 6.34725 5.84619C5.83758 5.84619 5.40225 6.02628 5.04125 6.38644C4.68042 6.74678 4.5 7.18169 4.5 7.69119C4.5 8.20086 4.68017 8.63619 5.0405 8.99719C5.40067 9.35803 5.83558 9.53844 6.34525 9.53844ZM18.75 8.44219H12.6345C12.422 8.44219 12.2439 8.37028 12.1003 8.22644C11.9564 8.08261 11.8845 7.90444 11.8845 7.69194C11.8845 7.47928 11.9564 7.30119 12.1003 7.15769C12.2439 7.01403 12.422 6.94219 12.6345 6.94219H18.75C18.9625 6.94219 19.1406 7.01411 19.2843 7.15794C19.4281 7.30178 19.5 7.48003 19.5 7.69269C19.5 7.90519 19.4281 8.08328 19.2843 8.22694C19.1406 8.37044 18.9625 8.44219 18.75 8.44219Z" fill="#222222"/>
+          </svg>
+        </span>
+        </button>
+      </section>
+
+    </section>
   </section>
+  @if (isMobile) {
+    <p-drawer [(visible)]="showCategories" position="right">
+      <ng-template pTemplate="header">
+        <button class="flex items-center gap-4 responsive-category">
+        <span>
+          <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.646 5.66525L7.84225 0.426999C7.93575 0.273166 8.05033 0.1635 8.186 0.0979996C8.3215 0.0326662 8.46458 0 8.61525 0C8.76592 0 8.909 0.0326662 9.0445 0.0979996C9.18017 0.1635 9.29475 0.273166 9.38825 0.426999L12.5845 5.66525C12.678 5.81592 12.7247 5.97408 12.7247 6.13975C12.7247 6.30558 12.6863 6.45708 12.6095 6.59425C12.5325 6.73142 12.4268 6.841 12.2923 6.923C12.1576 7.005 12.0005 7.046 11.821 7.046H5.4095C5.22933 7.046 5.07167 7.00458 4.9365 6.92175C4.80133 6.83892 4.69617 6.72975 4.621 6.59425C4.54417 6.45908 4.50575 6.30892 4.50575 6.14375C4.50575 5.97858 4.5525 5.81908 4.646 5.66525ZM14.1152 18.046C12.9677 18.046 11.995 17.647 11.197 16.849C10.399 16.051 10 15.0782 10 13.9307C10 12.7832 10.399 11.8105 11.197 11.0125C11.995 10.2145 12.9677 9.8155 14.1152 9.8155C15.2627 9.8155 16.2355 10.2145 17.0335 11.0125C17.8315 11.8105 18.2305 12.7832 18.2305 13.9307C18.2305 15.0782 17.8315 16.051 17.0335 16.849C16.2355 17.647 15.2627 18.046 14.1152 18.046ZM0 16.642V11.217C0 10.9608 0.0865833 10.7465 0.25975 10.574C0.433083 10.4017 0.647833 10.3155 0.904 10.3155H6.329C6.58517 10.3155 6.7995 10.4021 6.972 10.5752C7.14433 10.7486 7.2305 10.9633 7.2305 11.2195V16.6445C7.2305 16.9007 7.14392 17.115 6.97075 17.2875C6.79742 17.4598 6.58267 17.546 6.3265 17.546H0.9015C0.645333 17.546 0.431 17.4594 0.2585 17.2862C0.0861666 17.1129 0 16.8982 0 16.642ZM14.115 16.5462C14.8472 16.5462 15.4662 16.2934 15.972 15.7878C16.4778 15.2821 16.7307 14.6632 16.7307 13.931C16.7307 13.1988 16.4779 12.5798 15.9723 12.074C15.4666 11.5682 14.8477 11.3152 14.1155 11.3152C13.3833 11.3152 12.7643 11.5681 12.2585 12.0737C11.7527 12.5794 11.4998 13.1983 11.4998 13.9305C11.4998 14.6627 11.7526 15.2817 12.2582 15.7875C12.7639 16.2933 13.3828 16.5462 14.115 16.5462ZM1.49975 16.0462H5.73075V11.8152H1.49975V16.0462ZM6.45375 5.54625H10.7768L8.61525 2.06925L6.45375 5.54625Z" fill="#222222"/>
+          </svg>
+        </span>
+          <span>دسته بندی ها</span>
+        </button>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <ng-container *ngTemplateOutlet="categoryItems"></ng-container>
+      </ng-template>
+    </p-drawer>
+  } @else {
+    <ng-container *ngTemplateOutlet="categoryItems"></ng-container>
+  }
+</section>
+<ng-template #categoryItems>
   <section
-    class="category-items grid grid-cols-4 gap-4 overflow-hidden transition-all duration-700"
-    [ngClass]="showCategories ? 'p-4':''"
+    class="category-items-container grid grid-cols-1 lg:grid-cols-4 gap-4 overflow-hidden transition-all duration-700"
+    [ngClass]="showCategories ? 'lg:p-4':''"
     [class.max-h-0]="!showCategories"
     [class.max-h-[500px]]="showCategories"
     [class.opacity-0]="!showCategories"
     [class.opacity-100]="showCategories">
-
+    @if(isMobile) {
+      <span class="horizontal-divider"></span>
+      @for (statementFilteredItem of statementFilterCategoryItems; track statementFilteredItem) {
+        <div class="statement-filter-container flex items-center gap-2">
+          <p-checkbox inputId="{{statementFilteredItem.value}}" name="statementFilteredItems" value="{{statementFilteredItem.value}}"/>
+          <span class="statement-filter-item flex items-center gap-3">
+            <span [innerHTML]="sanitizer.bypassSecurityTrustHtml(statementFilteredItem.icon)"></span>
+            <label for="{{statementFilteredItem.value}}" class="ml-2"> {{statementFilteredItem.key}} </label>
+          </span>
+        </div>
+      }
+      <span class="horizontal-divider"></span>
+    }
     @for(categoryItem of categoryListItems; track categoryItem) {
       <button
         class="category-item flex items-center gap-2"
@@ -62,6 +115,5 @@
         <span>{{categoryItem.value}}</span>
       </button>
     }
-
   </section>
-</section>
+</ng-template>

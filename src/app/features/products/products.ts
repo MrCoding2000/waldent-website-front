@@ -19,6 +19,7 @@ import {FilterPagesHeader} from '../../core/layouts/filter-pages-header/filter-p
   styleUrl: './products.scss'
 })
 export class Products {
+  isMobile: boolean = window.innerWidth <= 768;
   categoryListItems: { value: string; icon: string }[] = [
     {
       value: 'همه',
