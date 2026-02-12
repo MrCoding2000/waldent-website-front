@@ -4,6 +4,7 @@ import {ProductsCards} from '../../shared/components/products-cards/products-car
 import {SecondaryMenu} from '../../shared/components/secondary-menu/secondary-menu';
 import {Categories} from '../../shared/components/categories/categories';
 import {FilterPagesHeader} from '../../core/layouts/filter-pages-header/filter-pages-header';
+import {BaseService} from '../../core/services/base.service';
 
 @Component({
   selector: 'app-products',
@@ -19,7 +20,6 @@ import {FilterPagesHeader} from '../../core/layouts/filter-pages-header/filter-p
   styleUrl: './products.scss'
 })
 export class Products {
-  isMobile: boolean = window.innerWidth <= 768;
   categoryListItems: {key: string, value: string; icon: string }[] = [
     {
       key: 'همه',
@@ -147,4 +147,8 @@ export class Products {
              </svg>`
     },
   ];
+
+  constructor(private baseService: BaseService) {
+    baseService.setFilteredPageCategoryItems(this.categoryListItems)
+  }
 }
